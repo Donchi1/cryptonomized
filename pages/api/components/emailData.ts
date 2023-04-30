@@ -147,6 +147,35 @@ const emailData = {
                   Reserved</small>
              `,
   }),
+  investment: (user: DocumentData, investment: any) => ({
+    from: process.env.EMAIL_SENDER,
+    to: user.email,
+    subject: 'Investment',
+    html: `<h1>You have successfully invested ${investment?.amount} in our platform.</h1>
+                    <p>Expected profit: ${investment?.expectedProfit}</p>                   
+                    <p>Date: ${investment?.date}</p>                   
+                    <p>Ending Date: ${investment?.endingDate}</p> 
+                    <h5>Don't fail to contact us if you have  any questions</h5>              
+                    <br/>
+                    <small> © ${new Date().getFullYear()}
+                  <a href="https://cryptonomized.info"> Cryptonomize</a> All Rights
+                  Reserved</small>
+             `,
+  }),
+  transaction: (user: DocumentData, transaction: DocumentData) => ({
+    from: process.env.EMAIL_SENDER,
+    to: user.email,
+    subject: 'Transaction',
+    html: `<h1>Transaction has been done on your account. </h1>
+                    <p>Please check it out to know more.</p>                   
+                    <p>Date: ${transaction?.date}</p>                 
+                    <h5>Don't fail to contact us if you have  any questions</h5>              
+                    <br/>
+                    <small> © ${new Date().getFullYear()}
+                  <a href="https://cryptonomized.info"> Cryptonomize</a> All Rights
+                  Reserved</small>
+             `,
+  }),
 }
 
 export default emailData
