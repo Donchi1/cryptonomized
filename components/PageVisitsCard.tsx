@@ -19,7 +19,7 @@ export default function PageVisitsCard({  transactions, current }: pageVisitedTy
 
   
   return (
-    <Card className="c-bg min-h-full " >
+    <Card className="main-bg min-h-full " >
       <CardHeader color="blue" className="justify-none p-2">
         <div className="w-full flex items-center justify-between">
           <h2 className="text-white text-2xl">Latest Transactions</h2>
@@ -36,7 +36,7 @@ export default function PageVisitsCard({  transactions, current }: pageVisitedTy
       </CardHeader>
       <CardBody>
         <div className="overflow-x-auto">
-          <table className="items-center w-full bg-transparent border-collapse">
+          <table className="items-center w-full bg-transparen border-collapse">
             <thead>
               <tr>
                 <th className="px-2 text-white align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">

@@ -31,7 +31,7 @@ function Chat() {
     const [openUsers, setOpenUsers] = useState<boolean>(false)
     
 
-    const {currentUser} =  useSelector((state: RootState) => state.auth)
+    const {currentUser } =  useSelector((state: RootState) => state.auth)
     const [userChats] = useCollection("userChats")
 
     useEffect(() => {

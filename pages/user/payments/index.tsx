@@ -88,7 +88,7 @@ function Payments() {
 <UserHero title='Payment' />
 <div className=" mt-10 " />
 <div className='flex  justify-center '>
-      <div className="max-w-screen-xl m-0 sm:m-20 bg-[#12055c] shadow sm:rounded-lg flex justify-center flex-1  flex-wrap">
+      <div className="max-w-screen-xl m-0 sm:m-20 main-bg shadow sm:rounded-lg flex justify-center flex-1  flex-wrap">
         <div className="lg:w-1/2 xl:w-5/12 sm:w-full p-6 sm:p-12">
           <div className="mt-12 flex flex-col items-center">
             <h1 className="text-2xl xl:text-2xl font-black uppercase text-center text-white">

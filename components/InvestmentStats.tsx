@@ -71,7 +71,7 @@ function InvestmentStats({investments}:{investments: DocumentData[]}) {
   return (
     <>
    
-        <div className="xl:col-start-1  xl:col-end-4 lg:px-4 mb-8">
+        <div className="xl:col-start-1  xl:col-end-4 lg:px-4 mb-8 ">
           <div className="box">
             <h4 className="text-red-500 text-xl mb-2">Latest Investment Stats</h4>
             <p className="mb-2 ">

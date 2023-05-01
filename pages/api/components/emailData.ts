@@ -151,8 +151,8 @@ const emailData = {
     from: process.env.EMAIL_SENDER,
     to: user.email,
     subject: 'Investment',
-    html: `<h1>You have successfully invested ${investment?.amount} in our platform.</h1>
-                    <p>Expected profit: ${investment?.expectedProfit}</p>                   
+    html: `<h1>You have successfully invested €${investment?.amount} in our platform.</h1>
+                    <p>Expected profit: €${investment?.expectedProfit}</p>                   
                     <p>Date: ${investment?.date}</p>                   
                     <p>Ending Date: ${investment?.endingDate}</p> 
                     <h5>Don't fail to contact us if you have  any questions</h5>              

@@ -11,7 +11,7 @@ import handleStatus from '@/utils/handleStatus'
 export default function TableCard({data}: {data: DocumentData[] | null}) {
   return (
    
-    <Card className="bg-[#12055c]  c-bg text-white " style={{minHeight: "80vh"}}>
+    <Card className="main-bg  c-bg text-white " style={{minHeight: "80vh"}}>
      
       <CardBody >
         <div className="overflow-x-auto">

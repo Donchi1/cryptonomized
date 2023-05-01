@@ -222,8 +222,9 @@ const Footer = () => {
                     </div>
                     <div className="form-group col-md-12">
                       <textarea
-                        rows={6}
-                        className="form-control"
+                        rows={8}
+                        
+                        className="form-control resize-none"
                         placeholder="Your Message"
                         {...formik.getFieldProps("message")}
                       ></textarea>
@@ -286,6 +287,13 @@ const Footer = () => {
                   </div>
                   <h5 className="font-bold text-[25px]">Phone</h5>
                   <p>+447944723764</p>
+                </div>
+                <div className="single_address">
+                  <div className="address_br">
+                    <span className="fas fa-phone"></span>
+                  </div>
+                  <h5 className="font-bold text-[25px]">Phone</h5>
+                  <p>+447586168741</p>
                 </div>
                 <div className="single_address">
                   <div className="address_br">

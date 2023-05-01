@@ -114,7 +114,7 @@ useEffect(() => {
               aria-hidden="true"
             >
               <div className="modal-dialog modal-dialog-centered ">
-                <div className="modal-content c-bg">
+                <div className="modal-content main-bg">
                   <div className="modal-header">
                     <h3 className="modal-title golden-text" id="actionModal">
                       Details{" "}
@@ -312,7 +312,7 @@ useEffect(() => {
                 </div>
               </div>
             </div>
-    <Card className="c-bg">
+    <Card className="main-bg">
       <div className="flex flex-wrap justify-center text-white">
         <label htmlFor='profile' className="hover:cursor-pointer ">
           <Image width={500} className="rounded-lg" height={400} src={file ? URL.createObjectURL(file as Blob) : user?.photo } alt="profile" />

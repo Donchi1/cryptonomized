@@ -301,7 +301,7 @@ useEffect(() => {
        
       >
         <div className="modal-dialog modal-dialog-centered">
-           <div className="modal-content c-bg rounded-lg shadow-lg">
+           <div className="modal-content main-bg rounded-lg shadow-lg">
             <div className="modal-header">
             <h5 className="modal-title text-bold uppercase text-red-500">
                 Access Code 
@@ -377,7 +377,7 @@ useEffect(() => {
       
       >
         <div className="modal-dialog modal-dialog-centered ">
-        <div className="modal-content c-bg rounded-lg shadow-lg">
+        <div className="modal-content main-bg rounded-lg shadow-lg">
         <div className="modal-header">
         <h5 className="modal-title text-bold uppercase text-red-500">
                 Access Code 
@@ -432,7 +432,7 @@ useEffect(() => {
        
 
       </div>
-      <nav className="bg-[#12055c] sticky top-0 py-6 px-0 lg:px-2 shadow-lg z-20">
+      <nav className="main-bg sticky top-0 py-6 px-0 lg:px-2 shadow-lg z-20">
         <div className="container max-w-full mx-auto flex items-center justify-between md:pr-8 md:pl-10">
           <div className="flex justify-between items-center w-full ">
             <div className="flex justify-center items-center">

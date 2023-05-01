@@ -1,5 +1,6 @@
 /*
 Author       : themes_master
+Template Name: Crptiam - Cryptocurrency ICO Landing Page HTML Template 
 Version      : 1.0
 */
 /*=============================================================
@@ -28,14 +29,13 @@ Version      : 1.0
 * 01.GENERAL STYLE
 * ----------------------------------------------------------------------------------------
 */
-
 body {
-    color:#fff;
+    color: #aab2cd;
     font-family: 'Quicksand', sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 26px;
-    background:#273095;
+    background:#151c2b;
     overflow-x:hidden;
     }
     html,
@@ -103,7 +103,7 @@ body {
     }
     /*START PRELOADER DESIGN*/
     .preloader {
-        background:#273095;
+        background:#151c2b;
         bottom: 0;
         left: 0;
         position: fixed;
@@ -127,7 +127,7 @@ body {
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      background:#fff;
+      background:#ffaa17;
       opacity: 0.6;
       position: absolute;
       top: 0;
@@ -349,7 +349,7 @@ body {
         padding-right: 0;
     }
     .navbar-custom.nav-sticky {
-        background-color: #1652f0 !important;
+        background-color: #1e2739 !important;
         padding: 15px 0px;
         border-bottom: none;
     }
@@ -366,13 +366,13 @@ body {
     }
     @media (min-width: 200px) and (max-width: 812px) {
     .navbar-custom {
-        background-color: #1652f0;
+        background-color: #1e2739;
         padding: 10px 0px !important;
     }
     }
     @media (min-width: 200px) and (max-width: 768px) {
     .navbar-custom {
-        background-color: #1652f0;
+        background-color: #1e2739;
         padding: 10px 0px !important;
     }
     }
@@ -408,7 +408,7 @@ body {
         font-size: 52px;
         font-weight: 700;
         line-height: 68px;
-        padding-top: 230px;
+        padding-top: 100px;
         margin-bottom: 20px;
     }
     @media only screen and (max-width:768px) { 
@@ -431,7 +431,7 @@ body {
         overflow: hidden;
         margin-top: 150px;
         padding:40px;
-        border:2px solid #1652f0;
+        border:2px solid #1e2739;
     }
     @media only screen and (max-width:480px) { 
     .buy-icons{padding:20px;}
@@ -459,7 +459,7 @@ body {
               flex: 1 1 25%;
       max-width: 25%;
       display: block;
-      background: #1652f0;
+      background: #1e2739;
       border-radius: 5px;
       text-align: center;
       margin-right: 16px;
@@ -569,7 +569,7 @@ body {
     */
     .buy_sell_list {
         margin-bottom: 30px;
-        background: #1652f0;
+        background: #1e2739;
         padding: 30px;
         border-radius: 2px;
     }
@@ -633,7 +633,7 @@ body {
         font-weight: 600;
         font-size:18px;
     }
-    .single_token p{}
+    .single_token p{color: #fff;}
     .single_token_bg_one{background:#5fc0d8;}
     .single_token_bg_two{background:#6f4cf2;}
     .single_token_bg_three{background:#c660e8;}
@@ -643,7 +643,7 @@ body {
     .single_token_bg_seven{background:#1652f0;}
     .single_token_bg_eight{background:#3DB2FF;}
     .currency_content{
-    background:#1652f0;
+    background:#1e2739;
     padding:60px;
     border-radius:5px;
     }
@@ -779,7 +779,7 @@ body {
     }
     .time_content {
         padding: 30px;
-        background: #1652f0;
+        background: #1e2739;
         position: relative;
         border-radius: 6px;
     }
@@ -852,7 +852,7 @@ body {
         border-radius: 30px;
         margin-right: 10px;
         display: inline-block;
-        border: 2px solid #1652f0;
+        border: 2px solid #1e2739;
     }
     .app_btn {
         margin-top:30px;
@@ -883,7 +883,7 @@ body {
         overflow: hidden;
     }
     .our-team{
-    background:#1652f0;
+    background:#1e2739;
     padding:30px;
     margin-bottom:30px;
     }
@@ -982,7 +982,7 @@ body {
     */
     .faq1-area {}
     .accordion-item {
-        background-color: #1652f0;
+        background-color: #1e2739;
         border: 0px solid #4a516b;
         margin-bottom: 30px;
     }
@@ -999,12 +999,12 @@ body {
         border: 0;
         border-radius: 0;
         transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,border-radius .15s ease;
-        background: #1652f0;
+        background: #1e2739;
         font-weight: 600;
     }
     .accordion-button:not(.collapsed) {
         color: #fff;
-        background-color: #1652f0;
+        background-color: #1e2739;
         box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
     }
     .accordion-button:not(.collapsed)::after {
@@ -1040,7 +1040,7 @@ body {
      * ----------------------------------------------------------------------------------------
      */
     .promotion_area{
-    background:#1652f0;
+    background:#1e2739;
     padding:80px 0;
     }
     .newsletter_form{}
@@ -1085,7 +1085,7 @@ body {
     margin-bottom:40px;
     }
     .contact input {
-        background: #1652f0;
+        background: #1e2739;
         border-radius: 0px;
         box-shadow: none;
         color: #fff;
@@ -1095,11 +1095,11 @@ body {
         height: 70px;
         padding: 10px 10px 10px 30px;
         width: 100%;
-        border: 1px solid #1652f0;
+        border: 1px solid #1e2739;
         position: relative;
     }
     .contact textarea {
-        background: #1652f0;
+        background: #1e2739;
         border-radius: 0px;
         margin-bottom:30px;
         box-shadow: none;
@@ -1108,19 +1108,19 @@ body {
         font-weight: 400;
         padding: 10px 10px 10px 30px;
         width: 100%;
-        border: 1px solid #1652f0;
+        border: 1px solid #1e2739;
         position: relative;
     }
     .contact input:focus {
         border: 1px solid #ffaa17;
-        background: #1652f0;
+        background: #1e2739;
         color: #fff;
         box-shadow: none;
         outline: 0 none;
     }
     .contact textarea:focus {
     border: 1px solid #ffaa17;
-    background: #1652f0;
+    background: #1e2739;
     color: #fff;
         box-shadow: none;
         outline: 0 none;
@@ -1131,7 +1131,7 @@ body {
     }
     
     .address_bg {
-        background: #1652f0;
+        background: #1e2739;
         padding: 40px;
         position: relative;
         box-shadow: 0 10px 40px -10px rgba(0,64,128,.1);
@@ -1139,7 +1139,7 @@ body {
     }
     .single_address {
         margin-bottom: 30px;
-        border-bottom: 1px solid #0b45de;
+        border-bottom: 1px solid #3d4460;
         padding-bottom: 30px;
     }
     .single_address:last-child {
@@ -1178,7 +1178,7 @@ body {
         -webkit-transition: 0.3s;
         transition: 0.3s;
     }
-    .contact_btn:hover{background:#1652f0;color: #fff;}
+    .contact_btn:hover{background:#1e2739;color: #fff;}
     
     
     .map{}
@@ -1201,7 +1201,7 @@ body {
     .blog_bg{background:#f4f5f7;}
     .blog_area{padding-bottom:50px;}
     .single_blog {
-        background: #1652f0;
+        background: #1e2739;
         margin-bottom: 30px;
     }
     @media only screen and (max-width:768px) { 
@@ -1249,7 +1249,7 @@ body {
     /*BLOG PAGES DESIGN*/
     .blog-page{}
     .post-slide-blog{
-    background: #1652f0 none repeat scroll 0 0;
+    background: #1e2739 none repeat scroll 0 0;
     border-radius:10px;
     box-shadow: 0 10px 40px -10px rgba(0,64,128,.08);
     margin-bottom: 30px;
@@ -1284,13 +1284,13 @@ body {
     
     /*START PAGINATION*/
     ul.blog_pagination li a {
-        border: 1px solid #1652f0;
+        border: 1px solid #1e2739;
         border-radius: 30px;
         color: #fff;
         display: block;
         font-size: 22px;
         font-weight: 500;
-        background: #1652f0;
+        background: #1e2739;
         height: 60px;
         line-height: 60px;
         position: relative;
@@ -1319,7 +1319,7 @@ body {
     }
     .blog_search, .latest_blog, .advertisement_post, .video_post, .categories, .tag, .banner {
         margin-bottom: 30px;
-        background: #1652f0;
+        background: #1e2739;
         padding: 30px 30px;
         position: relative;
         border-radius:10px;
@@ -1432,7 +1432,7 @@ body {
         margin-top: 60px;
     }
     .single_author {
-        background: #1652f0 none repeat scroll 0 0;
+        background: #1e2739 none repeat scroll 0 0;
         padding: 40px;
         border-radius: 10px;
         box-shadow: 0 10px 40px -10px rgba(0,64,128,.08);
@@ -1464,7 +1464,7 @@ body {
     }
     .single_comment {
         margin-bottom: 30px;
-        background: #1652f0;
+        background: #1e2739;
         padding: 40px;
         border-radius: 10px;
         box-shadow: 0 10px 40px -10px rgba(0,64,128,.08);
@@ -1543,7 +1543,7 @@ body {
     .footer_profile ul li a img{width:60px;}
     
     .footer_profile ul li a {
-        background: #1652f0;
+        background: #1e2739;
         width: 40px;
         height: 40px;
         display: block;

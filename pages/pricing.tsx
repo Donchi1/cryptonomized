@@ -1,14 +1,14 @@
 import React from 'react'
 import Hero from '@/components/Hero' 
 import Plans from '@/components/Plans' 
-import Footer from '@/components/user/FooterUser' 
+import Footer from '@/components/Footer' 
 import Header from '@/components/Header'
 
 export default function Pricing() {
   return (
     <>
     <Header/>
-      <section className="footer-bg homepage-3">
+      <section className="footer-bg homepage-3 mb-14">
         <Hero pageName="Pricing" />
         <section className="container mx-auto">
           <div className="col-md-12">

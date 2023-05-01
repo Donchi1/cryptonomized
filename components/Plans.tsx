@@ -9,8 +9,8 @@ type  PlanType = {
 function Plans({ head, initialw, initiald }: PlanType) {
   return (
     <div className="">
-      <div className="shadow-xl lg:max-w-lg  sm:w-full bg-[#452fc3]">
-        <div className="border-b-4 border-[#304ffe]  p-6 text-center">
+      <div className="shadow-xl lg:max-w-lg  sm:w-full ">
+        <div className="border-b-4 border-[#ff0066d9]  p-6 text-center">
           <h2 className="text-2xl text-white uppercase font-bold mb-4 ">
             {head} Plan
           </h2>
@@ -24,25 +24,25 @@ function Plans({ head, initialw, initiald }: PlanType) {
             Initial Withdrawal
           </p>
           <p className="uppercase text-center font-extrabold text-4xl text-yellow-700 p-2">
-            {initialw}
+          €{initialw}
           </p>
         </div>
         <p className="uppercase text-center font-medium p-2 text-white">
           Normal Deposit
         </p>
         <p className="uppercase text-center font-medium p-2 text-white">
-          {initiald}
+        €{initiald}
         </p>
         <p className="uppercase text-center font-medium p-2 text-white">
-          Top Up $30
+          Top Up €30
         </p>
         <p className="uppercase text-center font-medium p-2 text-white">
-          Bonus $10
+          Bonus €10
         </p>
-        <div className="border-t border-[#304ffe] mt-4">
+        <div className=" mt-4">
           <Link
             href="/register"
-            className=" uppercase tracking-wide font-semibold hover:text-white bg-[#304ffe] text-gray-100 w-full py-3 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+            className="btn_two uppercase tracking-wide font-semibold   text-gray-100 w-full py-3 rounded-lg  transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
           >
             Get Now
           </Link>

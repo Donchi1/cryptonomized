@@ -6,7 +6,9 @@
 
 @import url("/assets/styles/tailwind.css");
 
-
+.main-bg{
+  background-color: #1e2739 !important;
+}
 .c-bg {
     background-color: #12055c !important;
   }

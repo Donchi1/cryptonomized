@@ -173,10 +173,10 @@ const Register = () => {
 
 
   return (
-    <div className="min-h-screen footer-bg homepage-3 flex justify-center">
-      <div className="max-w-screen-xl m-0 sm:m-20 bg-[#322194] shadow sm:rounded-lg flex justify-center flex-1 flex-wrap">
-        <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
-          <div className="mt-12 flex flex-col items-center">
+    <div className="min-h-screen footer-bg  homepage-3  flex justify-center">
+    <div className=" mt-6  shadow sm:rounded-lg flex justify-center flex-1 items-center ">
+      <div className="lg:w-1/2 xl:w-5/12 w-full px-6 sm:p-10  ">
+        <div className="  flex flex-col items-center border p-6 rounded-lg mb-4">
             <h1 className="text-2xl xl:text-2xl font-black uppercase text-white">
               Sign Up
             </h1>
@@ -184,10 +184,10 @@ const Register = () => {
             <form className="w-full flex-1 mt-8 " onSubmit={formik.handleSubmit}>
               <div className="mx-auto max-w-xl  relative ">
                 <div className="flex space-x-2">
-                  <div>
+                  <div className='flex-1'>
 
                   <input
-                    className="w-full px-8 py-4 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
+                    className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
                     type="text"
                     placeholder="Enter firstname"
                     {...formik.getFieldProps("firstname")}
@@ -199,10 +199,10 @@ const Register = () => {
                         </div>
                       ) : null}
                     </div>
-                    <div>
+                    <div className='flex-1'>
 
                   <input
-                    className="w-full px-8 py-4 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
+                    className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
                     type="text"
                     placeholder="Enter lastname"
                     {...formik.getFieldProps("lastname")}
@@ -216,10 +216,10 @@ const Register = () => {
                     </div>
                 </div>
                 <div className="flex space-x-2">
-                  <div>
+                  <div className='flex-1'>
 
                   <input
-                    className="w-full px-8 py-4 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
+                    className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
                     type="email"
                     placeholder="Enter email"
                     {...formik.getFieldProps("email")}
@@ -231,10 +231,10 @@ const Register = () => {
                         </div>
                       ) : null}
                   </div>
-                  <div>
+                  <div className='flex-1'>
 
                   <input
-                    className="w-full px-8 py-4 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
+                    className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
                     type="tel"
                     placeholder="Enter number"
                    {...formik.getFieldProps("phone")}
@@ -248,10 +248,10 @@ const Register = () => {
                   </div>
                 </div>
                 <div className="flex space-x-2">
-                  <div>
+                  <div className='flex-1'>
                     
                   <input
-                    className="w-full px-8 py-4 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
+                    className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
                     type="password"
                     placeholder="Enter password"
                     {...formik.getFieldProps("password")}
@@ -263,10 +263,10 @@ const Register = () => {
                         </div>
                       ) : null}
                   </div>
-                  <div>
+                  <div className='flex-1'>
 
                   <input
-                    className="w-full px-8 py-4 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
+                    className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
                     type="password"
                     placeholder="Confirm Password"
                     {...formik.getFieldProps("password1")}
@@ -281,9 +281,9 @@ const Register = () => {
                 </div>
 
                 <div className="flex space-x-2">
-                  <div>
+                  <div className='flex-1'>
                   <input
-                  className="w-full px-8 py-4 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
+                  className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
                   type="text"
                   placeholder="Enter country"
                 {...formik.getFieldProps("country")}
@@ -297,9 +297,9 @@ const Register = () => {
 
                   </div>
 
-                  <div>
+                  <div className='flex-1'>
                   <input
-                  className="w-full px-8 py-4 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
+                  className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
                   type="text"
                   placeholder=" Enter state"
                   {...formik.getFieldProps("state")}
@@ -314,11 +314,11 @@ const Register = () => {
 
                   </div>
                   <div className="flex space-x-2">
-                  <div>
+                  <div className='flex-1'>
                
                
                 <input
-                  className="w-full px-8 py-4 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
+                  className="w-full  px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
                   type="text"
                   placeholder="Enter occupation"
                   {...formik.getFieldProps("occupation")}
@@ -330,9 +330,9 @@ const Register = () => {
                         </div>
                       ) : null}
                       </div>
-                      <div>
+                      <div className='flex-1'>
                 <input
-                  className="w-full px-8 py-4 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
+                  className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
                   type="file"
                   placeholder="Your Photo"
                   onChange={(e) => formik.setFieldValue("photo", e.target.files && e.target.files[0])}
@@ -348,19 +348,19 @@ const Register = () => {
                 <button
                   disabled={formik.isSubmitting}
                   type="submit"
-                  className="mt-4 uppercase tracking-wide font-semibold bg-[#304ffe] text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                  className="mt-4 uppercase tracking-wide font-semibold btn_one text-gray-100 w-full py-3 rounded-lg  transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                 >
                   <i className="fas fa-user-plus fa 1x w-6  -ml-2" />
                   <span className="ml-3">{formik.isSubmitting ? 'Submitting...': "Sign Up"}</span>
                 </button>
-                <div className="my-12 border-b text-center">
+                <div className="mt-3 border-b text-center">
                   <div className="leading-none px-2 inline-block text-md text-indigo-400 tracking-wide font-medium transform translate-y-1/2">
                     OR
                   </div>
                 </div>
                 <div className="mx-auto mx-w-sm w-full">
                   <Link
-                    className="mt-4 max-w-full uppercase tracking-wide font-semibold bg-[#304ffe] text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center hover:text-white focus:shadow-outline focus:outline-none"
+                    className="mt-4 max-w-full uppercase tracking-wide font-semibold btn_two text-gray-100 w-full py-3 rounded-lg  transition-all duration-300 ease-in-out flex items-center justify-center  focus:shadow-outline focus:outline-none"
                     href="/login"
                   >
                     <i className="fas fa-sign-in-alt fa 1x w-6  -ml-2 text-indigo-500" />

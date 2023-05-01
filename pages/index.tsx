@@ -24,17 +24,17 @@ export default function Home() {
         ></canvas>
       </div>
 
-      <section id="home" className="home_bg">
-        <div className="container mx-auto">
+      <section id="home" className="home_bg vh-100 " style={{backgroundImage: "url(/assets/img/slider-3.jpg)", backgroundPosition:"right", backgroundSize: "cover"}}>
+        <div className="container mx-auto" >
           <div className="row">
             <div className="col-lg-7 col-sm-12 col-xs-12 lg:mb-0 mb-4">
-              <div className="mt-24">
-                <h2 className="text-5xl font-bold ">
+              <div className=" hero-text">
+                <h2 className="text-6xl  font-bold ">
                   {' '}
                   Welcome to <br /> cryptonomize the way to your future
                   investments.
                 </h2>
-                <p className="mt-2">
+                <p className="mt-2 text-lg">
                   The future of investment is here. A platform for launching
                   your stable Cryptocurrency investments.
                 </p>
@@ -58,9 +58,9 @@ export default function Home() {
               </div>
             </div>
             {/*- END COL */}
-            <div className="col-lg-5 col-sm-12 col-xs-12 text-center mt-8 lg:mt-20">
+            {/* <div className="col-lg-5 col-sm-12 col-xs-12 text-center mt-8 lg:mt-20">
               <img src='/assets/img/bitcoin1.png' alt="logo" />
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

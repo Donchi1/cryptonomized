@@ -1,6 +1,6 @@
 import React from 'react'
 import Hero from '@/components/Hero' 
-import Footer from '@/components/user/FooterUser' 
+import Footer from '@/components/Footer' 
 import  Link from "next/link"
 import Header from '@/components/Header'
 

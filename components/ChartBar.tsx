@@ -112,7 +112,7 @@ export default function ChartBar() {
     window.myBar  = new Chart(ctx, config)
   }, [])
   return (
-    <Card className="c-bg">
+    <Card className="main-bg">
       
         <h6 className="uppercase text-gray-200 text-xl px-4 pt-2 font-medium">
          Market Value

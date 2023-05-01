@@ -192,7 +192,7 @@ export default function Dashboard() {
       </div>
       <div className="px-3 md:px-8 h-auto mb-14">
         <div className="container mx-auto max-w-full">
-          <div className="grid grid-cols-1 c-bg rounded-lg px-4 pt-4  mx-lg-3 xl:grid-cols-5">
+          <div className="grid grid-cols-1 main-bg rounded-lg px-4 pt-4  mx-lg-3 xl:grid-cols-5">
             
               <InvestmentStats
                 

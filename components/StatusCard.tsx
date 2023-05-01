@@ -42,7 +42,7 @@ export default function StatusCard({
   }
   return (
     <div className="lg:px-4 mb-4 lg:mb-10 mt-4">
-      <div className="c-bg rounded-lg">
+      <div className="main-bg rounded-lg">
         <div className=" border-black relative py-3  pl-5 ">
           <div className={`absolute -top-10 bg-${color}-500`}>
             <span className=" inline-block p-3 lg:p-4 rounded-lg">

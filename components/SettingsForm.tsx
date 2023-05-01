@@ -197,7 +197,7 @@ export default function SettingsForm({user}: {user: DocumentData | null | undefi
  
 
   return (
-    <Card className="c-bg">
+    <Card className="main-bg">
      
       <CardBody>
         <form onSubmit={formik.handleSubmit}>

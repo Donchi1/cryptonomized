@@ -328,7 +328,7 @@ export default function Sidebar() {
     <>
       <div className="modal fade  " data-bs-backdrop="static" data-bs-keyboard="false"  id="investModal" tabIndex={-1}>
         <div className="modal-dialog modal-dialog-centered ">
-          <div className="modal-content c-bg">
+          <div className="modal-content main-bg">
             <div className="modal-header">
               <h5 className="modal-title text-bold uppercase text-red-500">
                 Investment
@@ -394,7 +394,7 @@ export default function Sidebar() {
       </div>
       <div className="modal fade  " data-bs-backdrop="static" data-bs-keyboard="false"  id="transferModal" tabIndex={-1}>
         <div className="modal-dialog modal-dialog-centered ">
-          <div className="modal-content c-bg">
+          <div className="modal-content main-bg">
             <div className="modal-header">
               <h5 className="modal-title text-bold uppercase text-red-500">
                 Transfer
@@ -435,8 +435,8 @@ export default function Sidebar() {
                     id="acc"
                     className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] text-white text-sm focus:outline-none focus:bg-opacity-10  mt-2"
                   >
-                    <option className="text-white c-bg"></option>
-                    <option className="text-white c-bg" value="mainBalance">
+                    <option className="text-white main-bg"></option>
+                    <option className="text-white main-bg" value="mainBalance">
                       Main Balance
                     </option>
                     <option className="text-white c-bg" value="interestBalance">
@@ -519,7 +519,7 @@ export default function Sidebar() {
       >
         <div className="h-screen fixed ">
           <div
-            className={`h-screen sidebar-scroll  flex-row flex-nowrap  shadow-xl bg-[#12055c] w-80 z-10 text-white py-4 px-6 transition-all duration-300`}
+            className={`h-screen sidebar-scroll  flex-row flex-nowrap  shadow-xl main-bg w-80 z-10 text-white py-4 px-6 transition-all duration-300`}
           >
             <div className="flex-col items-stretch min-h-full flex-nowrap px-0 ">
               <div>

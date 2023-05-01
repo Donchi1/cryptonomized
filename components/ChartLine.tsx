@@ -116,7 +116,7 @@ export default function ChartLine() {
   }, [])
 
   return (
-    <Card className="c-bg">
+    <Card className="main-bg">
         
         <h6 className="uppercase text-gray-200 text-xl px-4 mt-2 font-medium">
           Overview

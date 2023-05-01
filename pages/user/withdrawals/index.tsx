@@ -112,7 +112,7 @@ function Withdrawals() {
  
   return (
     <div className="min-h-screen footer-bg  homepage-3  flex justify-center">
-      <div className="max-w-screen-xl m-0 sm:m-20 bg-[#322194] shadow sm:rounded-lg flex justify-center flex-1 sm:flex sm:flex-col lg:flex lg:flex-row">
+      <div className="max-w-screen-xl m-0 sm:m-20 main-bg shadow sm:rounded-lg flex justify-center flex-1 sm:flex sm:flex-col lg:flex lg:flex-row">
         <div className="lg:w-1/2 xl:w-5/12 sm:w-full p-6 sm:p-12">
           <div className="mt-12 flex flex-col items-center">
             <h1 className="text-3xl xl:text-4xl font-black uppercase text-center text-white">

@@ -44,10 +44,10 @@ const PasswordReset = () => {
   };
 
   return (
-    <div className="min-h-screen footer-bg homepage-3 flex justify-center">
-      <div className="max-w-screen-xl m-0 sm:m-20 bg-[#322194] shadow sm:rounded-lg  flex justify-center flex-1 flex-wrap">
-        <div className="lg:w-1/2 xl:w-5/12 sm:w-full p-6 sm:p-12">
-          <div className="mt-12 flex flex-col items-center">
+    <div className="min-h-screen footer-bg  homepage-3  flex justify-center">
+    <div className=" mt-6  shadow sm:rounded-lg flex justify-center flex-1 items-center ">
+      <div className="lg:w-1/2 xl:w-5/12 w-full px-6 sm:p-10   ">
+        <div className="  flex flex-col items-center border p-6 rounded-lg mb-4">
             <h1 className="text-2xl xl:text-2xl font-black uppercase text-white">
               Password Reset
             </h1>
@@ -57,7 +57,7 @@ const PasswordReset = () => {
                 <div>
                   
                 <input
-                  className="w-full px-8 py-6 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-3"
+                  className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-3"
                   type="email"
                   placeholder="Email"
                   {...formik.getFieldProps("email")}
@@ -72,20 +72,20 @@ const PasswordReset = () => {
                 <button
                 disabled={formik.isSubmitting}
                   type="submit"
-                  className="mt-4 uppercase tracking-wide font-semibold bg-[#304ffe] text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                  className="mt-4 uppercase tracking-wide font-semibold  text-gray-100 w-full py-3 rounded-lg btn_one transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                 >
                   <i className="fas fa-user-plus fa 1x w-6  -ml-2" />
                   <span className="ml-3">{formik.isSubmitting ? "Submitting..." : "Submit"}</span>
                 </button>
-                <div className="my-12 border-b text-center">
+                <div className="mt-4 border-b text-center">
                   <div className="leading-none px-2 inline-block text-md text-indigo-400 tracking-wide font-medium  transform translate-y-1/2">
                     OR
                   </div>
                 </div>
                 <div className="mx-auto mx-w-sm w-full">
                   <Link
-                    className="w-full mx-w-xl  uppercase font-bold shadow-sm rounded-lg py-4
-           bg-[#304ffe]  text-white flex items-center  hover:text-white justify-center hover:bg-indigo-800 transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:text-white focus:shadow-sm focus:shadow-outline mt-4"
+                    className="w-full mx-w-xl  uppercase font-bold shadow-sm rounded-lg py-3
+            text-white flex border items-center bg-transparent  justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:text-white focus:shadow-sm focus:shadow-outline mt-4"
                     href="/login"
                     target="_self"
                   >
@@ -93,8 +93,8 @@ const PasswordReset = () => {
                     <span className="ml-4">Login</span>
                   </Link>
                   <Link
-                    className="w-full uppercase mx-w-xl font-bold shadow-sm rounded-lg py-4
-           bg-[#304ffe]  text-white flex items-center focus:border-none hover:text-white justify-center hover:bg-indigo-800 transition-all duration-300 ease-in-out focus:outline-none focus:text-white hover:shadow focus:shadow-sm focus:shadow-outline mt-4"
+                    className="w-full uppercase mx-w-xl font-bold shadow-sm rounded-lg py-3
+            text-white flex items-center focus:border-none btn_two justify-center  transition-all duration-300 ease-in-out focus:outline-none focus:text-white hover:shadow focus:shadow-sm focus:shadow-outline mt-4"
                     href="/register"
                     target="_self"
                   >

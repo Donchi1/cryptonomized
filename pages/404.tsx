@@ -4,14 +4,14 @@ import Hero from '@/components/Hero'
 
 export default function Empty() {
   return (
-    <div className="footer-bg  homepage-3">
-      <section className="h-screen">
+    <div className="footer-bg  homepage-3 w-100">
+          <Hero pageName="not-found 404" />
+      <section className="h-screen ">
         <div className="container mx-auto">
-          <Hero pageName="Not Found 404" />
-          <div className="row">
-            <div className=" offset-lg-1 text-center leading-loose mb-12">
+          
+            <div className=" leading-loose mb-12">
               <div className="divider small_divider"></div>
-              <div className="not_found">
+              <div className="not_found text-center mt-6">
                 <h3
                   className="text-2xl font-black text-gray-300"
                   data-animation="fadeInUp"
@@ -29,7 +29,7 @@ export default function Empty() {
                 </p>
                 <Link
                   href="/"
-                  className="mt-5 py-4 tracking-wide hover:text-white font-semibold bg-[#304ffe] text-gray-100 w-2/4 mx-auto  rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                  className="mt-5 py-4 tracking-wide  font-semibold btn_two text-gray-100 w-2/4 mx-auto  rounded-lg transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                   data-animation="fadeInUp"
                   data-animation-delay="0.8s"
                 >
@@ -37,7 +37,7 @@ export default function Empty() {
                 </Link>
               </div>
             </div>
-          </div>
+        
         </div>
       </section>
     </div>

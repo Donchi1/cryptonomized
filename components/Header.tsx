@@ -1,5 +1,6 @@
 import React from 'react'
 import Link  from 'next/link'
+import * as Icons from "react-icons/fa"
 
 
 const Header = () => {
@@ -18,7 +19,7 @@ const Header = () => {
           </span>
         </Link>
         <button
-          className="navbar-toggler"
+          className="navbar-toggler "
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarCollapse"
@@ -26,7 +27,9 @@ const Header = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="fa fa-align-justify"></span>
+          <span >
+            <Icons.FaBars />
+          </span>
         </button>
         <div className="collapse navbar-collapse" id="navbarCollapse">
           <ul id="navbar-navlist" className="navbar-nav ms-auto">
