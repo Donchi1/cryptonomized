@@ -25,7 +25,7 @@ export default function Dashboard() {
             <div className="xl:col-start-1 xl:col-end-5  mb-16 mb-lg-4 lg:mt-0 mt-8">
               <SettingsForm user={currentUser}  />
             </div>
-            <div className="xl:col-start-5 xl:col-end-7  mb-16 lg:mt-0 ">
+            <div className="xl:col-start-5 xl:col-end-7  mb-16 lg:mt-0 mt-8 ">
               <ProfileCard user={currentUser} />
             </div>
           </div>

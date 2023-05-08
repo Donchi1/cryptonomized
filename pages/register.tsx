@@ -176,7 +176,7 @@ const Register = () => {
     <div className="min-h-screen footer-bg  homepage-3  flex justify-center">
     <div className=" mt-6  shadow sm:rounded-lg flex justify-center flex-1 items-center ">
       <div className="lg:w-1/2 xl:w-5/12 w-full px-6 sm:p-10  ">
-        <div className="  flex flex-col items-center border p-6 rounded-lg mb-4">
+        <div className="  flex flex-col items-center  p-6 main-bg rounded-lg mb-4">
             <h1 className="text-2xl xl:text-2xl font-black uppercase text-white">
               Sign Up
             </h1>

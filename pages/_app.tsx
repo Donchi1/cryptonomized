@@ -24,12 +24,6 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <link rel="icon" href="/favicon.ico" />
-        <link
-          href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet"
-        />
-       
-
         <meta
           property="og:title"
           content="Trading nomalized or easy and fast establishment"

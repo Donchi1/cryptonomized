@@ -17,7 +17,8 @@ export default function About() {
         <section className="container mx-auto  text-white text-lg italic leading-3 tracking-wide ">
           <div className="row">
             <div className="col-sm-12 col-lg-6">
-              <img src='/assets/img/manager.jpg' alt="" className="lg:w-[400px] sm:w-[500px]" />
+              <img src='/assets/img/ceo.jpg' alt="" className="lg:w-[400px] rounded-sm sm:w-[500px]" />
+            
             </div>
             <div className="sm:mt-4 col-sm-12 col-lg-6">
               <h2 className=" text-2xl text-white mb-8 sm:mt-4">

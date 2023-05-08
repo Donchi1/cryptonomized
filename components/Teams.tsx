@@ -29,9 +29,9 @@ export default function Teams() {
             >
               <div className="our-team">
                 <div className="flex justify-center items-center">
-                  <img src="/assets/img/acc.jpg" className="img-fluid" alt="board-mage" />
+                  <img src="/assets/img/accountant.jpg" className="img-fluid" alt="board-mage" />
                 </div>
-                <h3>Eunice Martin</h3>
+                <h3>Jennifer Yorde</h3>
                 <ul>
                   <li>
                     <Link href="#">
@@ -165,6 +165,7 @@ export default function Teams() {
               </div>
             </div>
             <div className="col-lg-3 col-sm-6 col-xs-12"></div>
+            
             <div
               className="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp"
               data-wow-duration="1s"
@@ -240,6 +241,81 @@ export default function Teams() {
                 <span>Visual Designer</span>
               </div>
             </div>
+            <div
+              className="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp"
+              data-wow-duration="1s"
+              data-wow-delay="0.7s"
+              data-wow-offset="0"
+              style={{
+                visibility: 'hidden',
+                animationDuration: '1s',
+                animationDelay: '0.7s',
+                animationName: 'none',
+              }}
+            >
+              <div className="our-team">
+                <div className="flex justify-center items-center">
+                  <img src='/assets/img/accountman.jpg' className="img-fluid" alt="board-mage" />
+                </div>
+                <h3>Walter Magill</h3>
+                <ul>
+                  <li>
+                    <Link href="#">
+                      <i className="fa fa-facebook"></i>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#">
+                      <i className="fa fa-google-plus"></i>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#">
+                      <i className="fa fa-twitter"></i>
+                    </Link>
+                  </li>
+                </ul>
+                <span>Account Manager</span>
+              </div>
+            </div>
+            <div
+              className="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp"
+              data-wow-duration="1s"
+              data-wow-delay="0.7s"
+              data-wow-offset="0"
+              style={{
+                visibility: 'hidden',
+                animationDuration: '1s',
+                animationDelay: '0.7s',
+                animationName: 'none',
+              }}
+            >
+              <div className="our-team">
+                <div className="flex justify-center items-center">
+                  <img src='/assets/img/ceo.jpeg' className="img-fluid" alt="board-mage" />
+                </div>
+                <h3>Kenneth Josh</h3>
+                <ul>
+                  <li>
+                    <Link href="#">
+                      <i className="fa fa-facebook"></i>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#">
+                      <i className="fa fa-google-plus"></i>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#">
+                      <i className="fa fa-twitter"></i>
+                    </Link>
+                  </li>
+                </ul>
+                <span>C.E.O</span>
+              </div>
+            </div>
+            
           </div>
         </div>
       </section>
@@ -404,6 +480,7 @@ export default function Teams() {
                 <span>Web Developer</span>
               </div>
             </div>
+          
             {/*- END COL */}
           </div>
           {/*- END ROW */}

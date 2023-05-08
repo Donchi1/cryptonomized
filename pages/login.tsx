@@ -60,14 +60,14 @@ const Login = () => {
   return (
     <div className="min-h-screen footer-bg  homepage-3  flex justify-center">
       <div className="   shadow sm:rounded-lg flex justify-center flex-1 items-center ">
-        <div className="lg:w-1/2 xl:w-5/12 w-full px-6 sm:p-10  ">
-          <div className="  flex flex-col items-center border p-6 rounded-lg">
+        <div className="lg:w-1/3 xl:w-5/12 w-full px-6 sm:p-10  ">
+          <div className="  flex flex-col items-center main-bg p-6 rounded-lg">
             <h1 className="text-2xl xl:text-2xl font-black uppercase text-white">
               Login
             </h1>
 
             <form className="w-full flex-1 mt-8  " onSubmit={formik.handleSubmit}>
-              <div className="mx-auto max-w-xl  relative space-y-4 ">
+              <div className="mx-auto max-w-lg  relative space-y-4 ">
                 <div className=''>
                   
                 <input

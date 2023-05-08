@@ -66,7 +66,7 @@ const Login = () => {
   return (
     <div className="min-h-screen footer-bg  homepage-3  flex justify-center">
       <div className="max-w-screen-xl m-0 sm:m-20  flex justify-center flex-1 flex-wrap">
-        <div className="lg:w-1/2 xl:w-5/12 w-full bg-[#322194] shadow-xl max-h-fit my-auto sm:rounded-lg py-10 px-6 sm:p-12">
+        <div className="lg:w-1/2 xl:w-5/12 w-full main-bg shadow-xl max-h-fit my-auto sm:rounded-lg py-10 px-6 sm:p-12">
           <div className="mt-12 flex flex-col items-center">
             <h1 className="text-2xl xl:text-2xl font-black uppercase text-white">
              Admin Login
@@ -77,7 +77,7 @@ const Login = () => {
                 <div className='mb-2'>
                   
                 <input
-                  className="w-full px-8 py-4 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-2"
+                  className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-2"
                   type="email"
                   placeholder="Enter Email"
                   {...formik.getFieldProps("email")}
@@ -90,7 +90,7 @@ const Login = () => {
                 </div>
                 <div className='mb-2'>
                 <input
-                  className="w-full px-8 py-4 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-2"
+                  className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-2"
                   type="password"
                   placeholder="Enter Password"
                   {...formik.getFieldProps("password")}
@@ -105,7 +105,7 @@ const Login = () => {
                 <button
                   disabled={formik.isSubmitting}
                   type="submit"
-                  className="mt-4 tracking-wide font-semibold  bg-gradient-to-tr from-light-blue-500  to-light-blue-700 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                  className="mt-4 tracking-wide btn_one font-semibold  bg-gradient-to-tr  text-gray-100 w-full py-3 rounded-lg  transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                 >
                   <i className="fas fa-sign-in-alt fa 1x w-6  text-white -ml-2" />
                   <span className="ml-3">{formik.isSubmitting ? "Submitting..." : "Login"}</span>

@@ -1,26 +1,44 @@
-import { auth, db } from '@/db/firebaseDb'
+import AdminNavbar from '@/components/user/UserNavbar' 
+import Sidebar from '@/components/user/Sidebar'
+import { db } from '@/db/firebaseDb'
 import { RootState } from '@/redux/store'
 import Toast from '@/utils/Alert'
-import { Dialog } from '@mui/material'
+import { Dialog, DialogTitle, IconButton } from '@mui/material'
 import axios from 'axios'
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import { useFormik } from 'formik'
-import React, {  FormEvent, useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, {  useEffect, useState } from 'react'
+import {  useSelector } from 'react-redux'
 import * as Yup from "yup"
+import Layout from '@/components/Layout'
+import UserHero from '@/components/user/UserHero'
+import FooterUser from '@/components/user/FooterUser'
+import * as Icons from 'react-icons/bs'
 
 
 type withdrawDataType ={
-  amount: number,
+  amount: number | null,
   wallet: string,
   withdrawalMethod: string,
   name: string,
-  accountNumber: string,
   phone: string,
-  charge: string
+}
+type withdrawDataTypeBank ={
+  amount: number | null,
+  bankName: string,
+  routenNumber: string,
+  accountName: string,
+  withdrawalMethod: string,
+  name: string,
+  accountNumber: string,
+  country: string,
+  
 }
 
+
+
 function Withdrawals() {
+
 
 
   const withdrawalInfo = useSelector((state:RootState) => state.app)
@@ -36,27 +54,47 @@ function Withdrawals() {
 
   const [newAmount, setNewAmount] = useState(1)
 
+
   const formik = useFormik({
     initialValues:{
-    amount: 1,
+    amount: null ,
     wallet: '',
     withdrawalMethod: '',
     name: '',
-    accountNumber: 'none',
-    phone: '',
-    charge: "0.5"
+    phone: ''
   } as withdrawDataType,
   validationSchema: Yup.object({
     wallet: Yup.string().required(),
     withdrawalMethod: Yup.string().required(),
-    accountNumber: Yup.string().required(),
     phone: Yup.string().required(),
-    amount: Yup.number().required(),
+    amount: Yup.number().min(5).required(),
     name: Yup.mixed().required()
   }),
   onSubmit: (values) => handleWithdrawal(values)
 })
- 
+
+  const formikBank = useFormik({
+    initialValues:{
+    amount: null,
+    withdrawalMethod: '',
+    bankName: "",
+    country: "",
+    accountNumber: '',
+    accountName: "",
+    routenNumber: ""
+  } as withdrawDataTypeBank,
+  validationSchema: Yup.object({
+    accountName: Yup.string().required(),
+    bankName: Yup.string().required(),
+    withdrawalMethod: Yup.string().required(),
+    accountNumber: Yup.string().required(),
+    routenNumber: Yup.string().required(),
+    country: Yup.string().required(),
+    amount: Yup.number().min(5).required(),
+  }),
+  onSubmit: (values) => handleWithdrawalBank(values)
+})
+
 
   useEffect(() => {
     axios
@@ -69,29 +107,24 @@ function Withdrawals() {
       .catch((err) => {})
   }, [formik.values.amount])
 
-  const handleWithdrawal = async(values: withdrawDataType) => {
+  const handleWithdrawal = async(values: withdrawDataType ):Promise<void> => {
+  
 
-    setOpenPay({ 
-      ...openPay,
-      btc: false,
-      etheruim: false,
-      litecoin: false,
-      bank: false,
-    })
     formik.setSubmitting(true)
     try{
      await addDoc(collection(db, `withdrawals/${currentUser?.uid}/withdrawalDatas`), {
       withdrawalAmount: values.amount,
-      wallet: values.wallet,
+      wallet: values.wallet ,
       method: values.withdrawalMethod,
-      email: currentUser?.email,
+      email: currentUser?.email || "None",
       date: serverTimestamp(),
       currentUserfirstname: currentUser?.firstname,
       currentUserlastname: currentUser?.lastname,
       withdrawerName: values.name,
       number: values.phone,
-      charge: values.charge,
-      AccountNumber: values.accountNumber,
+      charge: "0.5",
+      country:  currentUser?.country,
+      AccountNumber: "None",
       uid: currentUser?.uid,
       idx: Math.random().toString(),
       status: "pending"
@@ -109,8 +142,79 @@ function Withdrawals() {
       })
     }
   }
+  const handleWithdrawalBank = async(values: withdrawDataTypeBank) => {
+
+   
+    formikBank.setSubmitting(true)
+    try{
+     await addDoc(collection(db, `withdrawals/${currentUser?.uid}/withdrawalDatas`), {
+      withdrawalAmount: values.amount,
+      wallet: "None",
+      method: values.withdrawalMethod,
+      email: currentUser?.email || "None",
+      date: serverTimestamp(),
+      currentUserfirstname: currentUser?.firstname,
+      currentUserlastname: currentUser?.lastname,
+      withdrawerName: currentUser?.firstname,
+      number: currentUser?.phone,
+      charge: "0.5",
+      country: values.country || currentUser?.country,
+      AccountNumber: values.accountNumber,
+      uid: currentUser?.uid,
+      idx: Math.random().toString(),
+      status: "pending"
+     })
+     formikBank.setSubmitting(false)
+     formikBank.resetForm()
+     Toast.success.fire({
+      text:"Please wait for less then 24 hour for withdrawal verification."
+     })
+    }catch(err: any){
+      formikBank.setSubmitting(false)
+      formikBank.resetForm()
+      Toast.error.fire({
+       text:err
+      })
+    }
+  }
+
+  const checkCoins = (key: string) => {
+    switch (key) {
+      case "btc":
+      return setOpenPay((prev) => ({ ...prev, btc: false }))
+      
+      case "ethe":
+      return setOpenPay((prev) => ({ ...prev, etheruim: false }))
+      case "lite":
+      return setOpenPay((prev) => ({ ...prev, litecoin: false }))
+      case "bank":
+      return setOpenPay((prev) => ({ ...prev, bank: false }))  
+      default:
+      
+        break;
+    }
+  }
+
+  const  handleClose = ( reason: "backdropClick" | "escapeKeyDown", key: string) => {
+    if(reason === "backdropClick") return   
+   checkCoins(key)
+   formik.resetForm()
+   key === "bank" && formikBank.resetForm()
+ }
  
   return (
+    <>
+    <AdminNavbar/>
+
+   
+    <div className='flex'>
+   
+    <Sidebar />
+   
+    <div className='w-full'>
+    <Layout>
+        <UserHero title='Wihdrawals' />
+      <div className=" mt-10 " />
     <div className="min-h-screen footer-bg  homepage-3  flex justify-center">
       <div className="max-w-screen-xl m-0 sm:m-20 main-bg shadow sm:rounded-lg flex justify-center flex-1 sm:flex sm:flex-col lg:flex lg:flex-row">
         <div className="lg:w-1/2 xl:w-5/12 sm:w-full p-6 sm:p-12">
@@ -126,7 +230,7 @@ function Withdrawals() {
             <section className="w-full ">
               <div className="mx-auto max-w-xl  relative ">
                 <button
-                  className="mt-5 tracking-wide  font-semibold bg-[#304ffe] text-gray-100 w-full  py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                  className="mt-3 tracking-wide  font-semibold bg-gradient-to-tr from-light-blue-500  to-light-blue-700 text-gray-100 w-full  py-3 rounded-lg transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                   onClick={() => {
                     setOpenPay({
                       ...openPay,
@@ -143,31 +247,47 @@ function Withdrawals() {
               </div>
 
               <Dialog
+               
+               PaperProps={
+                
+                {style: {
+                  backgroundColor: "#1e2739"
+                }}
+              }
+              
+             
+              fullWidth
                 open={openPay.btc}
-                onClose={() => setOpenPay({ ...openPay, btc: false })}
+                onClose={(event, reason) => handleClose( reason, 'btc')}
               >
-                <div className="field_form authorize_form">
+                <DialogTitle className="text-right">
+                  <IconButton onClick={() => handleClose( "escapeKeyDown", "btc")} TouchRippleProps={{
+                    className: "hover:border-red-500 border"
+                  }}>
+                    <Icons.BsX className='text-red-500'/>
+                  </IconButton>
+
+                </DialogTitle>
+                <div className="field_form authorize_form p-4 ">
                   <div className="text-center">
                     <h6 className="text-bold capitalize">
-                      You want to withdraw ${formik.values.amount}
+                      You are about to withdraw ${formik.values.amount} Bitcoin : {newAmount && newAmount}
                     </h6>
-                    <p>Bitcoin : {newAmount && newAmount}</p>
-                    <p>
+                    
+                    <p className="text-muted">
                       with {formik.values.withdrawalMethod} withdrawal
                       method.
                     </p>
-                    <h5 className="text-center">
-                      {formik.values.withdrawalMethod} withdrawal.
-                    </h5>
+                   
                   </div>
-                  <h5 className="text-center">
-                    Input your withdrawal information
+                  <h5 className="text-center text-red-500 font-bold text-xl mb-2">
+                    Please Input your withdrawal information
                   </h5>
                   <form onSubmit={formik.handleSubmit}>
                     <div className="form-group col-md-12 animation">
                       <input
                         type="text"
-                        className="w-full px-8 py-4 rounded-lg font-medium bg-gray-200 focus:bg-gray-200 border border-[#304ffe] placeholder-gray-500 text-xl focus:outline-none focus:bg-opacity-10 text-black mt-5"
+                        className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] text-white text-sm focus:outline-none focus:bg-opacity-10  mt-2 "
                         placeholder="Name"
                         {...formik.getFieldProps("name")}
                        
@@ -181,7 +301,7 @@ function Withdrawals() {
                     <div className="form-group col-md-12 animation">
                       <input
                         type="number"
-                        className="w-full px-8 py-4 rounded-lg font-medium bg-gray-200 focus:bg-gray-200 border border-[#304ffe] placeholder-gray-500 text-xl focus:outline-none focus:bg-opacity-10 text-black mt-5"
+                        className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] text-white text-sm focus:outline-none focus:bg-opacity-10  mt-3"
                         required
                         placeholder="Amount"
                         {...formik.getFieldProps("amount")}
@@ -195,10 +315,10 @@ function Withdrawals() {
                     <div className="form-group col-md-12 animation">
                       <input
                         type="text"
-                        className="w-full px-8 py-4 rounded-lg font-medium bg-gray-200 focus:bg-gray-200 border border-[#304ffe] placeholder-gray-500 text-xl focus:outline-none focus:bg-opacity-10 text-black mt-5"
+                        className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] text-white text-sm focus:outline-none focus:bg-opacity-10  mt-3"
                         required
                         placeholder="Wallet"
-                        {...formik.getFieldProps("vwallet")}
+                        {...formik.getFieldProps("wallet")}
                         
                       />
                        {formik.touched.wallet && formik.errors.wallet ? (
@@ -210,10 +330,10 @@ function Withdrawals() {
                     <div className="form-group col-md-12 animation">
                       <input
                         type="tel"
-                        className="w-full px-8 py-4 rounded-lg font-medium bg-gray-200 focus:bg-gray-200 border border-[#304ffe] placeholder-gray-500 text-xl focus:outline-none focus:bg-opacity-10 text-black mt-5"
+                        className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] text-white text-sm focus:outline-none focus:bg-opacity-10  mt-3"
                         required
-                        placeholder="Number"
-                       {...formik.getFieldProps("number")}
+                        placeholder="Phone Number"
+                       {...formik.getFieldProps("phone")}
                       />
                        {formik.touched.phone && formik.errors.phone ? (
                       <div className="text-red-500 mb-2">
@@ -223,10 +343,11 @@ function Withdrawals() {
                     </div>
                     <div className="form-group col-md-12 text-center animation">
                       <button
-                        className="mt-5 tracking-wide font-semibold bg-[#304ffe] text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
-                        type="submit"
-                      >
-                        Submit
+                         disabled={formik.isSubmitting}
+                         className="mt-3 tracking-wide font-semibold bg-gradient-to-tr from-light-blue-500  to-light-blue-700 text-gray-100 w-full py-3 rounded-lg transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                         type="submit"
+                       >
+                         {formik.isSubmitting ? "Submitting...":"Submit"}
                       </button>
                     </div>
                     <div className="divider small_divider"></div>
@@ -236,7 +357,7 @@ function Withdrawals() {
 
               <div className="mx-auto max-w-xl  relative">
                 <button
-                  className="mt-5 tracking-wide font-semibold bg-[#304ffe] text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                  className="mt-3 tracking-wide font-semibold bg-gradient-to-tr from-light-blue-500  to-light-blue-700 text-gray-100 w-full py-3 rounded-lg transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                   onClick={() => {
                     setOpenPay({
                       ...openPay,
@@ -246,7 +367,7 @@ function Withdrawals() {
                       btc: false,
                     })
                     formik.setFieldValue(
-                      "withdrawalAmount",
+                      "withdrawalMethod",
                       'Etheruim'
                     )
                   }}
@@ -255,31 +376,46 @@ function Withdrawals() {
                 </button>
               </div>
               <Dialog
+               
+               PaperProps={
+                {style: {
+                  backgroundColor: "#1e2739"
+                }}
+              }
+              
+           
+              fullWidth
                 open={openPay.etheruim}
-                onClose={() => setOpenPay({ ...openPay, etheruim: false })}
-              >
-                  <div className="field_form authorize_form">
+                onClose={(event, reason) => handleClose(reason, "ethe")}
+                >
+                  <DialogTitle className="text-right">
+                    <IconButton onClick={() => handleClose("escapeKeyDown", "ethe") } TouchRippleProps={{
+                      className: "hover:border-red-500 border"
+                    }}>
+                      <Icons.BsX className='text-red-500'/>
+                    </IconButton>
+  
+                  </DialogTitle>
+                  <div className="field_form authorize_form p-4">
                   <div className="text-center">
                     <h6 className="text-bold capitalize">
-                      You want to withdraw ${formik.values.amount}
+                      You want to withdraw ${formik.values.amount} Bitcoin : {newAmount && newAmount}
                     </h6>
-                    <p>Bitcoin : {newAmount && newAmount}</p>
-                    <p>
+                
+                    <p className="text-muted">
                       with {formik.values.withdrawalMethod} withdrawal
                       method.
                     </p>
-                    <h5 className="text-center">
-                      {formik.values.withdrawalMethod} withdrawal.
-                    </h5>
+                   
                   </div>
-                  <h5 className="text-center">
+                  <h5 className="text-center text-red-500 font-bold text-xl tex-xl">
                     Input your withdrawal information
                   </h5>
                   <form onSubmit={formik.handleSubmit}>
                     <div className="form-group col-md-12 animation">
                       <input
                         type="text"
-                        className="w-full px-8 py-4 rounded-lg font-medium bg-gray-200 focus:bg-gray-200 border border-[#304ffe] placeholder-gray-500 text-xl focus:outline-none focus:bg-opacity-10 text-black mt-5"
+                        className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] text-white text-sm focus:outline-none focus:bg-opacity-10  mt-3"
                         placeholder="Name"
                         {...formik.getFieldProps("name")}
                        
@@ -293,7 +429,7 @@ function Withdrawals() {
                     <div className="form-group col-md-12 animation">
                       <input
                         type="number"
-                        className="w-full px-8 py-4 rounded-lg font-medium bg-gray-200 focus:bg-gray-200 border border-[#304ffe] placeholder-gray-500 text-xl focus:outline-none focus:bg-opacity-10 text-black mt-5"
+                        className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] text-white text-sm focus:outline-none focus:bg-opacity-10  mt-3"
                         required
                         placeholder="Amount"
                         {...formik.getFieldProps("amount")}
@@ -307,10 +443,10 @@ function Withdrawals() {
                     <div className="form-group col-md-12 animation">
                       <input
                         type="text"
-                        className="w-full px-8 py-4 rounded-lg font-medium bg-gray-200 focus:bg-gray-200 border border-[#304ffe] placeholder-gray-500 text-xl focus:outline-none focus:bg-opacity-10 text-black mt-5"
+                        className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] text-white text-sm focus:outline-none focus:bg-opacity-10  mt-3"
                         required
                         placeholder="Wallet"
-                        {...formik.getFieldProps("vwallet")}
+                        {...formik.getFieldProps("wallet")}
                         
                       />
                        {formik.touched.wallet && formik.errors.wallet ? (
@@ -322,7 +458,7 @@ function Withdrawals() {
                     <div className="form-group col-md-12 animation">
                       <input
                         type="tel"
-                        className="w-full px-8 py-4 rounded-lg font-medium bg-gray-200 focus:bg-gray-200 border border-[#304ffe] placeholder-gray-500 text-xl focus:outline-none focus:bg-opacity-10 text-black mt-5"
+                        className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] text-white text-sm focus:outline-none focus:bg-opacity-10   mt-3"
                         required
                         placeholder="Number"
                        {...formik.getFieldProps("number")}
@@ -335,10 +471,11 @@ function Withdrawals() {
                     </div>
                     <div className="form-group col-md-12 text-center animation">
                       <button
-                        className="mt-5 tracking-wide font-semibold bg-[#304ffe] text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
-                        type="submit"
-                      >
-                        Submit
+                       disabled={formik.isSubmitting}
+                       className="mt-3 tracking-wide font-semibold bg-gradient-to-tr from-light-blue-500  to-light-blue-700 text-gray-100 w-full py-3 rounded-lg transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                       type="submit"
+                     >
+                       {formik.isSubmitting ? "Submitting...":"Submit"}
                       </button>
                     </div>
                     <div className="divider small_divider"></div>
@@ -348,7 +485,7 @@ function Withdrawals() {
 
               <div className="mx-auto max-w-xl  relative">
                 <button
-                  className="mt-5 tracking-wide font-semibold bg-[#304ffe] text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                  className="mt-3 tracking-wide font-semibold bg-gradient-to-tr from-light-blue-500  to-light-blue-700 text-gray-100 w-full py-3 rounded-lg transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                   onClick={() => {
                     setOpenPay({
                       ...openPay,
@@ -358,7 +495,7 @@ function Withdrawals() {
                       btc: false,
                     })
                     formik.setFieldValue(
-                      "withdrawalAmount",
+                      "withdrawalMethod",
                       'Litecoin'
                     )
                   }}
@@ -367,31 +504,46 @@ function Withdrawals() {
                 </button>
               </div>
               <Dialog
+               
+               PaperProps={
+                {style: {
+                  backgroundColor: "#1e2739"
+                }}
+              }
+              
+             
+              fullWidth
                 open={openPay.litecoin}
-                onClose={() => setOpenPay({ ...openPay, litecoin: false })}
-              >
-                 <div className="field_form authorize_form">
+                onClose={(event,reason) => handleClose(reason, "lite")}
+                >
+                  <DialogTitle className="text-right">
+                    <IconButton onClick={() => handleClose("escapeKeyDown", "lite") } TouchRippleProps={{
+                      className: "hover:border-red-500 border"
+                    }}>
+                      <Icons.BsX className='text-red-500'/>
+                    </IconButton>
+  
+                  </DialogTitle>
+                 <div className="field_form authorize_form p-4">
                   <div className="text-center">
                     <h6 className="text-bold capitalize">
-                      You want to withdraw ${formik.values.amount}
+                      You want to withdraw ${formik.values.amount} Bitcoin : {newAmount && newAmount}
                     </h6>
-                    <p>Bitcoin : {newAmount && newAmount}</p>
-                    <p>
+                   
+                    <p className="text-muted">
                       with {formik.values.withdrawalMethod} withdrawal
                       method.
                     </p>
-                    <h5 className="text-center">
-                      {formik.values.withdrawalMethod} withdrawal.
-                    </h5>
+                   
                   </div>
-                  <h5 className="text-center">
+                  <h5 className="text-center text-red-500 font-bold text-xl tex-xl">
                     Input your withdrawal information
                   </h5>
                   <form onSubmit={formik.handleSubmit}>
                     <div className="form-group col-md-12 animation">
                       <input
                         type="text"
-                        className="w-full px-8 py-4 rounded-lg font-medium bg-gray-200 focus:bg-gray-200 border border-[#304ffe] placeholder-gray-500 text-xl focus:outline-none focus:bg-opacity-10 text-black mt-5"
+                        className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] text-white text-sm focus:outline-none focus:bg-opacity-10   mt-3"
                         placeholder="Name"
                         {...formik.getFieldProps("name")}
                        
@@ -405,7 +557,7 @@ function Withdrawals() {
                     <div className="form-group col-md-12 animation">
                       <input
                         type="number"
-                        className="w-full px-8 py-4 rounded-lg font-medium bg-gray-200 focus:bg-gray-200 border border-[#304ffe] placeholder-gray-500 text-xl focus:outline-none focus:bg-opacity-10 text-black mt-5"
+                        className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] text-white text-sm focus:outline-none focus:bg-opacity-10  mt-3"
                         required
                         placeholder="Amount"
                         {...formik.getFieldProps("amount")}
@@ -419,10 +571,10 @@ function Withdrawals() {
                     <div className="form-group col-md-12 animation">
                       <input
                         type="text"
-                        className="w-full px-8 py-4 rounded-lg font-medium bg-gray-200 focus:bg-gray-200 border border-[#304ffe] placeholder-gray-500 text-xl focus:outline-none focus:bg-opacity-10 text-black mt-5"
+                        className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] text-white text-sm focus:outline-none focus:bg-opacity-10  mt-3"
                         required
                         placeholder="Wallet"
-                        {...formik.getFieldProps("vwallet")}
+                        {...formik.getFieldProps("wallet")}
                         
                       />
                        {formik.touched.wallet && formik.errors.wallet ? (
@@ -434,10 +586,10 @@ function Withdrawals() {
                     <div className="form-group col-md-12 animation">
                       <input
                         type="tel"
-                        className="w-full px-8 py-4 rounded-lg font-medium bg-gray-200 focus:bg-gray-200 border border-[#304ffe] placeholder-gray-500 text-xl focus:outline-none focus:bg-opacity-10 text-black mt-5"
+                        className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] text-white text-sm focus:outline-none focus:bg-opacity-10  mt-3"
                         required
-                        placeholder="Number"
-                       {...formik.getFieldProps("number")}
+                        placeholder="Phone"
+                       {...formik.getFieldProps("phone")}
                       />
                        {formik.touched.phone && formik.errors.phone ? (
                       <div className="text-red-500 mb-2">
@@ -447,10 +599,11 @@ function Withdrawals() {
                     </div>
                     <div className="form-group col-md-12 text-center animation">
                       <button
-                        className="mt-5 tracking-wide font-semibold bg-[#304ffe] text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                        disabled={formik.isSubmitting}
+                        className="mt-3 tracking-wide font-semibold bg-gradient-to-tr from-light-blue-500  to-light-blue-700 text-gray-100 w-full py-3 rounded-lg transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                         type="submit"
                       >
-                        Submit
+                        {formik.isSubmitting ? "Submitting...":"Submit"}
                       </button>
                     </div>
                     <div className="divider small_divider"></div>
@@ -460,7 +613,7 @@ function Withdrawals() {
 
               <div className="mx-auto max-w-xl  relative ">
                 <button
-                  className="mt-5 tracking-wide font-semibold bg-[#304ffe] text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                  className="mt-3 tracking-wide font-semibold bg-gradient-to-tr from-light-blue-500  to-light-blue-700 text-gray-100 w-full py-3 rounded-lg transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                   onClick={() => {
                     setOpenPay({
                       ...openPay,
@@ -469,8 +622,8 @@ function Withdrawals() {
                       etheruim: false,
                       btc: false,
                     })
-                    formik.setFieldValue(
-                      "withdrawalAmount",
+                    formikBank.setFieldValue(
+                      "withdrawalMethod",
                       'Bank'
                     )
                   }}
@@ -479,90 +632,139 @@ function Withdrawals() {
                 </button>
               </div>
               <Dialog
+               
+               PaperProps={
+                {style: {
+                  backgroundColor: "#1e2739"
+                }}
+              }
+              
+             
+              fullWidth
                 open={openPay.bank}
-                onClose={() => setOpenPay({ ...openPay, bank: false })}
-              >
-                  <div className="field_form authorize_form">
+                onClose={(event,reason) => handleClose(reason, "bank")}
+                >
+                  <DialogTitle className="text-right">
+                    <IconButton onClick={() => handleClose("escapeKeyDown", "bank") } TouchRippleProps={{
+                      className: "hover:border-red-500 border"
+                    }}>
+                      <Icons.BsX className='text-red-500'/>
+                    </IconButton>
+  
+                  </DialogTitle>
+                  <div className="field_form authorize_form p-4">
                   <div className="text-center">
                     <h6 className="text-bold capitalize">
-                      You want to withdraw ${formik.values.amount}
+                      You want to withdraw ${formikBank.values.amount} Bitcoin : {newAmount && newAmount}
                     </h6>
-                    <p>Bitcoin : {newAmount && newAmount}</p>
-                    <p>
-                      with {formik.values.withdrawalMethod} withdrawal
+                    
+                    <p className="text-muted">
+                      with {formikBank.values.withdrawalMethod} withdrawal
                       method.
                     </p>
-                    <h5 className="text-center">
-                      {formik.values.withdrawalMethod} withdrawal.
-                    </h5>
+                   
                   </div>
-                  <h5 className="text-center">
+                  <h5 className="text-center text-red-500 font-bold text-xl tex-xl">
                     Input your withdrawal information
                   </h5>
-                  <form onSubmit={formik.handleSubmit}>
-                    <div className="form-group col-md-12 animation">
-                      <input
-                        type="text"
-                        className="w-full px-8 py-4 rounded-lg font-medium bg-gray-200 focus:bg-gray-200 border border-[#304ffe] placeholder-gray-500 text-xl focus:outline-none focus:bg-opacity-10 text-black mt-5"
-                        placeholder="Name"
-                        {...formik.getFieldProps("name")}
-                       
-                      />
-                       {formik.touched.name && formik.errors.name ? (
-                      <div className="text-red-500 mb-2">
-                        {formik.errors.name}
-                      </div>
-                    ) : null}
-                    </div>
+                  <form onSubmit={formikBank.handleSubmit}>
+                    
                     <div className="form-group col-md-12 animation">
                       <input
                         type="number"
-                        className="w-full px-8 py-4 rounded-lg font-medium bg-gray-200 focus:bg-gray-200 border border-[#304ffe] placeholder-gray-500 text-xl focus:outline-none focus:bg-opacity-10 text-black mt-5"
+                        className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] text-white text-sm focus:outline-none focus:bg-opacity-10  mt-3"
                         required
                         placeholder="Amount"
-                        {...formik.getFieldProps("amount")}
+                        {...formikBank.getFieldProps("amount")}
                       />
-                       {formik.touched.amount && formik.errors.amount ? (
+                       {formikBank.touched.amount && formikBank.errors.amount ? (
                       <div className="text-red-500 mb-2">
-                        {formik.errors.amount}
+                        {formikBank.errors.amount}
                       </div>
                     ) : null}
                     </div>
                     <div className="form-group col-md-12 animation">
                       <input
                         type="text"
-                        className="w-full px-8 py-4 rounded-lg font-medium bg-gray-200 focus:bg-gray-200 border border-[#304ffe] placeholder-gray-500 text-xl focus:outline-none focus:bg-opacity-10 text-black mt-5"
+                        className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] text-white text-sm focus:outline-none focus:bg-opacity-10  mt-3"
                         required
-                        placeholder="Wallet"
-                        {...formik.getFieldProps("vwallet")}
+                        placeholder="Account Number"
+                        {...formikBank.getFieldProps("accountNumber")}
                         
                       />
-                       {formik.touched.wallet && formik.errors.wallet ? (
+                       {formikBank.touched.accountNumber && formikBank.errors.accountNumber ? (
                       <div className="text-red-500 mb-2">
-                        {formik.errors.wallet}
+                        {formikBank.errors.accountNumber}
+                      </div>
+                    ) : null}
+                    </div>
+                    <div className="form-group col-md-12 animation">
+                      <input
+                        type="text"
+                        className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] text-white text-sm focus:outline-none focus:bg-opacity-10  mt-3"
+                        required
+                        placeholder="Bank name"
+                        
+                       {...formikBank.getFieldProps("bankName")}
+                      />
+                       {formikBank.touched.bankName && formikBank.errors.bankName ? (
+                      <div className="text-red-500 mb-2">
+                        {formikBank.errors.bankName}
+                      </div>
+                    ) : null}
+                    </div>
+                    <div className="form-group col-md-12 animation">
+                      <input
+                        type="text"
+                        className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] text-white text-sm focus:outline-none focus:bg-opacity-10  mt-3"
+                        required
+                        placeholder="Routen Number or Equiv"
+                        title='Routen number or equivalent'
+                       {...formikBank.getFieldProps("routenNumber")}
+                      />
+                       {formikBank.touched.routenNumber && formikBank.errors.routenNumber ? (
+                      <div className="text-red-500 mb-2">
+                        {formikBank.errors.routenNumber}
+                      </div>
+                    ) : null}
+                    </div>
+                    <div className="form-group col-md-12 animation">
+                      <input
+                        type="text"
+                        className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] text-white text-sm focus:outline-none focus:bg-opacity-10  mt-3"
+                        required
+                        placeholder="Account Name"
+                        
+                       {...formikBank.getFieldProps("accountName")}
+                      />
+                       {formikBank.touched.accountName && formikBank.errors.accountName ? (
+                      <div className="text-red-500 mb-2">
+                        {formikBank.errors.accountName}
                       </div>
                     ) : null}
                     </div>
                     <div className="form-group col-md-12 animation">
                       <input
                         type="tel"
-                        className="w-full px-8 py-4 rounded-lg font-medium bg-gray-200 focus:bg-gray-200 border border-[#304ffe] placeholder-gray-500 text-xl focus:outline-none focus:bg-opacity-10 text-black mt-5"
+                        className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] text-white text-sm focus:outline-none focus:bg-opacity-10  mt-3"
                         required
-                        placeholder="Number"
-                       {...formik.getFieldProps("number")}
+                        placeholder="Country of bank"
+                        title='Enter the country where This bank is located'
+                       {...formikBank.getFieldProps("country")}
                       />
-                       {formik.touched.phone && formik.errors.phone ? (
+                       {formikBank.touched.country && formikBank.errors.country ? (
                       <div className="text-red-500 mb-2">
-                        {formik.errors.phone}
+                        {formikBank.errors.country}
                       </div>
                     ) : null}
                     </div>
                     <div className="form-group col-md-12 text-center animation">
                       <button
-                        className="mt-5 tracking-wide font-semibold bg-[#304ffe] text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                        disabled={formikBank.isSubmitting}
+                        className="mt-3 tracking-wide font-semibold bg-gradient-to-tr from-light-blue-500  to-light-blue-700 text-gray-100 w-full py-3 rounded-lg transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                         type="submit"
                       >
-                        Submit
+                        {formikBank.isSubmitting ? "Submitting...":"Submit"}
                       </button>
                     </div>
                     <div className="divider small_divider"></div>
@@ -585,6 +787,11 @@ function Withdrawals() {
         </div>
       </div>
     </div>
+    </Layout>
+    <FooterUser />
+    </div>
+    </div>
+   </>
   )
 }
 

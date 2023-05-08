@@ -383,7 +383,7 @@ export default function Sidebar() {
                   ) : null}
                 </div>
                 <div className="input-group">
-                  <button disabled={formik.isSubmitting} className="mt-4 tracking-wide font-semibold bg-[#304ffe] text-gray-100 w-full py-3 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                  <button disabled={formik.isSubmitting} className="mt-4 tracking-wide font-semibold bg-gradient-to-tr from-light-blue-500 to-light-blue-700 text-gray-100 w-full py-3 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                     {formik.isSubmitting ? "Investing..." : "Invest"}
                   </button>
                 </div>
@@ -492,7 +492,7 @@ export default function Sidebar() {
                   ) : null}
                 </div>
                 <div className="input-group">
-                  <button disabled={formikTrans.isSubmitting} className="mt-4 tracking-wide font-semibold bg-[#304ffe] text-gray-100 w-full py-3 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                  <button disabled={formikTrans.isSubmitting} className="mt-4 tracking-wide font-semibold bg-gradient-to-tr from-light-blue-500 to-light-blue-700 text-gray-100 w-full py-3 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                     {formikTrans.isSubmitting ? "Sending..." : "Transfer"}
                   </button>
                 </div>

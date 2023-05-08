@@ -62,10 +62,10 @@ const Footer = () => {
       const res = await makeRequestApi.post("/contact", val)
       console.log(res.data?.message)
       
-    } catch (err) {
+    } catch (err: any) {
       formik.setSubmitting(false);
       formik.resetForm();
-      Toast.success.fire({ text: "An error occured" });
+      Toast.error.fire({ text: "An error occured" });
     }
   };
   const formikSub = useFormik({

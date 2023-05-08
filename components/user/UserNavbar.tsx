@@ -461,7 +461,7 @@ useEffect(() => {
                   aria-expanded="false"
                 />
                 <div
-                  className="dropdown-menu dropdown-menu-right overflow-y-scroll min-h-full c-bg"
+                  className="dropdown-menu dropdown-menu-right overflow-y-auto min-h-full main-bg"
                   aria-labelledby="notify-me"
                 >
                 
@@ -506,7 +506,7 @@ useEffect(() => {
                 />
 
                 <div
-                  className="dropdown-menu c-bg "
+                  className="dropdown-menu main-bg "
                   area-aria-labelledby="dd-drop"
                 >
                   <li className="dropdown-item hover:bg-red-500 transition-colors ease-linear duration-500 ">
