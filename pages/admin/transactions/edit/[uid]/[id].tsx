@@ -12,7 +12,8 @@ import AdminHero from "@/components/admin/AdminHero";
 import FooterAdmin from "@/components/admin/FooterAdmin";
 
 function Index() {
-  const { id, uid } = useRouter().query;
+  const { uid, id } = useRouter().query;
+
 
   const formik = useFormik({
     initialValues: {
@@ -48,21 +49,22 @@ function Index() {
     }
   };
   useEffect(() => {
-    const setInfo = () => {
-      getDoc(doc(db, `transactions/${uid}/transactionDatas/${id}`))
-        .then((doc) => {
-          const transInfo = doc.data();
+    const setInfo = async () => {
+      try{
+      const docs = await getDoc(doc(db, `transactions/${uid}/transactionDatas/${id}`))
+       const transInfo = docs.data();
+         
           formik.setValues({
             amount: transInfo?.amount,
-            remarks: transInfo?.remark,
+            remarks: transInfo?.remarks,
             firstname: transInfo?.firstname,
             status: transInfo?.status,
           } as any);
-        })
-        .catch((error) => {
+        }catch(error){
           console.log(error);
-        });
-    };
+        }
+        
+      }
     setInfo();
   }, [id, uid]);
   return (

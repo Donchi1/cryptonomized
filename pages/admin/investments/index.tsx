@@ -107,7 +107,7 @@ function Index() {
         return (
           <>
             <button
-              onClick={() => router.push(`edit/${params.row.uid}/${params.row.id}`)}
+              onClick={() => router.push(`investments/edit/${params.row.uid}/${params.row.id}`)}
               className=" text-white px-4 py-2  outline-none border-none rounded-full bg-green-400"
             >
               Edit

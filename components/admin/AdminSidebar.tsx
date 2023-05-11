@@ -321,7 +321,7 @@ const  AdminSidebar = ()=> {
 
   const handleLogout = async () => {
     await auth.signOut();
-    return location.assign("/");
+    return window.location.assign("/");
   };
 
   return (
