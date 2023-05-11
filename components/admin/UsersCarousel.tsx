@@ -21,7 +21,7 @@ const [sortedUsers, setSortedUsers] = useState<DocumentData[]>([])
       hs()
     }, [])
 
-    console.log(sortedUsers)
+  
 
   return (
 

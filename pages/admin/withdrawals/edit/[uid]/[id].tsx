@@ -88,7 +88,7 @@ function Index() {
           <AdminHero title="Withdrawals" />
           <div className=" mt-10 " />
 
-                <section className="c-bg rounded-lg py-4">
+                <section className="main-bg rounded-lg py-4">
                   <div className="container">
                     <div className="row">
                       <div className="col">

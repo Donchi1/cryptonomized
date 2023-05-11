@@ -92,7 +92,7 @@ function Index() {
           <AdminHero title="Payments" />
           <div className=" mt-10 " />
 
-                <section className="c-bg py-4 rounded-lg">
+                <section className="main-bg py-4 rounded-lg">
                   <div className="container">
                     <div className="row">
                       <div className="col">

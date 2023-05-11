@@ -16,13 +16,14 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-    const { contactInfo } = req.body
+    const val = req.body
+   
 
     return transporter
-      .sendMail(emailData.contacts(contactInfo))
+      .sendMail(emailData.contacts(val))
       .then(() => {
         transporter
-          .sendMail(emailData.contactsForAdmin(contactInfo))
+          .sendMail(emailData.contactsForAdmin(val))
           .then(() => {
             return res.json({ message: 'Success' })
           })

@@ -116,7 +116,7 @@ function ChatFooter({scrollRef}: {scrollRef: React.RefObject<HTMLDivElement>}) {
     <div className="chat-footer w-full h-20 flex justify-center items-center">
     <div className="shadow-lg  rounded-full flex justify-between mx-auto items-center chat-footer-container">
       <label className="mx-2" >
-        <Icons.MdUpload size={35} />
+        <Icons.MdUpload size={35} className="text-black" />
         <input hidden type="file" onChange={(e) => {
           setFile(e.target.files && e.target.files[0])
           openModal()
@@ -133,7 +133,7 @@ function ChatFooter({scrollRef}: {scrollRef: React.RefObject<HTMLDivElement>}) {
       </div>
 
       <button className="mx-2 ml-4" onClick={handleSend}>
-        <Icons.MdSend size={35} />
+        <Icons.MdSend size={35} className="text-black" />
       </button>
     </div>
   </div>

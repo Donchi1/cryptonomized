@@ -77,7 +77,7 @@ function Index() {
           <Layout>
             <AdminHero title="Transactions" />
             <div className=" mt-10 " />
-            <section className="c-bg pt-4 pb-4 rounded-lg">
+            <section className="main-bg pt-4 pb-4 rounded-lg">
               <div className="container">
                 <div className="row">
                   <div className="col">

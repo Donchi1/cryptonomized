@@ -44,8 +44,8 @@ export default function Dashboard() {
   )
 }
 
-// Dashboard.defaultProps ={
-//   needsAuth: true,
-//   isAdmin: true
+Dashboard.defaultProps ={
+  needsAuth: true,
+  isAdmin: true
 
-// }
+}

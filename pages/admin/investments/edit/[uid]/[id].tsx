@@ -94,7 +94,7 @@ function Index() {
         <AdminHero title='Investments' />
       <div className=" mt-10 " />
 
-                <section className="c-bg pt-4 pb-2 rounded-lg">
+                <section className="main-bg pt-4 pb-2 rounded-lg">
                   <div className="container">
                     <div className="row">
                       <div className="col">

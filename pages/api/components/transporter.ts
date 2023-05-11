@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer')
 
 const transporter = nodemailer.createTransport({
-  host: 'stmp.gmail.com',
+  host: 'stmp.zoho.com',
   port: 465,
   secure: true,
   service: 'zoho',

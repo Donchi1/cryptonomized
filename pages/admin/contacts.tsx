@@ -116,7 +116,7 @@ function Contacts() {
       loading={isLoading}
       disableRowSelectionOnClick
       
-      className='c-bg  text-white '
+      className='main-bg  text-white '
       />
 
         </Layout>

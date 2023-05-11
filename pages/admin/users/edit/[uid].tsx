@@ -12,10 +12,10 @@ import { doc, DocumentData, getDoc, updateDoc } from 'firebase/firestore'
 import { useSelector } from 'react-redux'
 import { useFormik } from 'formik'
 import * as Yup from "yup"
-import { auth, db, storage } from '@/db/firebaseDb'
+import { auth, db} from '@/db/firebaseDb'
 import Toast from '@/utils/Alert'
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
-import { signInWithEmailAndPassword, updatePassword, User } from 'firebase/auth'
+import { signInWithEmailAndPassword, signOut, updatePassword, User } from 'firebase/auth'
+import useGetDocWithClause from '@/components/hooks/UseGetDocWithClause'
 
 function Index() {
   
@@ -24,15 +24,9 @@ function Index() {
   const [userForEdit, setUserForEdit] = useState<DocumentData | null | undefined>(null)
   
   //this is the admin now?!!!
-  const { currentUser } = useSelector((state: RootState) => state.auth);
-  const [tabs, setTabs] = useState({
-    password: false,
-    user: true,
-  });
-  const [file, setFile] = useState<Blob | File | null>(null);
-  const [fileLoading, setFileLoading] = useState(false);
-
-  
+  const [admin]  = useGetDocWithClause({colls: "users", q: {path:"isAdmin", condition: "==", value: true}});
+ 
+  console.log(admin[0])
   const formikPass = useFormik({
     initialValues: {
       password1: "",
@@ -81,28 +75,39 @@ function Index() {
 
     onSubmit: (values) => handleSubmit(values),
   });
+
+  
+  const formikAction = useFormik({
+    initialValues: {
+      initialDeposit: "",
+      mainBalance: "",
+      interestBalance: "",
+      disableWithdrawal: true,
+      profit: "",
+      accessCode: "",
+      // verified: false,
+      // verificationCode: ""
+    },
+
+    validationSchema: Yup.object({
+      initialDeposit: Yup.string().required("Field required"),
+      mainBalance: Yup.string().required("Field required"),
+      interestBalance: Yup.string().required("Field required"),
+      disableWithdrawal: Yup.bool().oneOf([true, false]).required("Field required"),
+      accessCode: Yup.string(),
+      profit: Yup.string(),
+      // verified:Yup.bool().oneOf([true, false]).required("Field required"),
+      // verificationCode: Yup.string()
+     
+    }),
+
+    onSubmit: (values) => handleSubmitActionUpdate(values),
+  });
   
  
 
 
-  const updatePhoto = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setFileLoading(true);
-    try {
-      const storageRef = ref(storage, `${uid}`);
-      await uploadBytes(storageRef, file as Blob | Uint8Array | ArrayBuffer);
-      const url = await getDownloadURL(storageRef);
 
-      await updateDoc(doc(db, "users", uid as string), {
-        photo: url,
-      });
-      setFileLoading(false);
-      Toast.success.fire({ text: "Update successful" });
-    } catch (err: any) {
-      setFileLoading(false);
-      Toast.error.fire({ text: err.message });
-    }
-  };
 
   const handleSubmit = async (val: any) => {
     const { firstname, lastname, occupation, phone, country, address } = val;
@@ -132,16 +137,20 @@ function Index() {
     formikPass.setSubmitting(true);
 
     try {
+      
+      await auth.signOut()
       await signInWithEmailAndPassword(
         auth,
         formik.values?.email,
         formik.values?.password
       );
+      
       await updatePassword(auth.currentUser as User, val.password1);
+      await auth.signOut()
       await signInWithEmailAndPassword(
         auth,
-        currentUser?.email,
-        currentUser?.password
+        admin[0]?.email,
+        admin[0]?.password
       );
 
       formikPass.resetForm();
@@ -154,6 +163,54 @@ function Index() {
     }
   };
   
+
+  useEffect(() => {
+    const setInfo = () => {
+      getDoc(doc(db, `users/${uid}`))
+        .then((doc) => {
+          const userInfo = doc.data();
+          formik.setValues({
+            email: userInfo?.email,
+            country: userInfo?.country,
+            phone: userInfo?.phone,
+            occupation: userInfo?.occupation,
+            firstname: userInfo?.firstname,
+            lastname: userInfo?.lastname,
+            address: userInfo?.address,
+          } as any);
+          formikAction.setValues({
+            initialDeposit: userInfo?.initialDeposit,
+            accessCode: userInfo?.accessCode,
+            disableWithdrawal: userInfo?.disableWithdrawal,
+            profit: userInfo?.profit,
+            interestBalance: userInfo?.interestBalance,
+            mainBalance: userInfo?.mainBalance,
+            // verified: userInfo?.verified,
+            // verificationCode: userInfo?.verificationCode
+
+          })
+          setUserForEdit(userInfo);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+    setInfo();
+  }, [uid]);
+
+
+
+  const handleSubmitActionUpdate = async (val: any) => {
+    formikAction.setSubmitting(true)
+    try {
+      await updateDoc(doc(db, `users/${uid}`), {...val, disableWithdrawal: val.disableWithdrawal === "true"? true: false})
+      formikAction.setSubmitting(false)
+      Toast.success.fire({text: "Update Successful"})
+     } catch (error: any) {
+       formikAction.setSubmitting(false)
+        Toast.error.fire({text: error.message})
+     }
+  }
     return (
       <>
   

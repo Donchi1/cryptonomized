@@ -187,7 +187,7 @@ function Index() {
           <Layout>
             <AdminHero title="Create" />
             <div className=" mt-10 " />
-            <section className="c-bg rounded-md px-4 py-3">
+            <section className="main-bg rounded-md px-4 py-3">
             <form className="" onSubmit={formik.handleSubmit}>
               <div className=" row ">
                 <div className="col-12 col-lg-6 ">

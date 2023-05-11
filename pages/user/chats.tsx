@@ -57,10 +57,10 @@ function Chat() {
         <div className='w-full '>
         <div className="mt-6 h-screen footer-bg flex-more homepage-3 mx-0 lg:mx-2 lg:px-4 ">
           <div
-            className="flex   chart-card flex-col c-bg rounded-lg pb-2 "
+            className="flex   chart-card flex-col main-bg rounded-lg pb-2 "
             
           >
-            <div className=" h-20 rounded-lg bg-gradient-to-tr from-light-blue-500   to-light-blue-700 text-white">
+            <div className=" h-20 rounded-lg main-bg shadow-lg text-white">
               <div className=" mx-auto flex h-full chat-container justify-between items-center">
                 <p>Admin</p>
 

@@ -22,7 +22,7 @@ export const useGetCurrentUser = () => {
     onAuthStateChanged(auth, (authUser) => {
      
       if (authUser) {
-        console.log(authUser)
+        
         getDoc(doc(db, "users", authUser.uid)).then((fireUser ) => {
              setUser(fireUser?.data());
            

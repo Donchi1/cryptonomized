@@ -28,7 +28,7 @@ export default function AdminTrafficCard({
 
   const {push} = useRouter();
   return (
-    <Card className="c-bg">
+    <Card className="main-bg">
       <CardHeader color="purple" className="justify-none p-2">
         <div className="w-full flex items-center justify-between">
           <h2 className="text-white text-2xl">Account Info</h2>

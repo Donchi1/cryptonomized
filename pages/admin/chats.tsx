@@ -64,10 +64,10 @@ function Chat() {
         <div className='w-full min-h-screen '>
         <div className="mt-6  footer-bg flex-more homepage-3 mx-0 lg:mx-2 lg:px-4 ">
           <div
-            className="flex chart-card flex-col h-screen c-bg rounded-lg  "
+            className="flex chart-card flex-col h-screen main-bg rounded-lg  "
             
           >
-            <div className=" h-20  bg-gradient-to-tr from-light-blue-500   to-light-blue-700 text-white">
+            <div className=" h-20  main-bg shadow-lg text-white">
               <div className=" mx-auto flex h-full chat-container justify-between items-center">
                 <p>Admin</p>
 
@@ -88,7 +88,7 @@ function Chat() {
             </div>
             <div className="row justify-center w-full ml-1 ml-lg-0 relative lg:static "  style={{height: "90%"}}>
               
-             <div  className={`col-3 ${openUsers ? "block w-96": "hidden lg:block"}  users-chat-wrapper   left-0 z-10 lg:z-0 absolute lg:static  overflow-y-auto   bg-gradient-to-tr from-light-blue-500  to-light-blue-700 text-white`}>
+             <div  className={`col-3 ${openUsers ? "block w-96": "hidden lg:block"}  users-chat-wrapper   left-0 z-10 lg:z-0 absolute lg:static  overflow-y-auto  main-bg shadow-lg text-white`}>
               <div className="flex flex-col gap-2 pt-3 ">
                 {userChats.length > 0 && userChats.map((each ) => (
                   <UsersChat key={each.id} chat={each as ChatDataType } setChatUserId={setChatUserId} />

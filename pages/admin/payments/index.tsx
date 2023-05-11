@@ -151,7 +151,7 @@ function Payments() {
             checkboxSelection
             autoHeight
 
-            className="c-bg text-white  "
+            className="main-bg text-white  "
             
             loading={loading}
             />

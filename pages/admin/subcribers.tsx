@@ -43,7 +43,7 @@ function Subcribers() {
             <AdminHero title="Subcribers" />
             <div className=" mt-10 " />
             <Card
-              className="bg-[#12055c] c-bg text-white "
+              className="main-bg text-white "
               style={{ minHeight: "80vh" }}
             >
               <CardBody>

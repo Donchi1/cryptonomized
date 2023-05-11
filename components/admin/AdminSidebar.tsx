@@ -336,7 +336,7 @@ const  AdminSidebar = ()=> {
       >
         <div className="h-screen fixed ">
           <div
-            className={`h-screen sidebar-scroll  flex-row flex-nowrap  shadow-xl bg-[#12055c] w-80 z-10 text-white py-4 px-6 transition-all duration-300`}
+            className={`h-screen sidebar-scroll  flex-row flex-nowrap  shadow-xl main-bg w-80 z-10 text-white py-4 px-6 transition-all duration-300`}
           >
             <div className="flex-col items-stretch min-h-full flex-nowrap px-0 ">
               <div>

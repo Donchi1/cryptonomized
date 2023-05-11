@@ -292,7 +292,7 @@ export default function Teams() {
             >
               <div className="our-team">
                 <div className="flex justify-center items-center">
-                  <img src='/assets/img/ceo.jpeg' className="img-fluid" alt="board-mage" />
+                  <img src='/assets/img/ceo.jpg' className="img-fluid" alt="board-mage" />
                 </div>
                 <h3>Kenneth Josh</h3>
                 <ul>

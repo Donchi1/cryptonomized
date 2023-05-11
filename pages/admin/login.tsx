@@ -35,6 +35,9 @@ const Login = () => {
   });
 
   const handleSubmit = async (val: { email: string; password: string }) => {
+    console.log(val)
+    
+    console.log(admin[0])
     formik.setSubmitting(true);
     const { email, password } = val;
 

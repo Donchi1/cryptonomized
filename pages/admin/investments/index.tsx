@@ -142,7 +142,7 @@ function Index() {
       getRowId={(rows) => rows?.id}
       autoHeight
       disableRowSelectionOnClick
-      className='c-bg  text-white '
+      className='main-bg  text-white '
       />
       </Layout>
       </div>

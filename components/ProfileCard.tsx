@@ -13,7 +13,7 @@ import { useFormik } from 'formik'
 
 export default function ProfileCard({user, action, id}: {id?: string | undefined | string[], user: DocumentData | null | undefined, action?: Boolean}) {
 
-  console.log(user)
+ 
  
   const [file, setFile] = useState<Blob | File | null>(null);
   const [fileLoading, setFileLoading] = useState(false);
