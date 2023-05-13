@@ -286,7 +286,7 @@ const Footer = () => {
                     <span className="fas fa-phone"></span>
                   </div>
                   <h5 className="font-bold text-[25px]">Phone</h5>
-                  <p>+447944723764</p>
+                  <p>+447586168741</p>
                 </div>
                 <div className="single_address">
                   <div className="address_br">
@@ -300,7 +300,7 @@ const Footer = () => {
                     <span className="fa fa-envelope"></span>
                   </div>
                   <h5 className="font-bold text-[25px]">Email</h5>
-                  <p>support@cryptonomize.com</p>
+                  <p>support@cryptonomized.info</p>
                 </div>
                 <div className="single_address">
                   <div className="address_br">

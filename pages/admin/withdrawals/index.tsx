@@ -10,10 +10,10 @@ import * as Icons from "react-icons/bs"
 import moment from 'moment'
 import handleStatus from '@/utils/handleStatus'
 import { useRouter } from 'next/router'
-import { collection, collectionGroup, deleteDoc, doc, DocumentData, getDocs, setDoc } from 'firebase/firestore'
+import {  deleteDoc, doc, DocumentData } from 'firebase/firestore'
 import { db } from '@/db/firebaseDb'
 import Toast from '@/utils/Alert'
-import Image from 'next/image'
+
 
 
 
