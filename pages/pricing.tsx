@@ -17,13 +17,13 @@ export default function Pricing() {
                 <h2>Basic Plans</h2>
               </div>
               <div className="col-lg-4 col-sm-12 ">
-                <Plans initiald={'$200'} initialw={'$3500'} head={'Basic'} />
+                <Plans initiald={'100'} initialw={'2900'} head={'Basic'} />
               </div>
               <div className="col-lg-4 col-sm-12">
-                <Plans initiald={'$300'} initialw={'$4500'} head={'Basic'} />
+                <Plans initiald={'200'} initialw={'4000'} head={'Basic'} />
               </div>
               <div className="col-lg-4  col-sm-12">
-                <Plans initiald={'$400'} initialw={'$5950'} head={'Basic'} />
+                <Plans initiald={'300'} initialw={'5300'} head={'Basic'} />
               </div>
             </div>
             <div className="row sm:space-y-4">
@@ -31,13 +31,13 @@ export default function Pricing() {
                 <h2>Advanced Plans</h2>
               </div>
               <div className="col-lg-4 col-sm-12 ">
-                <Plans initiald={'$500'} initialw={'$7500'} head={'Advance'} />
+                <Plans initiald={'400'} initialw={'6000'} head={'Advance'} />
               </div>
               <div className="col-lg-4 col-sm-12">
-                <Plans initiald={'$500'} initialw={'$7500'} head={'Advance'} />
+                <Plans initiald={'500'} initialw={'7900'} head={'Advance'} />
               </div>
               <div className="col-lg-4  col-sm-12">
-                <Plans initiald={'$700'} initialw={'$9,750'} head={'Advance'} />
+                <Plans initiald={'600'} initialw={'9500'} head={'Advance'} />
               </div>
             </div>
             <div className="row sm:space-y-4">
@@ -46,22 +46,29 @@ export default function Pricing() {
               </div>
               <div className="col-lg-4 col-sm-12 ">
                 <Plans
-                  initiald={'$800'}
-                  initialw={'$10,000'}
+                  initiald={'700'}
+                  initialw={'10,200'}
                   head={'Ultimate'}
                 />
               </div>
               <div className="col-lg-4 col-sm-12">
                 <Plans
-                  initiald={'$900'}
-                  initialw={'$11,500'}
+                  initiald={'800'}
+                  initialw={'12,600'}
                   head={'Ultimate'}
                 />
               </div>
               <div className="col-lg-4  col-sm-12">
                 <Plans
-                  initiald={'$1000'}
-                  initialw={'$17,388'}
+                  initiald={'900'}
+                  initialw={'$15,750'}
+                  head={'Ultimate'}
+                />
+              </div>
+              <div className="col-lg-4  col-sm-12">
+                <Plans
+                  initiald={'1000'}
+                  initialw={'22,440'}
                   head={'Ultimate'}
                 />
               </div>
