@@ -918,7 +918,7 @@ export default function Home() {
                 animationDelay: '0.2s',
                 animationName: 'none',
               }}>
-          <Plans head="Basic" initiald="200" initialw="3,500" />
+          <Plans head="Basic" initiald="200" initialw="4,000" />
         </div>
         <div  className="col-lg-3 col-sm-6  col-xs-12 wow fadeInUp"
               data-wow-duration="1s"
@@ -930,7 +930,7 @@ export default function Home() {
                 animationDelay: '0.3s',
                 animationName: 'none',
               }}>
-          <Plans head="Junior" initiald="500" initialw="7,500" />
+          <Plans head="Junior" initiald="500" initialw="7,900" />
         </div>
         <div  className="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp"
               data-wow-duration="1s"
@@ -942,7 +942,7 @@ export default function Home() {
                 animationDelay: '0.4s',
                 animationName: 'none',
               }}>
-          <Plans head="Advance" initiald="800" initialw="10,000" />
+          <Plans head="Advance" initiald="800" initialw="12,600" />
         </div>
         <div    className="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp"
               data-wow-duration="1s"
@@ -954,7 +954,7 @@ export default function Home() {
                 animationDelay: '0.4s',
                 animationName: 'none',
               }}>
-          <Plans head="Ultimate" initialw="17,388" initiald="1,000" />
+          <Plans head="Ultimate" initialw="22,440" initiald="1,000" />
         </div>
       </div>
       </div>
