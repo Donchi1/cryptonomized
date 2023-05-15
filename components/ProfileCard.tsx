@@ -47,8 +47,8 @@ const formikAction = useFormik({
     disableWithdrawal: true,
     profit: "",
     accessCode: "",
-    verified: false,
-    verificationCode: ""
+    // verified: false,
+    // verificationCode: ""
   },
 
   validationSchema: Yup.object({
@@ -58,8 +58,8 @@ const formikAction = useFormik({
     disableWithdrawal: Yup.bool().oneOf([true, false]).required("Field required"),
     accessCode: Yup.string(),
     profit: Yup.string(),
-    verified:Yup.bool().oneOf([true, false]).required("Field required"),
-    verificationCode: Yup.string()
+    // verified:Yup.bool().oneOf([true, false]).required("Field required"),
+    // verificationCode: Yup.string()
    
   }),
 
@@ -84,14 +84,14 @@ useEffect(() => {
       .then((doc) => {
         const userInfo = doc.data();
         formikAction.setValues({
-          initialDeposit: userInfo?.initialDeposit,
+          initialDeposit: userInfo?.initialDeposit || userInfo?.initialDeposite,
           accessCode: userInfo?.accessCode,
           disableWithdrawal: userInfo?.disableWithdrawal,
           profit: userInfo?.profit,
-          interestBalance: userInfo?.interestBalance,
+          interestBalance: userInfo?.interestBalance || userInfo?.bonus,
           mainBalance: userInfo?.mainBalance,
-          verified: userInfo?.verified,
-          verificationCode: userInfo?.verificationCode
+          // verified: userInfo?.verified,
+          // verificationCode: userInfo?.verificationCode
 
         })
        
@@ -248,9 +248,9 @@ useEffect(() => {
                                     formikAction.errors.accessCode}
                                 </div>
                               </div>
-                              <div className="row">
+                              {/* <div className="row"> */}
 
-                            <div className="box mt-2 col-6">
+                            {/* <div className="box mt-2 col-6">
                                 <h5 className="golden-text">VerificationCode</h5>
                                 <div className="input-group">
                                   <input
@@ -264,8 +264,8 @@ useEffect(() => {
                                     formikAction.errors.verificationCode &&
                                     formikAction.errors.verificationCode}
                                 </div>
-                              </div>
-                            <div className="mt-2 box col-6">
+                              </div> */}
+                            {/* <div className="mt-2 box col-6">
                               <h5 className="mb-2 golden-text d-block modal_text_level">
                                 Verified
                               </h5>
@@ -291,8 +291,8 @@ useEffect(() => {
                                   formikAction.errors.verified &&
                                   formikAction.errors.verified}
                               </div>
-                            </div>
-                              </div>
+                            </div> */}
+                              {/* </div> */}
                             </div>
 
 

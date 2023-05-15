@@ -26,7 +26,7 @@ function Index() {
   //this is the admin now?!!!
   const [admin]  = useGetDocWithClause({colls: "users", q: {path:"isAdmin", condition: "==", value: true}});
  
-  console.log(admin[0])
+
   const formikPass = useFormik({
     initialValues: {
       password1: "",
