@@ -4,11 +4,10 @@ import AdminSidebar from "@/components/admin/AdminSidebar";
 import Layout from "@/components/Layout";
 import FooterAdmin from "@/components/admin/FooterAdmin";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import * as Icons from "react-icons/bs";
-import useGetDocWithClause from "@/components/hooks/UseGetDocWithClause";
 import { useRouter } from "next/router";
-import { deleteDoc, doc } from "firebase/firestore";
+import { DocumentData, collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
 import { db } from "@/db/firebaseDb";
 import Toast from "@/utils/Alert";
 import Image from "next/image";
@@ -16,11 +15,29 @@ import formatCurrency from "@/utils/converter";
 import Link from "next/link";
 
 function Index() {
-  const [users, loading] = useGetDocWithClause({colls:"users", 
-   q:{ path: "isAdmin",
-   condition: "==",
-    value: false,
-}});
+  const [users, setUsers] = useState<DocumentData[]>([])
+  
+
+  useEffect(() => {
+    
+  
+    const unsubscribe = onSnapshot(
+     collection(db,"users"),
+      (qsnap) => {
+
+        const colData = qsnap.docs.map((each) => ({ ...each.data(), id: each.id }))
+    
+        setUsers(
+          colData
+        );
+       
+      },
+      (err) => {
+        console.log(err)
+      }
+    );
+    return unsubscribe;
+  }, []);
 
   const navigate = useRouter();
 
