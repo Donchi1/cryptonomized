@@ -2,9 +2,11 @@ import React from 'react'
 
 function Layout({children}: {children: React.ReactNode}) {
   return (
-    <div className="mx-auto  " style={{width: "95%"}}>
+   
+    <div className='width-more mx-auto mb-10'>
      {children}
     </div> 
+    
   )
 }
 

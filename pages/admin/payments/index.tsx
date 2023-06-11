@@ -142,6 +142,7 @@ function Payments() {
             <div className=" mt-10 " />
             
              
+            <div  style={{ height:'500px' }}>
 
             <DataGrid 
             columns={columns}
@@ -149,12 +150,12 @@ function Payments() {
             getRowId={(row) => row?.id}
             disableRowSelectionOnClick
             checkboxSelection
-            autoHeight
-
-            className="main-bg text-white  "
+            autoPageSize
+            className="main-bg text-white overflow-x-scroll "
             
             loading={loading}
             />
+            </div>
               
            
 

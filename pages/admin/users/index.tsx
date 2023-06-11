@@ -152,24 +152,26 @@ function Index() {
       <div className="flex">
         <AdminSidebar />
 
-        <div className="w-full ">
-        <div className=" min-h-screen mb-10 lg:mb-0">
-          <Layout>
+        <div className='w-full min-h-screen'>
+    <Layout>
+         
             <AdminHero title="Users" />
             <div className=" mt-10 " />
           <div className="mb-2">
             <Link className="border p-2 text-red-500 rounded-md" href="users/create">Create</Link>
           </div>
+          <div  style={{ height:'500px' }}>
             <DataGrid
               columns={columns}
               rows={users}
               getRowId={(row) => row?.id}
-              disableRowSelectionOnClick
-              autoHeight
-              className="main-bg  text-white"
+              disableRowSelectionOnClick            
+              autoPageSize
+              className="main-bg  text-white overflow-x-scroll"
             />
-          </Layout>
         </div>
+         
+        </Layout>
         <FooterAdmin />
         </div>
       </div>

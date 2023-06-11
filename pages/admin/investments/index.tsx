@@ -135,15 +135,18 @@ function Index() {
     <Layout>
         <AdminHero title='Investments' />
       <div className=" mt-10 " />
-      
+      <div  style={{ height:'500px' }}>
+
       <DataGrid
       columns={columns}
       rows={investments}
       getRowId={(rows) => rows?.id}
-      autoHeight
+      autoPageSize
       disableRowSelectionOnClick
-      className='main-bg  text-white '
+      className='main-bg  text-white overflow-x-scroll '
       />
+      </div>
+
       </Layout>
       </div>
       </div>

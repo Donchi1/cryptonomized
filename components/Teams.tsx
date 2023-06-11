@@ -31,7 +31,7 @@ export default function Teams() {
                 <div className="flex justify-center items-center">
                   <img src="/assets/img/accountant.jpg" className="img-fluid" alt="board-mage" />
                 </div>
-                <h3>Jennifer Yorde</h3>
+                <h3>Rebecca Sansenbaugher</h3>
                 <ul>
                   <li>
                     <Link href="#">

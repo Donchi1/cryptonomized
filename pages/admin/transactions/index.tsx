@@ -150,14 +150,17 @@ function Index() {
           <Layout>
             <AdminHero title="transactions" />
             <div className=" mt-10 " />
+            <div  style={{ height:'500px' }}>
+
             <DataGrid
               columns={columns}
               rows={transactions}
               getRowId={(row) => row?.id}
-              disableRowSelectionOnClick
-              autoHeight
-              className="main-bg text-white"
+              disableRowSelectionOnClick           
+              autoPageSize
+              className="main-bg text-white overflow-x-scroll"
             />
+            </div>
           </Layout>
         </div>
       <FooterAdmin />

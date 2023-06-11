@@ -25,6 +25,8 @@ export default function Dashboard() {
   const [withdrawals] = useCollectionGroup(`withdrawalDatas`)
   const [users] = useGetDocWithClause({colls: "users", q:{path: "isAdmin", condition: "==", value: false}})
  
+ const filteredTrans = transactions?.splice(0, 10 ).sort((a, b) => b.date - a.date)
+ 
 
 
 //handle Users information
@@ -267,7 +269,7 @@ const runningInvestments = investments?.filter(each => each.status === "pending"
             <div className="xl:col-start-1 xl:col-end-4 lg:px-4 mb-12">
               <PageVisitsCard
                 current="admin"
-                transactions={transactions}
+                transactions={filteredTrans}
               />
             </div>
             <div className="xl:col-start-4 xl:col-end-6 lg:px-4 mb-12">

@@ -150,16 +150,18 @@ function Withdrawals() {
           <Layout>
             <AdminHero title="Withdrawals" />
             <div className=" mt-10 " />
+            <div  style={{ height:'500px' }}>
             <DataGrid 
             columns={columns}
             rows={withdrawals}
             getRowId={(row) => row?.id}
             disableRowSelectionOnClick
-            autoHeight
-            className="main-bg  text-white"
+            autoPageSize
+            className="main-bg  text-white overflow-x-scroll"
             loading={loading}
             />
 
+    </div>
     </Layout>
     </div>
     <FooterAdmin />

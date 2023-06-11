@@ -61,6 +61,11 @@
     width: 80%;
 
   }
+  
+  .width-more {
+   width: 95%;
+
+  }
 
   .chart-card{
     min-height: 70%;
