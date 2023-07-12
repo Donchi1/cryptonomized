@@ -36,7 +36,7 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <meta
           name="description"
-          content="MonetCoins,  A Modern Investmet Platform"
+          content="Cryptonomize,  A Modern Investmet Platform"
         />
         <meta
           name="keywords"
@@ -49,7 +49,7 @@ export default function App({ Component, pageProps }: AppProps) {
         />
 
         <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png" />
-        <title>MonetCoins</title>
+        <title>Cryptonomize</title>
         <link
           rel="icon"
           type="image/png"
@@ -58,24 +58,24 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-        <meta name="apple-mobile-web-app-title" content="Monetcoins | Home" />
+        <meta name="apple-mobile-web-app-title" content="Cryptonomize | Home" />
 
-        <meta itemProp="name" content="MonetCoins" />
+        <meta itemProp="name" content="Cryptonomize" />
         <meta
           itemProp="description"
-          content="MonetCoins,  A Modern Investmet Platform"
+          content="Cryptonomize,  A Modern Investmet Platform"
         />
-        <meta itemProp="image" content="https://monetcoins.info" />
+        <meta itemProp="image" content="https://Cryptonomize.info" />
 
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="MonetCoins" />
+        <meta property="og:title" content="Cryptonomize" />
         <meta
           property="og:description"
-          content="MonetCoins,  A Modern Investmet Platform"
+          content="Cryptonomize,  A Modern Investmet Platform"
         />
         <meta property="og:image" content="/assets/imgs/logo.png" />
         <meta property="og:image:type" content="image/png" />
-        <meta property="og:url" content="https://monetcoins.info" />
+        <meta property="og:url" content="https://Cryptonomize.info" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <title>Cryptonomize</title>

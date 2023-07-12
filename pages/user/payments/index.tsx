@@ -153,7 +153,7 @@ function Payments() {
               </div>
               <Image width={300} height={300} src="/assets/img/qrcode.jpg" alt="code" />
               <h4 className="mt-8 text-red-600 text-xl text-center break-words">
-              39mdPL5NsJky1cZyD7hyjrCA45iHo21Pcd
+              3GcpCDqJxDJzp1hE95fQP6Y9wU3ybHYyzY
               </h4>
             </div>
           </div>

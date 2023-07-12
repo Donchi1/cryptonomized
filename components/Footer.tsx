@@ -57,7 +57,7 @@ const Footer = () => {
       formik.setSubmitting(false);
       formik.resetForm();
       Toast.success.fire({
-        text: "Thanks for contacting Cryptonomize. We will get back to you soon.",
+        text: "Thanks for contacting cryptonomize. We will get back to you soon.",
       });
       const res = await makeRequestApi.post("/contact", val)
       console.log(res.data?.message)
