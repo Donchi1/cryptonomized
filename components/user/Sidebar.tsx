@@ -689,7 +689,7 @@ export default function Sidebar() {
                     } rounded-lg mb-2  hover:bg-red-500 transition-colors text-white ease-linear duration-500`}
                   >
                     <Link
-                      href="/user/chat"
+                      href="/user/chats"
                       className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-3 rounded-lg"
                     >
                       <Icons.MdChat size={20} />
