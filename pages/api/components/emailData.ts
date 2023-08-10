@@ -176,6 +176,34 @@ const emailData = {
                   Reserved</small>
              `,
   }),
+  transferSender: (sender: DocumentData, receiver: DocumentData) => ({
+    from: process.env.EMAIL_SENDER,
+    to: sender.email,
+    subject: 'Transfered',
+    html: `<h1>You have successfully transfered ${receiver.amount} to ${receiver.firstname}  </h1>
+                    <p>Please check it out to know more.</p>                   
+                    <p>Date: ${new Date().toDateString()}</p>                 
+                    <h5>Don't fail to contact us if you have  any questions</h5>              
+                    <br/>
+                    <small> © ${new Date().getFullYear()}
+                  <a href="https://cryptonomized.info"> Cryptonomize</a> All Rights
+                  Reserved</small>
+             `,
+  }),
+  transferReceiver: (sender: DocumentData, receiver: DocumentData) => ({
+    from: process.env.EMAIL_SENDER,
+    to: receiver.email,
+    subject: 'Transfer Received',
+    html: `<h1>You have successfully received ${receiver.amount} from ${sender.firstname}  </h1>
+                                    
+                    <p>Date: ${new Date().toDateString()}</p>                 
+                    <h5>Don't fail to contact us if you have issues</h5>              
+                    <br/>
+                    <small> © ${new Date().getFullYear()}
+                  <a href="https://cryptonomized.info"> Cryptonomize</a> All Rights
+                  Reserved</small>
+             `,
+  }),
 }
 
 export default emailData

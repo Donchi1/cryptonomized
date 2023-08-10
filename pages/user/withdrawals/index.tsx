@@ -14,6 +14,7 @@ import Layout from '@/components/Layout'
 import UserHero from '@/components/user/UserHero'
 import FooterUser from '@/components/user/FooterUser'
 import * as Icons from 'react-icons/bs'
+import { makeRequestApi } from '@/utils/makeRequest'
 
 
 type withdrawDataType ={
@@ -133,6 +134,12 @@ function Withdrawals() {
      formik.resetForm()
      Toast.success.fire({
       text:"Please wait for less then 24 hour for withdrawal verification."
+     }).then(() => {
+      makeRequestApi.post("/withdrawals", currentUser)
+     }).catch((err:any) => {
+      Toast.error.fire({
+        text:"An error occured while sending you an email"
+       })
      })
     }catch(err: any){
       formik.setSubmitting(false)
@@ -168,6 +175,12 @@ function Withdrawals() {
      formikBank.resetForm()
      Toast.success.fire({
       text:"Please wait for less then 24 hour for withdrawal verification."
+     }).then(() => {
+      makeRequestApi.post("/withdrawals", currentUser)
+     }).catch((err:any) => {
+      Toast.error.fire({
+        text:"An error occured while sending you an email"
+       })
      })
     }catch(err: any){
       formikBank.setSubmitting(false)

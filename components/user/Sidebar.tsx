@@ -22,6 +22,7 @@ import {
 } from "firebase/firestore";
 import createNotification from "@/utils/createNotification";
 import { useState } from "react";
+import { makeRequestApi } from "@/utils/makeRequest";
 
 type investType = {
   amount: number | null;
@@ -168,7 +169,13 @@ export default function Sidebar() {
           formikTrans.resetForm();
           Toast.success.fire({
             text: `You transfer of €${values?.amount} to ${values.email} was successful`,
-          });
+          }).then(() => {
+            makeRequestApi.post("/transfer", {sender:currentUser,receiver: values} )
+           }).catch((err:any) => {
+            Toast.error.fire({
+              text:"An error occured while sending you an email"
+             })
+           })
         } catch (err: any) {
           formikTrans.setSubmitting(false);
           formikTrans.resetForm();
@@ -267,7 +274,13 @@ export default function Sidebar() {
       formik.resetForm();
       Toast.success.fire({
         text: `Your investment of €${values?.amount} was successful`,
-      });
+      }).then(() => {
+        makeRequestApi.post("/investment", {user: currentUser, investment: values})
+       }).catch((err:any) => {
+        Toast.error.fire({
+          text:"An error occured while sending you an email"
+         })
+       })
     } catch (err: any) {
       formik.setSubmitting(false);
       formik.resetForm();

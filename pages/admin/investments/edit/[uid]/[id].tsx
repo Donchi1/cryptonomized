@@ -22,16 +22,13 @@ function Index() {
       investedAmount: "",
       expectedProfit: "",
       fixedCharge: "",
+     
     },
 
     validationSchema: Yup.object({
       firstname: Yup.string().trim().required("Field required").lowercase(),
       profit: Yup.string().trim().required("Field required").lowercase(),
       expectedProfit: Yup.string()
-        .lowercase()
-        .trim()
-        .required("Field required"),
-      investedProfit: Yup.string()
         .lowercase()
         .trim()
         .required("Field required"),
@@ -44,8 +41,11 @@ function Index() {
     onSubmit: (values) => handleUpdate(values),
   });
 
+ 
+
   const handleUpdate = async (val: any) => {
     formik.setSubmitting(true);
+    
     try {
       await updateDoc(doc(db, `investments/${uid}/investmentDatas/${id}`), {
         ...val,

@@ -1,43 +1,53 @@
-import React from 'react'
-import { useFormik } from 'formik'
-import * as Yup from "yup"
-import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { auth, db, storage } from '@/db/firebaseDb'
-import { getDownloadURL, ref, uploadBytes, uploadBytesResumable } from 'firebase/storage'
-import { addDoc, collection, doc, serverTimestamp, setDoc } from 'firebase/firestore'
-import createNotification from '@/utils/createNotification'
-import Toast from '@/utils/Alert'
-import Link from 'next/link'
-import Compressor from 'compressorjs'
+import React from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth, db, storage } from "@/db/firebaseDb";
+import {
+  getDownloadURL,
+  ref,
+  uploadBytes,
+  uploadBytesResumable,
+} from "firebase/storage";
+import {
+  addDoc,
+  collection,
+  doc,
+  serverTimestamp,
+  setDoc,
+} from "firebase/firestore";
+import createNotification from "@/utils/createNotification";
+import Toast from "@/utils/Alert";
+import Link from "next/link";
+import Compressor from "compressorjs";
+import { makeRequestApi } from "@/utils/makeRequest";
 
 type formDataType = {
- 
-    firstname: string,
-    lastname:string,
-    country:string,
-    state:string,
-    occupation:string,
-    email:string,
-    photo: Blob | null,
-    phone:string,
-    password:string,
-    password1:string,
-}
+  firstname: string;
+  lastname: string;
+  country: string;
+  state: string;
+  occupation: string;
+  email: string;
+  photo: Blob | null;
+  phone: string;
+  password: string;
+  password1: string;
+};
 
 const Register = () => {
- 
   const formik = useFormik({
     initialValues: {
-    firstname: '',
-    lastname: '',
-    country: '',
-    state: '',
-    occupation: '',
-    email: '',
-    photo: null,
-    phone: '',
-    password: '',
-    password1: '',
+      firstname: "",
+      lastname: "",
+      country: "",
+      state: "",
+      occupation: "",
+      email: "",
+      photo: null,
+      phone: "",
+      password: "",
+      password1: "",
     } as formDataType,
 
     validationSchema: Yup.object({
@@ -58,11 +68,11 @@ const Register = () => {
         .min(5, "password must be greater than 5")
         .max(30, "password must not exceed 30 characters")
         .required("Password required"),
-        password1: Yup.string().required("Reapeat-Password required").oneOf([Yup.ref("password"), ""], "Your password do not match"),
+      password1: Yup.string()
+        .required("Reapeat-Password required")
+        .oneOf([Yup.ref("password"), ""], "Your password do not match"),
       phone: Yup.string().required("Phone number required"),
-      photo: Yup.mixed()
-        .nullable()
-        .required("Photo required")
+      photo: Yup.mixed().nullable().required("Photo required"),
     }),
 
     onSubmit: (values) => handleSubmit(values),
@@ -79,279 +89,282 @@ const Register = () => {
       country,
       photo,
       firstname,
-      state
+      state,
     } = val;
-
 
     try {
       //compress user photo
       new Compressor(photo as Blob, {
         quality: 0.6,
-        success: (result) => {photo = result}
-      })
+        success: (result) => {
+          photo = result;
+        },
+      });
       //register User
       const res = await createUserWithEmailAndPassword(auth, email, password);
-      
-     
+
       //Create a unique image name
       const date = new Date().getTime();
       const storageRef = ref(storage, `users/${auth.currentUser?.uid}`);
-      
-     await uploadBytes(storageRef, photo as Blob)
-       const url =  await getDownloadURL(storageRef)
-     
+
+      await uploadBytes(storageRef, photo as Blob);
+      const url = await getDownloadURL(storageRef);
+
       try {
-          //create user on firestore
-            await setDoc(doc(db, "users", res.user.uid), {
-              firstname,
-              lastname,
-              email,
-              password,
-              photo: url,
-              country,
-              phone,
-              state,
-              occupation,
-              city: "",
-              aboutMe: "",
-              postalCode: "",
-              gender: "",
-              status: "Active",
-              accessCode: "",
-              accessCodeProve: "",
-              isAdmin: false,
-              profit: "",
-              address: "",
-              uid: auth.currentUser?.uid || null,
-              date: serverTimestamp(),
-              mainBalance: "0000",
-              initialDeposit: "0000",
-              interestBalance: "20",
-              verified: false,
-              verificationCode: "",
-              disbleWithdrawal: true,
-            });
-            
-            await addDoc(collection(db,`transactions/${"jgukhk"}/transactionDatas`), {
-              slNo: Math.ceil(Math.random() + new Date().getSeconds()),
-              uid: res.user?.uid, 
-              amount: "$20",
-              type:"Interest Added" ,       
-              remarks : `You have successfully received $20 interest`,
-              date: serverTimestamp(),
-              firstname: firstname,
-              photo:url,
-              status: "success",
-              accessCodeProve: "",
-              filterDate: new Date().toLocaleDateString(),
-            })
-           
-            const noteData = {
-              title: "Welcome",
-              text: "Welcome to cryptonomize"
-            }
-            await createNotification(noteData)
-         
-            formik.resetForm();
-            formik.setSubmitting(false);
-            Toast.success
-              .fire({ text: "Sign up success" })
-              .then(() => location.assign("/login"));
-          } catch (err: any) {
-            formik.setSubmitting(false);
-            formik.resetForm();
-            Toast.error.fire({ text: err.message  });
+        //create user on firestore
+        await setDoc(doc(db, "users", res.user.uid), {
+          firstname,
+          lastname,
+          email,
+          password,
+          photo: url,
+          country,
+          phone,
+          state,
+          occupation,
+          city: "",
+          aboutMe: "",
+          postalCode: "",
+          gender: "",
+          status: "Active",
+          accessCode: "",
+          accessCodeProve: "",
+          isAdmin: false,
+          profit: "",
+          address: "",
+          uid: auth.currentUser?.uid || null,
+          date: serverTimestamp(),
+          mainBalance: "0000",
+          initialDeposit: "0000",
+          interestBalance: "20",
+          verified: false,
+          verificationCode: "",
+          disbleWithdrawal: true,
+        });
+
+        await addDoc(
+          collection(
+            db,
+            `transactions/${auth.currentUser?.uid || "yfsghg"}/transactionDatas`
+          ),
+          {
+            slNo: Math.ceil(Math.random() + new Date().getSeconds()),
+            uid: res.user?.uid,
+            amount: "$20",
+            type: "Interest Added",
+            remarks: `You have successfully received $20 interest`,
+            date: serverTimestamp(),
+            firstname: firstname,
+            photo: url,
+            status: "success",
+            accessCodeProve: "",
+            filterDate: new Date().toLocaleDateString(),
           }
-      
+        );
+
+        const noteData = {
+          title: "Welcome",
+          text: "Welcome to cryptonomize",
+        };
+        await createNotification(noteData);
+       
+        Toast.success.fire({ text: "Sign up success" }).then(() => {
+          makeRequestApi
+            .post("/welcome", val)
+            .then(() => {
+              formik.resetForm();
+              formik.setSubmitting(false);
+              location.assign("/login");
+            })
+            .catch(() => {
+              formik.resetForm();
+              formik.setSubmitting(false);
+              location.assign("/login");
+            });
+        });
+      } catch (err: any) {
+        formik.setSubmitting(false);
+        formik.resetForm();
+        Toast.error.fire({ text: err.message });
+      }
     } catch (err: any) {
       formik.setSubmitting(false);
       formik.resetForm();
-      const msg = err.code.split("/")[1]
+      const msg = err.code.split("/")[1];
       Toast.error.fire({ text: msg });
     }
-  }
-
+  };
 
   return (
     <div className="min-h-screen footer-bg  homepage-3  flex justify-center">
-    <div className=" mt-6  shadow sm:rounded-lg flex justify-center flex-1 items-center ">
-      <div className="lg:w-1/2 xl:w-5/12 w-full px-6 sm:p-10  ">
-        <div className="  flex flex-col items-center  p-6 main-bg rounded-lg mb-4">
+      <div className=" mt-6  shadow sm:rounded-lg flex justify-center flex-1 items-center ">
+        <div className="lg:w-1/2 xl:w-5/12 w-full px-6 sm:p-10  ">
+          <div className="  flex flex-col items-center  p-6 main-bg rounded-lg mb-4">
             <h1 className="text-2xl xl:text-2xl font-black uppercase text-white">
               Sign Up
             </h1>
 
-            <form className="w-full flex-1 mt-8 " onSubmit={formik.handleSubmit}>
+            <form
+              className="w-full flex-1 mt-8 "
+              onSubmit={formik.handleSubmit}
+            >
               <div className="mx-auto max-w-xl  relative ">
                 <div className="flex space-x-2">
-                  <div className='flex-1'>
-
-                  <input
-                    className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
-                    type="text"
-                    placeholder="Enter firstname"
-                    {...formik.getFieldProps("firstname")}
+                  <div className="flex-1">
+                    <input
+                      className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
+                      type="text"
+                      placeholder="Enter firstname"
+                      {...formik.getFieldProps("firstname")}
                     />
-                     {formik.touched.firstname &&
-                      formik.errors.firstname ? (
-                        <div className="text-red-500 mb-2">
-                          {formik.errors.firstname}
-                        </div>
-                      ) : null}
-                    </div>
-                    <div className='flex-1'>
-
-                  <input
-                    className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
-                    type="text"
-                    placeholder="Enter lastname"
-                    {...formik.getFieldProps("lastname")}
-                  />
-                   {formik.touched.lastname &&
-                      formik.errors.lastname ? (
-                        <div className="text-red-500 mb-2">
-                          {formik.errors.lastname}
-                        </div>
-                      ) : null}
-                    </div>
-                </div>
-                <div className="flex space-x-2">
-                  <div className='flex-1'>
-
-                  <input
-                    className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
-                    type="email"
-                    placeholder="Enter email"
-                    {...formik.getFieldProps("email")}
-                  />
-                   {formik.touched.email &&
-                      formik.errors.email ? (
-                        <div className="text-red-500 mb-2">
-                          {formik.errors.email}
-                        </div>
-                      ) : null}
-                  </div>
-                  <div className='flex-1'>
-
-                  <input
-                    className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
-                    type="tel"
-                    placeholder="Enter number"
-                   {...formik.getFieldProps("phone")}
-                  />
-                   {formik.touched.phone &&
-                      formik.errors.phone ? (
-                        <div className="text-red-500 mb-2">
-                          {formik.errors.phone}
-                        </div>
-                      ) : null}
-                  </div>
-                </div>
-                <div className="flex space-x-2">
-                  <div className='flex-1'>
-                    
-                  <input
-                    className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
-                    type="password"
-                    placeholder="Enter password"
-                    {...formik.getFieldProps("password")}
-                  />
-                   {formik.touched.password &&
-                      formik.errors.password ? (
-                        <div className="text-red-500 mb-2">
-                          {formik.errors.password}
-                        </div>
-                      ) : null}
-                  </div>
-                  <div className='flex-1'>
-
-                  <input
-                    className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
-                    type="password"
-                    placeholder="Confirm Password"
-                    {...formik.getFieldProps("password1")}
-                  />
-                   {formik.touched.password1 &&
-                      formik.errors.password1 ? (
-                        <div className="text-red-500 mb-2">
-                          {formik.errors.password1}
-                        </div>
-                      ) : null}
-                  </div>
-                </div>
-
-                <div className="flex space-x-2">
-                  <div className='flex-1'>
-                  <input
-                  className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
-                  type="text"
-                  placeholder="Enter country"
-                {...formik.getFieldProps("country")}
-                />
-                 {formik.touched.country &&
-                      formik.errors.country ? (
-                        <div className="text-red-500 mb-2">
-                          {formik.errors.country}
-                        </div>
-                      ) : null}
-
-                  </div>
-
-                  <div className='flex-1'>
-                  <input
-                  className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
-                  type="text"
-                  placeholder=" Enter state"
-                  {...formik.getFieldProps("state")}
-                />
-                 {formik.touched.state &&
-                      formik.errors.state ? (
-                        <div className="text-red-500 mb-2">
-                          {formik.errors.state}
-                        </div>
-                      ) : null}
-                  </div>
-
-                  </div>
-                  <div className="flex space-x-2">
-                  <div className='flex-1'>
-               
-               
-                <input
-                  className="w-full  px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
-                  type="text"
-                  placeholder="Enter occupation"
-                  {...formik.getFieldProps("occupation")}
-                />
-                 {formik.touched.occupation &&
-                      formik.errors.occupation ? (
-                        <div className="text-red-500 mb-2">
-                          {formik.errors.occupation}
-                        </div>
-                      ) : null}
+                    {formik.touched.firstname && formik.errors.firstname ? (
+                      <div className="text-red-500 mb-2">
+                        {formik.errors.firstname}
                       </div>
-                      <div className='flex-1'>
-                <input
-                  className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
-                  type="file"
-                  placeholder="Your Photo"
-                  onChange={(e) => formik.setFieldValue("photo", e.target.files && e.target.files[0])}
-                />
-                 {formik.touched.photo &&
-                      formik.errors.photo ? (
-                        <div className="text-red-500 mb-2">
-                          {formik.errors.photo}
-                        </div>
-                      ) : null}
+                    ) : null}
                   </div>
+                  <div className="flex-1">
+                    <input
+                      className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
+                      type="text"
+                      placeholder="Enter lastname"
+                      {...formik.getFieldProps("lastname")}
+                    />
+                    {formik.touched.lastname && formik.errors.lastname ? (
+                      <div className="text-red-500 mb-2">
+                        {formik.errors.lastname}
+                      </div>
+                    ) : null}
                   </div>
+                </div>
+                <div className="flex space-x-2">
+                  <div className="flex-1">
+                    <input
+                      className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
+                      type="email"
+                      placeholder="Enter email"
+                      {...formik.getFieldProps("email")}
+                    />
+                    {formik.touched.email && formik.errors.email ? (
+                      <div className="text-red-500 mb-2">
+                        {formik.errors.email}
+                      </div>
+                    ) : null}
+                  </div>
+                  <div className="flex-1">
+                    <input
+                      className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
+                      type="tel"
+                      placeholder="Enter number"
+                      {...formik.getFieldProps("phone")}
+                    />
+                    {formik.touched.phone && formik.errors.phone ? (
+                      <div className="text-red-500 mb-2">
+                        {formik.errors.phone}
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+                <div className="flex space-x-2">
+                  <div className="flex-1">
+                    <input
+                      className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
+                      type="password"
+                      placeholder="Enter password"
+                      {...formik.getFieldProps("password")}
+                    />
+                    {formik.touched.password && formik.errors.password ? (
+                      <div className="text-red-500 mb-2">
+                        {formik.errors.password}
+                      </div>
+                    ) : null}
+                  </div>
+                  <div className="flex-1">
+                    <input
+                      className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
+                      type="password"
+                      placeholder="Confirm Password"
+                      {...formik.getFieldProps("password1")}
+                    />
+                    {formik.touched.password1 && formik.errors.password1 ? (
+                      <div className="text-red-500 mb-2">
+                        {formik.errors.password1}
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+
+                <div className="flex space-x-2">
+                  <div className="flex-1">
+                    <input
+                      className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
+                      type="text"
+                      placeholder="Enter country"
+                      {...formik.getFieldProps("country")}
+                    />
+                    {formik.touched.country && formik.errors.country ? (
+                      <div className="text-red-500 mb-2">
+                        {formik.errors.country}
+                      </div>
+                    ) : null}
+                  </div>
+
+                  <div className="flex-1">
+                    <input
+                      className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
+                      type="text"
+                      placeholder=" Enter state"
+                      {...formik.getFieldProps("state")}
+                    />
+                    {formik.touched.state && formik.errors.state ? (
+                      <div className="text-red-500 mb-2">
+                        {formik.errors.state}
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+                <div className="flex space-x-2">
+                  <div className="flex-1">
+                    <input
+                      className="w-full  px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
+                      type="text"
+                      placeholder="Enter occupation"
+                      {...formik.getFieldProps("occupation")}
+                    />
+                    {formik.touched.occupation && formik.errors.occupation ? (
+                      <div className="text-red-500 mb-2">
+                        {formik.errors.occupation}
+                      </div>
+                    ) : null}
+                  </div>
+                  <div className="flex-1">
+                    <input
+                      className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
+                      type="file"
+                      placeholder="Your Photo"
+                      onChange={(e) =>
+                        formik.setFieldValue(
+                          "photo",
+                          e.target.files && e.target.files[0]
+                        )
+                      }
+                    />
+                    {formik.touched.photo && formik.errors.photo ? (
+                      <div className="text-red-500 mb-2">
+                        {formik.errors.photo}
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
                 <button
                   disabled={formik.isSubmitting}
                   type="submit"
                   className="mt-4 uppercase tracking-wide font-semibold btn_one text-gray-100 w-full py-3 rounded-lg  transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                 >
                   <i className="fas fa-user-plus fa 1x w-6  -ml-2" />
-                  <span className="ml-3">{formik.isSubmitting ? 'Submitting...': "Sign Up"}</span>
+                  <span className="ml-3">
+                    {formik.isSubmitting ? "Submitting..." : "Sign Up"}
+                  </span>
                 </button>
                 <div className="mt-3 border-b text-center">
                   <div className="leading-none px-2 inline-block text-md text-indigo-400 tracking-wide font-medium transform translate-y-1/2">
@@ -379,7 +392,7 @@ const Register = () => {
         </div> */}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;

@@ -44,6 +44,7 @@ const Footer = () => {
     const { email, name, subject, message } = val;
 
     try {
+      await makeRequestApi.post("/contact", val)
       await addDoc(collection(db, "contacts"), {
         uid: auth.currentUser ? auth.currentUser?.uid : Date.now(),
         name,
@@ -59,9 +60,7 @@ const Footer = () => {
       Toast.success.fire({
         text: "Thanks for contacting cryptonomize. We will get back to you soon.",
       });
-      const res = await makeRequestApi.post("/contact", val)
-      console.log(res.data?.message)
-      
+
     } catch (err: any) {
       formik.setSubmitting(false);
       formik.resetForm();
@@ -88,6 +87,7 @@ const Footer = () => {
     const { email } = val;
 
     try {
+      await makeRequestApi.post("/newsletter", val)
       await addDoc(collection(db, "newsletters"), {
         newsLetter: email,
         uid: auth.currentUser ? auth.currentUser?.uid : Date.now(),
@@ -103,7 +103,7 @@ const Footer = () => {
     } catch (err) {
       formik.setSubmitting(false);
       formik.resetForm();
-      Toast.success.fire({ text: "An error occured" });
+      Toast.success.fire({ text: "An error occured you can check your email address" });
     }
   };
 

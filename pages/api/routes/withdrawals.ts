@@ -15,10 +15,10 @@ export default function handler(
   res: NextApiResponse<Data>
 ) {
  
-        const { profile } = req.body
+        const { currentUser } = req.body
       
         return transporter
-          .sendMail(emailData.withdrawals(profile))
+          .sendMail(emailData.withdrawals(currentUser))
           .then(() => {
             return res.json({ message: 'Success' })
           })

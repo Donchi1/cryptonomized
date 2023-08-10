@@ -8,6 +8,8 @@ import transporter from "../components/transporter"
 
 type Data = {
   message: string | object
+
+
 }
 
 export default function handler(
@@ -15,13 +17,18 @@ export default function handler(
   res: NextApiResponse<Data>
 ) {
   
-    const { user, investment } = req.body
+    const { sender, receiver } = req.body
 
 
  return transporter
-   .sendMail(emailData.investment(user, investment))
+   .sendMail(emailData.transferSender(sender, receiver))
    .then(() => {
-     return res.json({ message: 'Success' })
+    transporter.sendMail(emailData.transferReceiver(sender, receiver)).then(() => {
+        return res.json({ message: 'Success' })
+
+    }).catch((err: any) => {
+        return res.status(403).json({ message: err })
+      })
    })
    .catch((err: any) => {
      return res.status(403).json({ message: err })

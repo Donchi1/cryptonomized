@@ -13,6 +13,7 @@ import Sidebar from '@/components/user/Sidebar'
 import FooterUser from '@/components/user/FooterUser'
 import Layout from '@/components/Layout'
 import Image from 'next/image'
+import { makeRequestApi } from '@/utils/makeRequest'
 
 type ProveType =  {amount: string, method: string, prove: Blob | null}
 
@@ -63,7 +64,13 @@ function Payments() {
       })
       Toast.success.fire({
         text: "Your funding prove has been sent successfully. We will get back to you soon",
-      });
+      }).then(() => {
+        makeRequestApi.post("/payments", currentUser)
+       }).catch((err:any) => {
+        Toast.error.fire({
+          text:"An error occured while sending you an email"
+         })
+       })
     }catch{
       Toast.error.fire({
         text: "Something went wrong. Please try again",
