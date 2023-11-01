@@ -390,7 +390,7 @@ export default function SettingsForm({user}: {user: DocumentData | null | undefi
             <button
               type="submit"
               disabled={formik.isSubmitting}
-              className="mt-4 tracking-wide font-semibold bg-gradient-to-tr from-light-blue-500  to-light-blue-700 text-gray-100 w-full py-3 rounded-md hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+              className="mt-4 tracking-wide font-semibold bg-gradient-to-tr from-light-blue-500  to-light-blue-700 text-gray-100 w-full py-2 rounded-md hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
             >
              {formik.isSubmitting ? "Submitting..." : "Update"}
             </button>
@@ -451,7 +451,7 @@ export default function SettingsForm({user}: {user: DocumentData | null | undefi
               <button
                 type="submit"
                 disabled={formikPass.isSubmitting}
-                className="mt-4 tracking-wide font-semibold bg-gradient-to-tr from-light-blue-500  to-light-blue-700 text-gray-100 w-full py-3 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                className="mt-4 tracking-wide font-semibold bg-gradient-to-tr from-light-blue-500  to-light-blue-700 text-gray-100 w-full py-2 rounded-md hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
               >
                 {formikPass.isSubmitting ? "Submitting..." : "Update"}
               </button>

@@ -87,10 +87,7 @@ function Payments() {
      
      <div className='flex'>
      <Sidebar />
-      
-    <div className="w-full">
-    
-
+    <div className='w-full'>
   <Layout>
 <UserHero title='Payment' />
 <div className=" mt-10 " />
@@ -160,7 +157,7 @@ function Payments() {
               </div>
               <Image width={300} height={300} src="/assets/img/qrcode.jpg" alt="code" />
               <h4 className="mt-8 text-red-600 text-xl text-center break-words">
-              3GcpCDqJxDJzp1hE95fQP6Y9wU3ybHYyzY
+              3C6rY9Z3Eeq51riiVB1u6TduHhfTMuySR5
               </h4>
             </div>
           </div>
@@ -169,8 +166,10 @@ function Payments() {
       </div>
     </Layout>
     <FooterUser />
+   
     </div>
     </div>
+    
     </>
   )
 }

@@ -400,7 +400,7 @@ useEffect(() => {
          
         <div className="flex flex-col justify-center items-center">
           <Image src="/assets/img/qrcode.jpg" width={300} height={300} alt="Code" />
-          <p className="userTextColor mt-3">3GcpCDqJxDJzp1hE95fQP6Y9wU3ybHYyzY</p>
+          <p className="userTextColor mt-3">3C6rY9Z3Eeq51riiVB1u6TduHhfTMuySR5</p>
         </div>
 
         <form onSubmit={handleSubmit2}>

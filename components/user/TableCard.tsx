@@ -1,17 +1,13 @@
 import {Card} from '@material-tailwind/react'
-import {CardHeader} from '@material-tailwind/react'
 import {CardBody} from '@material-tailwind/react'
-import { useSelector } from 'react-redux'
 import moment from 'moment'
-import useCollection from '../hooks/UseCollection'
-import { auth } from '@/db/firebaseDb'
 import { DocumentData } from 'firebase/firestore'
 import handleStatus from '@/utils/handleStatus'
 
 export default function TableCard({data}: {data: DocumentData[] | null}) {
   return (
    
-    <Card className="main-bg  c-bg text-white " style={{minHeight: "80vh"}}>
+    <Card className="main-bg  text-white " style={{minHeight: "80vh"}}>
      
       <CardBody >
         <div className="overflow-x-auto">

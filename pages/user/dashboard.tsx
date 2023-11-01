@@ -98,7 +98,7 @@ export default function Dashboard() {
    
     <Sidebar />
    
-    <div className="footer-bg flex-more homepage-3">
+    <div className="footer-bg width-more mx-auto homepage-3">
       <div className=" px-3 md:px-8 h-20 pt-10 " />
 
       <div className="px-3 md:px-8">

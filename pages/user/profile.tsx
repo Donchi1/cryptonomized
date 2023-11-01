@@ -20,7 +20,7 @@ export default function Dashboard() {
     <div className='w-full'>
       <Layout>
       <UserHero title='Profile' />
-        <div className="container mx-auto homepage-3 max-w-full">
+        <div className=" homepage-3 max-w-full">
           <div className="grid grid-cols-1 xl:grid-cols-6 gap-5">
             <div className="xl:col-start-1 xl:col-end-5  mb-16 mb-lg-4 lg:mt-0 mt-8">
               <SettingsForm user={currentUser}  />

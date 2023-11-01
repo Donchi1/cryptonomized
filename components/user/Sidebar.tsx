@@ -532,7 +532,7 @@ export default function Sidebar() {
       >
         <div className="h-screen fixed ">
           <div
-            className={`h-screen sidebar-scroll  flex-row flex-nowrap  shadow-xl main-bg w-80 z-10 text-white py-4 px-6 transition-all duration-300`}
+            className={`h-screen sidebar-scroll  flex-row flex-nowrap  shadow-xl main-bg sidebar-width z-10 text-white py-4 px-6 transition-all duration-300`}
           >
             <div className="flex-col items-stretch min-h-full flex-nowrap px-0 ">
               <div>
@@ -583,11 +583,11 @@ export default function Sidebar() {
                     className={`${
                       pathname === "/user/dashboard" &&
                       "bg-gradient-to-tr from-light-blue-500 to-light-blue-700 text-white shadow-md"
-                    } rounded-lg mb-2  hover:bg-red-500 transition-colors text-white ease-linear duration-500`}
+                    } rounded-md mb-2  hover:bg-red-500 transition-colors text-white ease-linear duration-500`}
                   >
                     <Link
                       href="/user/dashboard"
-                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-3 rounded-lg"
+                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-2 rounded-md"
                     >
                       <Icons.MdHome size={20} />
                       Dashboard
@@ -597,11 +597,11 @@ export default function Sidebar() {
                     className={`${
                       pathname === "/user/profile" &&
                       "bg-gradient-to-tr from-light-blue-500 to-light-blue-700 text-white shadow-md"
-                    } rounded-lg mb-2  hover:bg-red-500 transition-colors text-white ease-linear duration-500`}
+                    } rounded-md mb-2  hover:bg-red-500 transition-colors text-white ease-linear duration-500`}
                   >
                     <Link
                       href="/user/profile"
-                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-3 rounded-lg"
+                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-2 rounded-md"
                     >
                       <Icons.MdPerson size={20} />
                       Profile
@@ -612,11 +612,11 @@ export default function Sidebar() {
                     className={`${
                       pathname === "/user/plans" &&
                       "bg-gradient-to-tr from-light-blue-500 to-light-blue-700 text-white shadow-md"
-                    } rounded-lg mb-2  hover:bg-red-500 transition-colors text-white ease-linear duration-500`}
+                    } rounded-md mb-2  hover:bg-red-500 transition-colors text-white ease-linear duration-500`}
                   >
                     <Link
                       href="/user/plans"
-                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-3 rounded-lg"
+                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-2 rounded-md"
                     >
                       <Icons.MdToc size={20} />
                       Plans
@@ -626,11 +626,11 @@ export default function Sidebar() {
                     className={`${
                       pathname === "/user/investments" &&
                       "bg-gradient-to-tr from-light-blue-500 to-light-blue-700 text-white shadow-md"
-                    } rounded-lg mb-2  hover:bg-red-500 transition-colors text-white ease-linear duration-500`}
+                    } rounded-md mb-2  hover:bg-red-500 transition-colors text-white ease-linear duration-500`}
                   >
                     <Link
                       href="/user/investments"
-                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-3 rounded-lg"
+                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-2 rounded-md"
                     >
                       <Icons.MdOutlineSend size={20} />
                       Investments
@@ -641,12 +641,12 @@ export default function Sidebar() {
                     className={`${
                       pathname === "/user/withdrawals" &&
                       "bg-gradient-to-tr from-light-blue-500 to-light-blue-700 text-white shadow-md"
-                    } rounded-lg mb-2  hover:bg-red-500 transition-colors text-white ease-linear duration-500`}
+                    } rounded-md mb-2  hover:bg-red-500 transition-colors text-white ease-linear duration-500`}
                   >
                     <Link
                       href="#"
                       onClick={withdrawalCheck}
-                      className="flex items-center focus:text-white hover:text-white gap-4 text-sm text-white font-light px-4 py-3 rounded-lg"
+                      className="flex items-center focus:text-white hover:text-white gap-4 text-sm text-white font-light px-4 py-2 rounded-md"
                     >
                       <Icons.MdListAlt size={20} />
                       Withdrawal
@@ -656,11 +656,11 @@ export default function Sidebar() {
                     className={`${
                       pathname === "/user/withdrawal/history" &&
                       "bg-gradient-to-tr from-light-blue-500 to-light-blue-700 text-white shadow-md"
-                    } rounded-lg mb-2  hover:bg-red-500 transition-colors text-white ease-linear duration-500`}
+                    } rounded-md mb-2  hover:bg-red-500 transition-colors text-white ease-linear duration-500`}
                   >
                     <Link
                       href="/user/withdrawals/history"
-                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-3 rounded-lg"
+                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-2 rounded-md"
                     >
                       <Icons.MdHistory size={20} />
                       Withdrawals History
@@ -670,11 +670,11 @@ export default function Sidebar() {
                     className={`${
                       pathname === "/user/payments" &&
                       "bg-gradient-to-tr from-light-blue-500 to-light-blue-700 text-white shadow-md"
-                    } rounded-lg mb-2  hover:bg-red-500 transition-colors text-white ease-linear duration-500`}
+                    } rounded-md mb-2  hover:bg-red-500 transition-colors text-white ease-linear duration-500`}
                   >
                     <Link
                       href="/user/payments"
-                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-3 rounded-lg"
+                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-2 rounded-md"
                     >
                       <Icons.MdMoney size={20} />
                       Payment
@@ -684,11 +684,11 @@ export default function Sidebar() {
                     className={`${
                       pathname === "/user/payment/history" &&
                       "bg-gradient-to-tr from-light-blue-500 to-light-blue-700 text-white shadow-md"
-                    } rounded-lg mb-2  hover:bg-red-500 transition-colors text-white ease-linear duration-500`}
+                    } rounded-md mb-2  hover:bg-red-500 transition-colors text-white ease-linear duration-500`}
                   >
                     <Link
                       href="/user/payments/history"
-                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-3 rounded-lg"
+                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-2 rounded-md"
                     >
                       <Icons.MdWorkHistory size={20} />
                       Payments History
@@ -699,19 +699,19 @@ export default function Sidebar() {
                     className={`${
                       pathname === "/user/chat" &&
                       "bg-gradient-to-tr from-light-blue-500 to-light-blue-700 text-white shadow-md"
-                    } rounded-lg mb-2  hover:bg-red-500 transition-colors text-white ease-linear duration-500`}
+                    } rounded-md mb-2  hover:bg-red-500 transition-colors text-white ease-linear duration-500`}
                   >
                     <Link
                       href="/user/chats"
-                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-3 rounded-lg"
+                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-2 rounded-md"
                     >
                       <Icons.MdChat size={20} />
                       Chat
                     </Link>
                   </li>
-                  <li className="bg-gradient-to-tr from-light-blue-500 to-light-blue-700 px-4 rounded-lg text-white mb-6">
+                  <li className="bg-gradient-to-tr from-light-blue-500 to-light-blue-700 px-4 rounded-md text-white mb-6">
                     <Link
-                      className="flex items-center gap-4 text-lg font-light py-3"
+                      className="flex items-center gap-4 text-md font-light py-2"
                       href="#"
                       onClick={handleLogout}
                     >
@@ -719,7 +719,7 @@ export default function Sidebar() {
                       Logout
                     </Link>
                   </li>
-                  <li className="bg-gradient-to-tr from-light-blue-500 to-light-blue-700 px-4 rounded-lg text-white mb-6">
+                  <li className="bg-gradient-to-tr from-light-blue-500 to-light-blue-700 px-4 rounded-md text-white mb-6">
                     <Link
                       className="flex items-center gap-4 text-lg font-light py-2"
                       href="#"

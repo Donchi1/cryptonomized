@@ -22,12 +22,12 @@ function Investments() {
    
     <Sidebar />
    
-    <div className='w-full'>
+    <div className='w-full mx-auto'>
     <Layout>
         <UserHero title='Investments' />
       <div className=" mt-10 " />
       
-      <Card className="bg-[#12055c] c-bg text-white " style={{minHeight: "80vh"}}>
+      <Card className="main-bg text-white " style={{minHeight: "80vh"}}>
      
      <CardBody>
        <div className="overflow-x-auto">
