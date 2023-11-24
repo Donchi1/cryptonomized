@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 import emailData from "../components/emailData"
-import transporter from "../components/transporter"
+import { sendMail } from '../components/sendmailTransporter'
 
 
 type Data = {
@@ -17,8 +17,7 @@ export default function handler(
  
         const { currentUser } = req.body
       
-        return transporter
-          .sendMail(emailData.withdrawals(currentUser))
+        return sendMail(emailData.withdrawals(currentUser))
           .then(() => {
             return res.json({ message: 'Success' })
           })

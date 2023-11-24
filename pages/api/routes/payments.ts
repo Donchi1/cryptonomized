@@ -4,6 +4,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import emailData from "../components/emailData"
 import transporter from "../components/transporter"
+import { sendMail } from '../components/sendmailTransporter'
 
 
 type Data = {
@@ -19,8 +20,7 @@ export default function handler(
  
     const { currentUser } = req.body
   
-    return transporter
-      .sendMail(emailData.payment(currentUser))
+    return sendMail(emailData.payment(currentUser))
       .then(() => {
         return res.json({ message: 'Success' })
       })

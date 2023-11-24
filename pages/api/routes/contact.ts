@@ -4,6 +4,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import emailData from "../components/emailData"
 import transporter from "../components/transporter"
+import {sendMail} from "../components/sendmailTransporter"
 
 
 type Data = {
@@ -19,11 +20,9 @@ export default function handler(
     const val = req.body
    
 
-    return transporter
-      .sendMail(emailData.contacts(val))
+    return sendMail(emailData.contacts(val))
       .then(() => {
-        transporter
-          .sendMail(emailData.contactsForAdmin(val))
+        sendMail(emailData.contactsForAdmin(val))
           .then(() => {
             return res.json({ message: 'Success' })
           })
