@@ -16,9 +16,9 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-    const { email } = req.body
+    const { email, user } = req.body
 
-    return sendMail(emailData.passwordReset(email))
+    return sendMail(emailData.passwordReset(email, user))
       .then(() => {
         return res.json({ message: 'Success' })
       })

@@ -64,7 +64,7 @@ export default function App({ Component, pageProps }: AppProps) {
           itemProp="description"
           content="Cryptonomize,  A Modern Investmet Platform"
         />
-        <meta itemProp="image" content="https://cryptonomized.co" />
+        <meta itemProp="image" content="https://cryptonomized.pro" />
 
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Cryptonomize" />
@@ -74,7 +74,7 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <meta property="og:image" content="/assets/imgs/logo.png" />
         <meta property="og:image:type" content="image/png" />
-        <meta property="og:url" content="https://cryptonomized.co" />
+        <meta property="og:url" content="https://cryptonomized.pro" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <title>Cryptonomize</title>

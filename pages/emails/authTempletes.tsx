@@ -76,7 +76,7 @@ import {
               <Text style={text}>
                 To keep your account secure, please don&apos;t forward this email
                 to anyone. See our Help Center for{" "}
-                <Link style={anchor} href="https://cryptonomized.co">
+                <Link style={anchor} href="https://cryptonomized.pro">
                   more security tips.
                 </Link>
               </Text>
@@ -91,7 +91,7 @@ import {
 </Text>
 
 <Text className="text-center"> © {new Date().getFullYear()}
-    <Link href="https://cryptonomized.co"> Cryptonomize</Link> All Rights
+    <Link href="https://cryptonomized.pro"> Cryptonomize</Link> All Rights
     Reserved</Text>
 
 </Container>

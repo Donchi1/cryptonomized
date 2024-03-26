@@ -142,7 +142,7 @@ export const emailTemplete = ({
 
 
                         {allEmailData[index].actionBtn && <Section className="text-center my-4">
-                            <Link href="https://cryptonomized.co/user" className="bg-brand cursor-pointer text-white rounded-lg py-3 px-[18px]">
+                            <Link href="https://cryptonomized.pro/user" className="bg-brand cursor-pointer text-white rounded-lg py-3 px-[18px]">
                                 Go to your dashboard
                             </Link>
                         </Section>}
@@ -159,7 +159,7 @@ export const emailTemplete = ({
                         </Text>
 
                         <Text className="text-center"> © {new Date().getFullYear()}
-                            <Link href="https://cryptonomized.co"> Cryptonomize</Link> All Rights
+                            <Link href="https://cryptonomized.pro"> Cryptonomize</Link> All Rights
                             Reserved</Text>
 
                     </Container>
