@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import * as Yup from "yup"
-import {Card} from '@material-tailwind/react'
-import {CardHeader} from '@material-tailwind/react'
-import {CardBody} from '@material-tailwind/react'
-import {Button} from '@material-tailwind/react'
 
-import { useSelector } from 'react-redux'
 import { useFormik } from 'formik'
-import { RootState } from '@/redux/store'
 import { auth, db } from '@/db/firebaseDb'
 import { doc, DocumentData, updateDoc } from 'firebase/firestore'
 import Toast from '@/utils/Alert'
@@ -175,31 +169,38 @@ export default function SettingsForm({user}: {user: DocumentData | null | undefi
   const handleSubmitPassword = async (val: userUpdatePassType) => {
     formikPass.setSubmitting(true);
 
-    try {
+    if(user?.password === val.currentPassword){
       
-      await updatePassword(auth.currentUser as User, val.password1);
-      await createNotification({
-        text: "Password successfully updated",
-        title: "Password Update",
-      });
-      formikPass.resetForm();
+      try {
+        
+        await updatePassword(auth.currentUser as User, val.password1);
+        await createNotification({
+          text: "Password successfully updated",
+          title: "Password Update",
+        });
+        formikPass.resetForm();
+        formikPass.setSubmitting(false);
+        Toast.success.fire({ text: "password successfully updated" });
+      } catch (err : any) {
+        formikPass.setSubmitting(false);
+        formikPass.resetForm();
+        const msg = err.code.split("/")[1]
+        Toast.error.fire({ text: msg });
+      }
+    }else{
       formikPass.setSubmitting(false);
-      Toast.success.fire({ text: "password successfully updated" });
-    } catch (err : any) {
-      formikPass.setSubmitting(false);
-      formikPass.resetForm();
-      const msg = err.code.split("/")[1]
-      Toast.error.fire({ text: msg });
+        Toast.error.fire({ text: "Old password did not match" });
     }
+
   };
 
 
  
 
   return (
-    <Card className="main-bg">
+    <div className="main-bg p-4 rounded-lg">
      
-      <CardBody>
+      <div>
         <form onSubmit={formik.handleSubmit}>
           <h6 className="text-red-500 text-xl mt-3 mb-3 font-light uppercase">
             User Information
@@ -458,7 +459,7 @@ export default function SettingsForm({user}: {user: DocumentData | null | undefi
             </div>
           </div>
         </form>
-      </CardBody>
-    </Card>
+      </div>
+    </div>
   )
 }

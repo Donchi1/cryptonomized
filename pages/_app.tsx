@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import { Provider } from "react-redux";
 import { store } from "../redux/store";
 import Protected from "@/components/Protected";
-import { useGetCurrentUser } from "@/components/hooks/GetCurrentUser";
 import PLoader from "@/components/PLoader";
 import ProtectedAdmin from "@/components/ProtectedAdmin";
 
@@ -26,7 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
         <meta
           property="og:title"
-          content="Trading nomalized or easy and fast establishment"
+          content="Trading nomalized for easy and fast establishment"
         />
         <meta property="og:description" content="" />
         <meta property="og:image" content="./ogpic.png" />
@@ -65,7 +64,7 @@ export default function App({ Component, pageProps }: AppProps) {
           itemProp="description"
           content="Cryptonomize,  A Modern Investmet Platform"
         />
-        <meta itemProp="image" content="https://Cryptonomize.info" />
+        <meta itemProp="image" content="https://cryptonomized.co" />
 
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Cryptonomize" />
@@ -75,7 +74,7 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <meta property="og:image" content="/assets/imgs/logo.png" />
         <meta property="og:image:type" content="image/png" />
-        <meta property="og:url" content="https://Cryptonomize.info" />
+        <meta property="og:url" content="https://cryptonomized.co" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <title>Cryptonomize</title>

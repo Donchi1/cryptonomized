@@ -1,12 +1,9 @@
-import {useEffect, useState} from "react"
+
 import StatusCard from '@/components/StatusCard' 
 import ChartLine from '@/components/ChartLine' 
 import ChartBar from '@/components/ChartBar' 
 import PageVisitsCard from '@/components/PageVisitsCard' 
-import useCollection from '@/components/hooks/UseCollection'
 import FooterAdmin from '@/components/admin/FooterAdmin'
-import InvestmentStats from "@/components/InvestmentStats"
-import formatCurrency from "@/utils/converter"
 import AdminSidebar from "@/components/admin/AdminSidebar"
 import AdminTrafficCard from "@/components/admin/AdminTrafficCard"
 import AdminNavbar from "@/components/admin/AdminNavbar"
@@ -14,8 +11,6 @@ import useCollectionGroup from "@/components/hooks/UseCollectionGroup"
 import AdminStatusCard from "@/components/admin/AdminStatusCard"
 import UsersCarousel from "@/components/admin/UsersCarousel"
 import useGetDocWithClause from "@/components/hooks/UseGetDocWithClause"
-import { collection, doc, DocumentData, getDocs, onSnapshot, query, setDoc, where } from "firebase/firestore"
-import { db } from "@/db/firebaseDb"
 
 export default function Dashboard() {
 
@@ -132,15 +127,15 @@ const runningInvestments = investments?.filter(each => each.status === "pending"
     <>
     <AdminNavbar/>
     
-    <div className='flex'>
+    <div className='flex gap-8'>
    
     <AdminSidebar />
    
-    <div className="footer-bg flex-more homepage-3">
+    <div className="footer-bg  homepage-3">
       <div className=" px-3 md:px-8 h-20 pt-10 " />
 
       <div className="px-3 md:px-8">
-        <div className=" container mx-auto">
+        <div className="">
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 mb-4 text-white">
             <StatusCard
               color="red"
@@ -152,7 +147,7 @@ const runningInvestments = investments?.filter(each => each.status === "pending"
                 initialDCheck() > 50 ? 'arrow_upward' : 'arrow_downward'
               }
               percentageColor={initialDCheck() > 50 ? 'green' : 'red'}
-              date="Since last month"
+              date="Last month"
             />
             <StatusCard
               color="orange"
@@ -164,7 +159,7 @@ const runningInvestments = investments?.filter(each => each.status === "pending"
                 totalDCheck() > 50 ? 'arrow_upward' : 'arrow_downward'
               }
               percentageColor={totalDCheck() > 50 ? 'green' : 'red'}
-              date="Since last week"
+              date="Last week"
             />
             <StatusCard
               color="purple"
@@ -176,7 +171,7 @@ const runningInvestments = investments?.filter(each => each.status === "pending"
                 profitDCheck() > 50 ? 'arrow_upward' : 'arrow_downward'
               }
               percentageColor={profitDCheck() > 50 ? 'green' : 'red'}
-              date="Since yesterday"
+              date="Yesterday"
             />
             <StatusCard
               color="blue"
@@ -188,14 +183,14 @@ const runningInvestments = investments?.filter(each => each.status === "pending"
                 interestDCheck() > 50 ? 'arrow_upward' : 'arrow_downward'
               }
               percentageColor={interestDCheck() > 50 ? 'green' : 'red'}
-              date="Since last month"
+              date="Last month"
             />
           </div>
         </div>
       </div>
 
       <div className="px-3 md:px-8 ">
-        <div className="container mx-auto max-w-5xl">
+        <div className="">
           <div className="grid grid-cols-1 xl:grid-cols-5">
             <div className="xl:col-start-1 xl:col-end-4 lg:px-4 mb-4">
               <ChartLine />
@@ -208,7 +203,7 @@ const runningInvestments = investments?.filter(each => each.status === "pending"
       </div>
       
       <div className="px-3 md:px-8">
-        <div className=" container mx-auto">
+        <div className=" ">
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 mb-4 text-white">
             <AdminStatusCard
               color="red"
@@ -264,7 +259,7 @@ const runningInvestments = investments?.filter(each => each.status === "pending"
         </div>
       </div>
       <div className="px-3 md:px-8 h-auto">
-        <div className="container mx-auto max-w-full">
+        <div className="">
           <div className="grid grid-cols-1 xl:grid-cols-5">
             <div className="xl:col-start-1 xl:col-end-4 lg:px-4 mb-12">
               <PageVisitsCard
@@ -286,7 +281,7 @@ const runningInvestments = investments?.filter(each => each.status === "pending"
         </div>
       </div>
       <div className="px-3 md:px-8 h-auto mb-12">
-        <div className="container mx-auto max-w-full">
+        <div className="">
           <div className="grid grid-cols-1 main-bg rounded-lg px-4 pt-4 pb-4 pb-lg-3    mx-lg-3 xl:grid-cols-3">
           <UsersCarousel users={users} />
           </div>

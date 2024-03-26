@@ -27,9 +27,9 @@ const WithdrawalHistory = () => {
           <div className="  mt-10 " />
           <TableCard data={withdrawals} />
         </Layout>
-      <FooterUser />
         </div>
       </div>
+      <FooterUser />
     </>
   );
 };

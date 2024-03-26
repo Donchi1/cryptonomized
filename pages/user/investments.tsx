@@ -115,9 +115,9 @@ function Investments() {
 
            
    
+   </div>
+   </div>
    <FooterUser />
-   </div>
-   </div>
    
    </>
    )

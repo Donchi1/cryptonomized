@@ -23,9 +23,28 @@
     background-image: url('/svg/forget.svg');
   }
 
+  .sidebar-scroll{
+    mask-image: linear-gradient(to top, transparent, #1e2739),
+    linear-gradient(to left, transparent 17px, #1e2739 17px);
+  mask-size: 102% 100000px;
+  mask-position: left bottom;
+  -webkit-mask-image: linear-gradient(to top, transparent, #1e2739),
+    linear-gradient(to left, transparent 17px, #1e2739 17px);
+  -webkit-mask-size: 102% 100000px;
+  -webkit-mask-position: left bottom;
+  transition: mask-position 0.3s, -webkit-mask-position 0.3s;
+  overflow-y: scroll;
+  }
+
+  .sidebar-scroll.chat{
+  mask-size: 101% 100000px;
+  -webkit-mask-size: 101% 100000px;
+  
+  }
   .sidebar-scroll:hover{
-    overflow-y: scroll;
-    transition: all .5s linear;
+    transition: all .2s linear;
+    -webkit-mask-position: left top;
+    mask-position: left top;
   
   }
   .sidebar-scroll::-webkit-scrollbar{
@@ -73,7 +92,7 @@
   }
 
   .chart-card{
-    min-height: 70%;
+    min-width: 77%;
   }
 
   .owner{
@@ -94,7 +113,7 @@
     width: 95%;
   }
   .chat-message{
-    height: 50vh;
+    min-height: 80vh;
     overflow-y: auto;
   }
   .chat-message-admin{
@@ -103,8 +122,9 @@
   }
 
   .text-message{
-    padding-top: 20px;
-    padding-left: 5px;
+    
+    padding-left: 8px;
+    border-color: rgb(134, 133, 133);
   }
 .msg{
   width: 85%;
@@ -117,10 +137,10 @@
   }
   .chat-footer-container{
     width: 95%;
-    background-color: rgb(195, 191, 191);
+    background-color: rgb(139, 136, 136);
   }
   .no-message{
-    height: 50vh;
+    height: 70vh;
   }
   .no-message-admin{
     height: 80vh;
@@ -139,6 +159,24 @@
     transform: translateX(-100%) ;
   }
 
+  .userfooter-wrapper{
+    width: 80% !important ;
+  }
+
+
+    .list-container{
+      width: 73%;
+      margin-left: auto;
+      margin-right: 1.4rem
+    }
+    @media (max-width: 900px) {
+      .list-container {
+        width: 95%;
+        margin-right: auto;
+        margin-left: auto
+      }
+    }
+ 
   @media (max-width: 768px) {
     .msg{
       width: 100%;
@@ -146,6 +184,10 @@
     .plan-spacing{
       margin-top: 1rem;
       margin-bottom: 1rem;
+    }
+
+    .userfooter-wrapper{
+      width: 100% !important ;
     }
    
   }

@@ -57,17 +57,17 @@ export default function AdminStatusCard({
         </div>
         <div className="border-b border-gray-200 mt-2"></div>
 
-        <CardFooter
-           
+        <div
+           className='pl-4 py-3'
            >
           
           
           {percentageIcon === "arrow_downward"?
           <Icons.HiArrowDown className="h-4 w-6 text-red-500" />: <Icons.HiArrowUp className="h-4 w-6  text-green-500" />}
-          <span className='text-gray-300'>
+          <span className='text-gray-300 text-sm'>
             {date}
             </span>
-        </CardFooter>
+        </div>
       </div>
     </div>
   )

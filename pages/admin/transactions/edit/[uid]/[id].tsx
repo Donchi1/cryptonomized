@@ -9,7 +9,7 @@ import AdminNavbar from "@/components/admin/AdminNavbar";
 import AdminSidebar from "@/components/admin/AdminSidebar";
 import Layout from "@/components/Layout";
 import AdminHero from "@/components/admin/AdminHero";
-import FooterAdmin from "@/components/admin/FooterAdmin";
+import FooterAdmin from "@/components/user/FooterUser";
 
 function Index() {
   const { uid, id } = useRouter().query;
@@ -28,7 +28,7 @@ function Index() {
       amount: Yup.string().lowercase().trim().required("Field required"),
       remarks: Yup.string().lowercase().trim().required("Field required"),
       status: Yup.string()
-        .oneOf(["pending", "success", "failed"])
+        .oneOf(["pending", "success", "failed", "processing"])
         .required("Field required"),
     }),
 
@@ -71,7 +71,7 @@ function Index() {
     <>
       <AdminNavbar />
 
-      <div className="flex">
+      <div className="flex gap-8">
         <AdminSidebar />
 
         <div className="w-full mb-10 lg:mb-0 ">
@@ -148,6 +148,12 @@ function Index() {
                                   Pending
                                 </option>
                                 <option
+                                  value={"processing"}
+                                  className="bg-dark text-white"
+                                >
+                                  Processing
+                                </option>
+                                <option
                                   value={"success"}
                                   className="bg-dark text-white"
                                 >
@@ -188,10 +194,10 @@ function Index() {
             </section>
           </Layout>
         </div>
-        <FooterAdmin />
         </div>
 
       </div>
+        <FooterAdmin />
     </>
   );
 }

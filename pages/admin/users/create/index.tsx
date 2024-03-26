@@ -2,13 +2,13 @@ import React from 'react'
 import AdminHero from '@/components/admin/AdminHero'
 import AdminNavbar from '@/components/admin/AdminNavbar'
 import AdminSidebar from '@/components/admin/AdminSidebar'
-import FooterAdmin from '@/components/admin/FooterAdmin'
+import FooterAdmin from '@/components/user/FooterUser'
 import Layout from '@/components/Layout'
 import { useFormik } from 'formik'
 import * as Yup from "yup"
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth, db, storage } from '@/db/firebaseDb'
-import { getDownloadURL, ref, uploadBytes, uploadBytesResumable } from 'firebase/storage'
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 import { addDoc, collection, doc, serverTimestamp, setDoc } from 'firebase/firestore'
 import createNotification from '@/utils/createNotification'
 import Toast from '@/utils/Alert'
@@ -179,7 +179,7 @@ function Index() {
 
       <AdminNavbar />
 
-      <div className="flex">
+      <div className="flex gap-8">
         <AdminSidebar />
 
         <div className="w-full">
@@ -368,9 +368,9 @@ function Index() {
             
 
             </div>
+            </div>
+            </div>
              <FooterAdmin />
-            </div>
-            </div>
             </>
   )
 }

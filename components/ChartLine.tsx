@@ -1,8 +1,5 @@
 import { useEffect } from 'react'
-import {Chart, defaults, LineController, LineElement,CategoryScale, PointElement, LinearScale, Title} from 'chart.js'
-import {Card} from '@material-tailwind/react'
-import {CardHeader} from '@material-tailwind/react'
-import {CardBody} from '@material-tailwind/react'
+import {Chart, LineController, LineElement,CategoryScale, PointElement, LinearScale, Title} from 'chart.js'
 
 
 Chart.register(LineController, LineElement, PointElement, LinearScale, Title, CategoryScale)
@@ -116,17 +113,17 @@ export default function ChartLine() {
   }, [])
 
   return (
-    <Card className="main-bg">
+    <section className="main-bg px-4 pb-4 pt-2 rounded-lg">
         
-        <h6 className="uppercase text-gray-200 text-xl px-4 mt-2 font-medium">
+        <h6 className="uppercase text-gray-200 text-xl px-4 mb-4 font-medium">
           Overview
         </h6>
 
-      <CardBody>
+      <div>
         <div className="relative h-96 text-white">
           <canvas id="line-chart"></canvas>
         </div>
-      </CardBody>
-    </Card>
+      </div>
+    </section>
   )
 }

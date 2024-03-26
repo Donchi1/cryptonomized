@@ -801,9 +801,9 @@ function Withdrawals() {
       </div>
     </div>
     </Layout>
+    </div>
+    </div>
     <FooterUser />
-    </div>
-    </div>
    </>
   )
 }

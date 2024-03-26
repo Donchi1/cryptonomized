@@ -2,7 +2,9 @@ import Link from "next/link";
 
 export default function footer() {
   return (
-    <footer className="py-6 px-16   border-t border-gray-200 font-light flex flex-col lg:flex-row justify-between items-center main-bg">
+    <section className="py-6 px-16   border-t border-gray-200  main-bg">
+      <div  className="userfooter-wrapper  font-light flex flex-col ml-auto lg:flex-row justify-between items-center ">
+
       <p className="text-white mb-6 lg:mb-0">
         Copyright &copy; {new Date().getFullYear()}{' '}
         <Link
@@ -47,6 +49,7 @@ export default function footer() {
           </Link>
         </li>
       </ul>
-    </footer>
+      </div>
+    </section>
   )
 }

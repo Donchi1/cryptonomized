@@ -57,12 +57,12 @@ function Chat() {
       
   return (
     <>
-      <AdminNavbar />
+     
 
-      <div className="flex">
-        <AdminSidebar />
+      <div className="flex ">
+        
         <div className='w-full min-h-screen '>
-        <div className="mt-6  footer-bg flex-more homepage-3 mx-0 lg:mx-2 lg:px-4 ">
+        <div className=" footer-bg  homepage-3 h-screen fixed top-0 right-0 left-0 bottom-0 ">
           <div
             className="flex chart-card flex-col h-screen main-bg rounded-lg  "
             
@@ -88,17 +88,17 @@ function Chat() {
             </div>
             <div className="row justify-center w-full ml-1 ml-lg-0 relative lg:static "  style={{height: "90%"}}>
               
-             <div  className={`col-3 ${openUsers ? "block w-96": "hidden lg:block"}  users-chat-wrapper   left-0 z-10 lg:z-0 absolute lg:static  overflow-y-auto  main-bg shadow-lg text-white`}>
+             <div  className={`col-3 ${openUsers ? "block w-96": "hidden lg:block"} sidebar-scroll  users-chat-wrapper   left-0 z-10 lg:z-0 absolute lg:static  overflow-y-auto  main-bg shadow-lg text-white`}>
               <div className="flex flex-col gap-2 pt-3 ">
                 {userChats.length > 0 && userChats.map((each ) => (
-                  <UsersChat key={each.id} chat={each as ChatDataType } setChatUserId={setChatUserId} />
+                  <UsersChat key={each.id} chat={each as ChatDataType } setOpenUsers={setOpenUsers} setChatUserId={setChatUserId} />
 
                 ))}
               </div>
              </div>
              <div className="col-12 col-lg-9">
 
-            <div className="chat-message-admin mt-2 overflow-x-hidden sidebar-scroll" >
+            <div className="chat-message-admin mt-2 overflow-x-hidden sidebar-scroll chat" >
             
              {messages?.length > 0 ? messages.map(each => (
                  <Message message={each} key={each.id} />
@@ -117,7 +117,7 @@ function Chat() {
         </div>
         </div>
       </div>
-        <FooterAdmin/>
+        
     </>
   );
 }

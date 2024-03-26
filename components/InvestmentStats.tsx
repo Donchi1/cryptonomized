@@ -73,7 +73,7 @@ function InvestmentStats({investments}:{investments: DocumentData[]}) {
    
         <div className="xl:col-start-1  xl:col-end-4 lg:px-4 mb-8 ">
           <div className="box">
-            <h4 className="text-red-500 text-xl mb-2">Latest Investment Stats</h4>
+            <h5 className="text-red-500 text-xl mb-2">Latest Investment Stats</h5>
             <p className="mb-2 ">
               <span className="font-small ">
                 Investment Amount :{" "}
@@ -155,7 +155,7 @@ function InvestmentStats({investments}:{investments: DocumentData[]}) {
                   <h4 className="">
                     Investment Progress Info
                   </h4>
-                  <p>€{getProgressInfo().profit}</p>
+                  <p>£{getProgressInfo().profit}</p>
                 </div>
               </div>
 

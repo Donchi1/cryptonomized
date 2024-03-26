@@ -50,7 +50,7 @@ export default function TableCard({data}: {data: DocumentData[] | null}) {
                       {each.firstname}
                     </td>
                     <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                    €{each.paymentAmount}
+                    £{each.paymentAmount}
                     </td>
                     <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
                       {moment(each.date.toDate()).fromNow()}

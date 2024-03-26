@@ -108,26 +108,29 @@ function AdminChatFooter({scrollRef, userChatId}: {scrollRef: React.RefObject<HT
 
     </div>
     <div className="chat-footer w-full h-10 mb-4 flex justify-center items-center">
-    <div className="shadow-lg  rounded-full flex justify-between mx-auto items-center chat-footer-container">
+    <div className="shadow-lg  rounded-lg flex justify-between mx-auto items-center chat-footer-container">
+      
+      <div className="w-full">
+
+      <textarea
+        onChange={(e) => setMessage(e.target.value)}
+        value={message}
+        rows={1}
+        placeholder="Type your message here"
+        className="overflow-hidden  block py-3 text-message resize-none  text-black w-full border-none  outline-none bg-transparent"
+      ></textarea>
+      </div>
+
       <label className="mx-2" >
-        <Icons.MdUpload size={35} className="text-black" />
+        <Icons.MdUpload size={35} className="text-gray-200" />
         <input hidden type="file" onChange={(e) => {
           setFile(e.target.files && e.target.files[0])
           openModal()
         }} />
       </label>
-      <div className="w-full flex  items-center">
 
-      <textarea
-        onChange={(e) => setMessage(e.target.value)}
-        value={message}
-        placeholder="Type your message here"
-        className="overflow-hidden block text-message border  resize-none  text-black w-full border-none  outline-none bg-transparent"
-      ></textarea>
-      </div>
-
-      <button className="mx-2 ml-4" onClick={handleSend}>
-        <Icons.MdSend size={35} className="text-black" />
+      <button className="mx-2 ml-2 " onClick={handleSend}>
+        <Icons.MdSend  size={35} className="text-red-500" />
       </button>
     </div>
   </div>

@@ -24,25 +24,25 @@ function Plans({ head, initialw, initiald }: PlanType) {
             Initial Withdrawal
           </p>
           <p className="uppercase text-center font-extrabold text-4xl text-yellow-700 p-2">
-          €{initialw}
+          £{initialw}
           </p>
         </div>
         <p className="uppercase text-center font-medium p-2 text-white">
           Normal Deposit
         </p>
         <p className="uppercase text-center font-medium p-2 text-white">
-        €{initiald}
+        £{initiald}
         </p>
         <p className="uppercase text-center font-medium p-2 text-white">
-          Top Up €30
+          Top Up £30
         </p>
         <p className="uppercase text-center font-medium p-2 text-white">
-          Bonus €10
+          Bonus £10
         </p>
         <div className=" mt-4">
           <Link
             href="/user/payments"
-            className=" uppercase tracking-wide font-semibold  bg-red-500 text-gray-100 w-full py-2 rounded-md  transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+            className="btn_two uppercase tracking-wide font-semibold   text-gray-100 w-full py-2 rounded-md  transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
           >
             Get Now
           </Link>

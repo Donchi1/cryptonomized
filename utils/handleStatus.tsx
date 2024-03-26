@@ -1,21 +1,16 @@
-const handleStatus = (status: string) => {
 
-    if(status === "success") return  (
-      <span className="border border-green-500 text-green-500 rounded-full px-3 py-2 ">
-        {status}
-      </span>
-    )
-    if(status === "failed") return (
-      <span className="border border-red-600 text-red-600 rounded-full px-3 py-2">
-        {status}
-      </span>
-    )
-   if( status === "pending") return (
-      <span className="border border-yellow-500 text-yellow-500 rounded-full px-3 py-2">
-        Pending
-      </span>
-    )
-  
-  }
+const statusStyles = {
+  success: "border-green-500 text-green-500",
+  failed: "border-red-600 text-red-600",
+  pending: "border-yellow-500 text-yellow-500",
+  processing: "border-blue-500 text-blue-500", // Added processing condition
+};
 
-  export default handleStatus
+const handleStatus = (status: keyof typeof statusStyles) => {
+  const baseStyle = "border rounded-full px-3 py-2";
+  const statusStyle = statusStyles[status] || "border-gray-400 text-gray-400";
+  return <span className={`${baseStyle} ${statusStyle}`}>{status}</span>;
+};
+
+
+export default handleStatus

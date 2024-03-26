@@ -19,22 +19,20 @@ export default function PageVisitsCard({  transactions, current }: pageVisitedTy
 
   
   return (
-    <Card className="main-bg min-h-full " >
-      <CardHeader color="blue" className="justify-none p-2">
-        <div className="w-full flex items-center justify-between">
+    <section className="main-bg min-h-full rounded-lg pb-3 px-2" >
+      <div  className=" px-2 py-4">
+        <div className="w-full flex items-center justify-between px-3">
           <h2 className="text-white text-2xl">Latest Transactions</h2>
-          <Button
+          <button
             className="bg-transparent"
-            
-            size="lg"
             style={{ padding: 0 }}
             onClick={() => push(`/${current? current: "user"}/transactions`)}
           >
             See More
-          </Button>
+          </button>
         </div>
-      </CardHeader>
-      <CardBody>
+      </div>
+      <div>
         <div className="overflow-x-auto">
           <table className="items-center w-full bg-transparen border-collapse">
             <thead>
@@ -172,7 +170,7 @@ export default function PageVisitsCard({  transactions, current }: pageVisitedTy
             </tbody>
           </table> */}
         </div>
-      </CardBody>
-    </Card>
+      </div>
+    </section>
   )
 }

@@ -52,22 +52,22 @@ export default function StatusCard({
           </div>
           <div className="float-right pr-4">
             <h2 className="text-white mb-4">{title}</h2>
-            <h2 className="text-2xl">€{amount || '000'}</h2>
+            <h2 className="text-2xl">£{amount || '000'}</h2>
           </div>
         </div>
-        <div className="border-b border-gray-200 mt-2"></div>
+        <div className="border-b border-gray-600 mt-2"></div>
 
-        <CardFooter
+        <div className='p-3'
            
            >
           
           
           {percentageIcon === "arrow_downward"?
           <Icons.HiArrowDown className="h-4 w-6 text-red-500" />: <Icons.HiArrowUp className="h-4 w-6  text-green-500" />}
-          <span className='text-gray-300'>
+          <span className='text-gray-300 text-xs'>
             {date}
             </span>
-        </CardFooter>
+        </div>
       </div>
     </div>
   )

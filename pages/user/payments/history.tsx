@@ -26,9 +26,9 @@ function History() {
             <div className=" mt-10 " />
             <TableCard data={payments} />
           </Layout>
-          <FooterUser />
         </div>
       </div>
+          <FooterUser />
     </>
   );
 }

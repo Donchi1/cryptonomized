@@ -145,9 +145,7 @@ function Withdrawals() {
       <div className="flex">
         <AdminSidebar />
 
-        <div className="w-full ">
-        <div className=" min-h-screen mb-10 lg:mb-0">
-          <Layout>
+        <div className="list-container   h-screen  ">
             <AdminHero title="Withdrawals" />
             <div className=" mt-10 " />
             <div  style={{ height:'500px' }}>
@@ -161,12 +159,11 @@ function Withdrawals() {
             loading={loading}
             />
 
+  
     </div>
-    </Layout>
+    </div>
     </div>
     <FooterAdmin />
-    </div>
-    </div>
     </>
   )
 }

@@ -1,8 +1,7 @@
 import React from 'react'
 import AdminHero from '@/components/admin/AdminHero'
 import AdminNavbar from '@/components/user/UserNavbar'
-import FooterAdmin from '@/components/admin/FooterAdmin'
-import Layout from '@/components/Layout'
+import FooterAdmin from '@/components/user/FooterUser'
 import AdminSidebar from '@/components/admin/AdminSidebar'
 import useCollectionGroup from '@/components/hooks/UseCollectionGroup'
 import {DataGrid, GridColDef} from '@mui/x-data-grid'
@@ -110,7 +109,7 @@ function Payments() {
               <>
                 <button
                   onClick={() =>
-                    router.push(`edit/${params.row.uid}/${params.row.id}`)
+                    router.push(`payments/edit/${params.row.uid}/${params.row.id}`)
                   }
                   className=" text-white px-4 py-2  outline-none border-none rounded-full bg-green-400"
                 >
@@ -135,9 +134,7 @@ function Payments() {
 
       <div className="flex">
         <AdminSidebar />
-        <div className="w-full ">
-        <div className=" min-h-screen mb-10 lg:mb-0">
-          <Layout>
+        <div className="list-container   h-screen  ">
             <AdminHero title="Payments" />
             <div className=" mt-10 " />
             
@@ -155,15 +152,11 @@ function Payments() {
             
             loading={loading}
             />
-            </div>
-              
            
-
-    </Layout>
+    </div>
+    </div>
     </div>
     <FooterAdmin />
-    </div>
-    </div>
     </>
   )
 }

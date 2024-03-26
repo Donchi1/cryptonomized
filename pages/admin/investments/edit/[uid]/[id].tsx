@@ -8,7 +8,7 @@ import Toast from "@/utils/Alert";
 import AdminSidebar from "@/components/admin/AdminSidebar"; 
 import AdminNavbar from "@/components/user/UserNavbar"; 
 import AdminHero from "@/components/admin/AdminHero";
-import FooterAdmin from "@/components/admin/FooterAdmin";
+import FooterAdmin from "@/components/user/FooterUser";
 import Layout from "@/components/Layout";
 
 function Index() {
@@ -34,7 +34,7 @@ function Index() {
         .required("Field required"),
       fixedCharge: Yup.string().lowercase().trim().required("Field required"),
       status: Yup.string()
-        .oneOf(["pending", "success", "failed"])
+        .oneOf(["pending","processing", "success", "failed"])
         .required("Field required"),
     }),
 
@@ -84,7 +84,7 @@ function Index() {
     <AdminNavbar/>
 
    
-    <div className='flex'>
+    <div className='flex gap-8'>
    
     <AdminSidebar />
    
@@ -166,6 +166,12 @@ function Index() {
                                       Pending
                                     </option>
                                     <option
+                                    value={"processing"}
+                                    className="bg-dark text-white"
+                                  >
+                                    Processing
+                                  </option>
+                                    <option
                                       value={"success"}
                                       className="bg-dark text-white"
                                     >
@@ -240,9 +246,9 @@ function Index() {
                 </section>
               </Layout>
             </div>
+          </div>
+          </div>
             <FooterAdmin />
-          </div>
-          </div>
     </>
   );
 }

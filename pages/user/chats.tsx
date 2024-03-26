@@ -50,14 +50,12 @@ function Chat() {
 
   return (
     <>
-      <AdminNavbar />
-
-      <div className="flex">
+      <div className="flex ">
         <Sidebar />
-        <div className='w-full '>
+        <div className='w-full  '>
         <div className="mt-6 h-screen footer-bg flex-more homepage-3 mx-0 lg:mx-2 lg:px-4 ">
           <div
-            className="flex   chart-card flex-col main-bg rounded-lg pb-2 "
+            className="flex h-screen fixed top-0 right-0 bottom-0  chart-card flex-col main-bg rounded-lg pb-2 "
             
           >
             <div className=" h-20 rounded-lg main-bg shadow-lg text-white">
@@ -76,13 +74,13 @@ function Chat() {
                 </div>
               </div>
             </div>
-            <div className="chat-message mt-2  overflow-x-hidden ">
+            <div className={`chat-message mt-2   overflow-x-hidden`}>
             
              {messages?.length > 0 ? messages.map(each => (
                  <Message message={each} key={each.id} />
 
              )) : 
-             <div className="flex no-message justify-center h-full items-center text-5xl text-muted">
+             <div className="flex no-message justify-center !overflow-y-hidden items-center text-5xl text-muted">
                 <p className="text-center ">Write a message to start a chat</p>
              </div>
              }
@@ -91,7 +89,6 @@ function Chat() {
             <ChatFooter scrollRef={scrollRef} />
           </div>
         </div>
-        <FooterUser/>
         </div>
       </div>
     </>

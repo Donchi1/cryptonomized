@@ -293,7 +293,7 @@ const Footer = () => {
                     <span className="fas fa-phone"></span>
                   </div>
                   <h5 className="font-bold text-[25px]">Phone</h5>
-                  <p>+49865204779</p>
+                  <p>+447386884649</p>
                 </div>
                 <div className="single_address">
                   <div className="address_br">

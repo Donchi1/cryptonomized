@@ -31,9 +31,9 @@ export default function Dashboard() {
           </div>
         </div>
       </Layout>
+        </div>
+        </div>
       <FooterUser />
-        </div>
-        </div>
       
      
     </>

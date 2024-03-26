@@ -152,8 +152,8 @@ function Index() {
       <div className="flex">
         <AdminSidebar />
 
-        <div className='w-full min-h-screen'>
-    <Layout>
+        <div className="list-container   h-screen  ">
+    
          
             <AdminHero title="Users" />
             <div className=" mt-10 " />
@@ -171,10 +171,11 @@ function Index() {
             />
         </div>
          
-        </Layout>
-        <FooterAdmin />
+      
+        
         </div>
       </div>
+      <FooterAdmin />
     </>
   );
 }

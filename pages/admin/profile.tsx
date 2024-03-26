@@ -18,7 +18,7 @@ export default function Dashboard() {
 
       <AdminNavbar/>
      
-    <div className='flex '>
+    <div className='flex gap-8'>
     <AdminSidebar/>
     <div className='w-full'>
       <Layout>

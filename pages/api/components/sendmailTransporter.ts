@@ -1,18 +1,9 @@
 
-export const runtime = 'edge';
-export const dynamic = 'force-dynamic';
+import { Resend } from 'resend';
 
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-
-export async function sendMail(data:any) {
-  return await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
-    },
-    body: JSON.stringify(data),
-  });
-   
+export async function sendMail (data:any) {
+   return resend.emails.send(data)
  
 }

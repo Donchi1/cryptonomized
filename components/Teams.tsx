@@ -104,9 +104,9 @@ export default function Teams() {
             >
               <div className="our-team">
                 <div className="flex justify-center items-center">
-                  <img src='/assets/img/team12.jpg' className="img-fluid" alt="board-mage" />
+                  <img src='/assets/img/app_developer.jpg' className="img-fluid" alt="board-mage" />
                 </div>
-                <h3>Mildred Watson</h3>
+                <h3>Beth H.Masi</h3>
                 <ul>
                   <li>
                     <Link href="#">
@@ -141,9 +141,9 @@ export default function Teams() {
             >
               <div className="our-team">
                 <div className="flex justify-center items-center">
-                  <img src='/assets/img/team13.jpg' className="img-fluid" alt="board-mage" />
+                  <img src='/assets/img/blockchain_developer.jpg' className="img-fluid" alt="board-mage" />
                 </div>
-                <h3>Leoni Harwell</h3>
+                <h3>David J.Hinson</h3>
                 <ul>
                   <li>
                     <Link href="#">
@@ -180,9 +180,9 @@ export default function Teams() {
             >
               <div className="our-team">
                 <div className="flex justify-center items-center">
-                  <img src='/assets/img/team14.jpg' className="img-fluid" alt="board-mage" />
+                  <img src='/assets/img/crypto_developer.jpg' className="img-fluid" alt="board-mage" />
                 </div>
-                <h3>Ann Joseph</h3>
+                <h3>Amanda Freddie</h3>
                 <ul>
                   <li>
                     <Link href="#">

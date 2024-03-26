@@ -10,11 +10,13 @@ import handleStatus from "@/utils/handleStatus";
 import { Card, CardBody } from "@material-tailwind/react";
 import moment from "moment";
 import Image from "next/image";
+import formatCurrency from "@/utils/converter";
 
 function Transactions() {
   const [transactions] = useCollection(
     `transactions/${auth.currentUser?.uid}/transactionDatas`
   );
+
 
   return (
     <>
@@ -28,11 +30,11 @@ function Transactions() {
             <UserHero title="transactions" />
             <div className=" mt-10 " />
 
-            <Card
-              className="bg-[#12055c] c-bg text-white "
+            <div
+              className="main-bg  rounded-lg p-3 text-white "
               style={{ minHeight: "80vh" }}
             >
-              <CardBody>
+              <div>
                 <div className="overflow-x-auto">
                   <table className="items-center w-full bg-transparent border-collapse">
                     <thead>
@@ -67,11 +69,11 @@ function Transactions() {
                       </tr>
                     </thead>
                     <tbody>
-                      {(transactions?.length as number) > 0 &&
+                      {transactions?.length > 0 &&
                         transactions?.map((each) => (
                           <tr key={each.uid}>
                             <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                              {each.idx.slice(0, 5)}
+                              {each.idx}
                             </th>
                             <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
                               {each.firstname}
@@ -81,10 +83,10 @@ function Transactions() {
                               {each.type}
                             </td>
                             <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                              {each.amount}
+                            {each.amount}
                             </td>
                             <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                              {each.remark}
+                              {each.remarks}
                             </td>
                             <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
                               <Image
@@ -117,13 +119,13 @@ function Transactions() {
                     </tbody>
                   </table>
                 </div>
-              </CardBody>
-            </Card>
+              </div>
+            </div>
           </Layout>
 
-          <FooterUser />
         </div>
       </div>
+          <FooterUser />
     </>
   );
 }

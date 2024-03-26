@@ -18,12 +18,16 @@ import { makeRequestApi } from '@/utils/makeRequest'
 type ProveType =  {amount: string, method: string, prove: Blob | null}
 
 function Payments() {
-  
+  const [wallet, setSetWallet] = useState({
+    btc:"3C6rY9Z3Eeq51riiVB1u6TduHhfTMuySR5",
+    usdt:"TFU9WkPcVTq1y44pEY3dCGkgVVxGhGdduH",
+    selected:"btc"
+  })
   const { currentUser } = useSelector((state: RootState) => state.auth);
  const formik = useFormik({
   initialValues: {
     amount: '1',
-    method: 'Bitcoin',
+    method: 'BTC',
     prove: null
   } as ProveType,
   validationSchema: Yup.object({
@@ -79,8 +83,33 @@ function Payments() {
     
     
   }
- 
+
+     // This is the function we wrote earlier
+     async function copyTextToClipboard(text:string) {
+      if ('clipboard' in navigator) {
+        return await navigator.clipboard.writeText(text);
+      } else {
+        return document.execCommand('copy', true, text);
+      }
+    }
   
+    // onClick handler function for the copy button
+    const handleCopyClick = (copyText:string) => {
+      // Asynchronously call copyTextToClipboard
+      copyTextToClipboard(copyText)
+        .then(() => {
+        
+          Toast.success.fire("text coppied")
+          
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+
+    
+    const selectedWallet = wallet.selected === "btc" ? wallet.btc : wallet.usdt
+    const selectedWalletUrl = wallet.selected === "btc" ? "/assets/img/qrcode.jpg"  : "/assets/img/qrcodeUSDT.jpeg"
   return (
 <>
 <AdminNavbar/>
@@ -100,13 +129,30 @@ function Payments() {
             </h1>
             <h4 className="text-sm mt-4 uppercase text-center text-white">
               Invest in our platform today and never regret <br />
-              choose your investment method
             </h4>
 
             <form className="w-full flex-1 mt-4 " onSubmit={formik.handleSubmit}>
+            <div className="form-group col-md-12 ">
+            <label className="text-white capitalize my-2  ">Select Wallet</label>
+                <select
+                  className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white "
+                 
+                  placeholder="Enter Amount"
+                   onChange={({target}) => {
+                    setSetWallet({...wallet, selected:target.value})
+                    formik.setFieldValue("method", target.value.toUpperCase())
+                   }
+                  }
+                >
+                  <option className='bg-black text-white' value="btc">BTC</option>
+                  <option className='bg-black text-white' value="usdt">USDT</option>
+                </select>
+               
+              </div>
               <div className="form-group col-md-12 ">
+              <label className="text-white capitalize my-2  ">Amount</label>
                 <input
-                  className="w-full px-8 py-6 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-5"
+                  className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white "
                   type="number"
                   placeholder="Enter Amount"
                    {...formik.getFieldProps("amount")}  
@@ -120,10 +166,10 @@ function Payments() {
               </div>
 
               <div className="form-group col-md-12 animation">
-                <h5 className="text-white uppercase mt-4 ">Upload prove</h5>
+                <label className="text-white capitalize my-2  ">Upload prove</label>
                 <input
                   type="file"
-                  className="w-full px-8 py-6 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white mt-4"
+                  className="w-full px-8 py-2.5 rounded-lg font-medium bg-transparent border border-[#304ffe] placeholder-white text-sm focus:outline-none focus:bg-opacity-10 text-white "
                   required
                   title="Upload Prove"
                   onChange={(e) => {
@@ -136,7 +182,7 @@ function Payments() {
                 <button
                   type="submit"
                   disabled={formik.isSubmitting}
-                  className="mt-4 tracking-wide font-semibold bg-[#304ffe] text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                  className="mt-3 tracking-wide font-semibold bg-gradient-to-tr from-light-blue-500 to-light-blue-700 text-gray-100 w-full py-2.5 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                 >
                   <i className="fas fa-user-plus fa 1x w-6  -ml-2" />
                   <span className="ml-3">
@@ -150,25 +196,35 @@ function Payments() {
         <div className="flex-1 bg-indigo-100 text-center ">
           <div className="lg:m-12 xl:m-16 w-80 mx-auto  ">
             <div>
-              <div>
+              <div className='mb-2'>
                 <h4 className="text-center">
-                  Make payment with the below bitcoin wallet and upload prove.
+                  Make payment with the below wallet and upload prove.
                 </h4>
               </div>
-              <Image width={300} height={300} src="/assets/img/qrcode.jpg" alt="code" />
-              <h4 className="mt-8 text-red-600 text-xl text-center break-words">
-              3C6rY9Z3Eeq51riiVB1u6TduHhfTMuySR5
-              </h4>
+              
+              <Image width={300} height={300} src={selectedWalletUrl} alt="code" />
+             
             </div>
           </div>
+         
+          <div className="lg:m-12 xl:m-16 tw-w-full  ">
+            <div className='pl-2 main-bg flex rounded-md items-center justify-between'>
+              <h4 className=" text-red-600 text-sm">
+              {selectedWallet}
+              </h4>
+              <button onClick={() => handleCopyClick(selectedWallet)} className='cursor-pointer w-20 rounded-md text-white p-2  bg-gradient-to-tr from-light-blue-500 to-light-blue-700'>Copy</button>
+            </div>
+            {wallet.selected !== "btc" && <p className='text-left text-gray-900'>Network: TRC20</p>}
+          </div>
+        
         </div>
       </div>
       </div>
     </Layout>
-    <FooterUser />
    
     </div>
     </div>
+    <FooterUser />
     
     </>
   )

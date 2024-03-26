@@ -150,7 +150,7 @@ const Register = () => {
           {
             slNo: Math.ceil(Math.random() + new Date().getSeconds()),
             uid: res.user?.uid,
-            amount: "$20",
+            amount: "£20",
             type: "Interest Added",
             remarks: `You have successfully received $20 interest`,
             date: serverTimestamp(),

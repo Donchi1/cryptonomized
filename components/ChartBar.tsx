@@ -1,8 +1,6 @@
 import { useEffect } from 'react'
 import {Chart,  PointElement, LinearScale, Title, CategoryScale, BarController, BarElement} from 'chart.js'
-import {Card} from '@material-tailwind/react'
-import {CardHeader} from '@material-tailwind/react'
-import {CardBody} from '@material-tailwind/react'
+
 
 Chart.register(BarController, BarElement, PointElement, LinearScale, Title, CategoryScale)
 
@@ -112,17 +110,17 @@ export default function ChartBar() {
     window.myBar  = new Chart(ctx, config)
   }, [])
   return (
-    <Card className="main-bg">
+    <section className="main-bg px-4 pb-4 pt-2 rounded-lg">
       
-        <h6 className="uppercase text-gray-200 text-xl px-4 pt-2 font-medium">
+        <h6 className="uppercase text-gray-200 text-xl px-4 mb-4 font-medium">
          Market Value
         </h6>
 
-      <CardBody>
+      <div>
         <div className="relative h-96">
           <canvas id="bar-chart"></canvas>
         </div>
-      </CardBody>
-    </Card>
+      </div>
+    </section>
   )
 }

@@ -22,6 +22,7 @@ import {
 } from "firebase/firestore";
 import createNotification from "@/utils/createNotification";
 import { useState } from "react";
+import TopSidebar from "../TopSidebar";
 
 type investType = {
   amount: number | null;
@@ -156,18 +157,18 @@ const  AdminSidebar = ()=> {
           );
           const nData = {
             title: "Transfer",
-            text:  `You have transfered €${values?.amount} to ${values.firstname}`
+            text:  `You have transfered £${values?.amount} to ${values.firstname}`
           }
           const rData = {
             title: "Received",
-            text:  `You have received €${values?.amount} from ${currentUser?.firstname}`
+            text:  `You have received £${values?.amount} from ${currentUser?.firstname}`
           }
           await createNotification(nData)
           await createNotification(rData, user.docs[0].id)
           formikTrans.setSubmitting(false);
           formikTrans.resetForm();
           Toast.success.fire({
-            text: `You transfer of €${values?.amount} to ${values.email} was successful`,
+            text: `You transfer of £${values?.amount} to ${values.email} was successful`,
           });
         } catch (err: any) {
           formikTrans.setSubmitting(false);
@@ -249,7 +250,7 @@ const  AdminSidebar = ()=> {
           uid: currentUser?.uid,
           amount: values?.amount,
           type: "Investment",
-          remarks: `You have successfully invested €${values?.amount}`,
+          remarks: `You have successfully invested £${values?.amount}`,
           date: serverTimestamp(),
           firstname: currentUser?.firstname,
           photo: currentUser?.photo,
@@ -266,7 +267,7 @@ const  AdminSidebar = ()=> {
       formik.setSubmitting(false);
       formik.resetForm();
       Toast.success.fire({
-        text: `Your investment of €${values?.amount} was successful`,
+        text: `Your investment of £${values?.amount} was successful`,
       });
     } catch (err: any) {
       formik.setSubmitting(false);
@@ -339,27 +340,7 @@ const  AdminSidebar = ()=> {
             className={`h-screen sidebar-scroll  flex-row flex-nowrap  shadow-xl main-bg w-80 z-10 text-white py-4 px-6 transition-all duration-300`}
           >
             <div className="flex-col items-stretch min-h-full flex-nowrap px-0 ">
-              <div>
-                <div className="flex justify-center flex-col items-center  gap-2">
-                  <div>
-                    <Image
-                      height={105}
-                      width={105}
-                      className="rounded-xl "
-                      src={currentUser?.photo}
-                      alt="logo"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <h6 className="text-lg font-[600]">
-                      Welcome:{" "}
-                      <span className="text-sm text-red-400 font-normal">
-                        {currentUser?.firstname}
-                      </span>
-                    </h6>
-                  </div>
-                </div>
-              </div>
+              <TopSidebar currentUser={currentUser} />
 
               {/* <div className="flex gap-4 justify-center items-center mt-2">
                 <button
@@ -391,7 +372,7 @@ const  AdminSidebar = ()=> {
                   >
                     <Link
                       href="/admin/dashboard"
-                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-3 rounded-md"
+                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-2 rounded-md"
                     >
                       <Icons.MdHome size={20} />
                       Dashboard
@@ -405,7 +386,7 @@ const  AdminSidebar = ()=> {
                   >
                     <Link
                       href="/admin/profile"
-                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-3 rounded-md"
+                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-2 rounded-md"
                     >
                       <Icons.MdPerson size={20} />
                       Profile
@@ -419,7 +400,7 @@ const  AdminSidebar = ()=> {
                   >
                     <Link
                       href="/admin/users"
-                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-3 rounded-md"
+                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-2 rounded-md"
                     >
                       <Icons.MdGroup size={20} />
                       Users
@@ -435,7 +416,7 @@ const  AdminSidebar = ()=> {
                   >
                     <Link
                       href="/admin/investments"
-                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-3 rounded-md"
+                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-2 rounded-md"
                     >
                       <Icons.MdOutlineSend size={20} />
                       Investments
@@ -451,7 +432,7 @@ const  AdminSidebar = ()=> {
                     <Link
                       href="/admin/withdrawals"
                       
-                      className="flex items-center focus:text-white hover:text-white gap-4 text-sm text-white font-light px-4 py-3 rounded-md"
+                      className="flex items-center focus:text-white hover:text-white gap-4 text-sm text-white font-light px-4 py-2 rounded-md"
                     >
                       <Icons.MdListAlt size={20} />
                       Withdrawals
@@ -466,7 +447,7 @@ const  AdminSidebar = ()=> {
                   >
                     <Link
                       href="/admin/transactions"
-                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-3 rounded-md"
+                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-2 rounded-md"
                     >
                       <Icons.MdMonetizationOn size={20} />
                       Transactions
@@ -480,7 +461,7 @@ const  AdminSidebar = ()=> {
                   >
                     <Link
                       href="/admin/payments"
-                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-3 rounded-md"
+                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-2 rounded-md"
                     >
                       <Icons.MdMoney size={20} />
                       Payments
@@ -494,7 +475,7 @@ const  AdminSidebar = ()=> {
                   >
                     <Link
                       href="/admin/contacts"
-                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-3 rounded-md"
+                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-2 rounded-md"
                     >
                       <Icons.MdMessage size={20} />
                       Contacts
@@ -508,7 +489,7 @@ const  AdminSidebar = ()=> {
                   >
                     <Link
                       href="/admin/subcribers"
-                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-3 rounded-md"
+                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-2 rounded-md"
                     >
                       <Icons.MdSubscriptions size={20} />
                       Subcribers
@@ -522,15 +503,15 @@ const  AdminSidebar = ()=> {
                   >
                     <Link
                       href="/admin/chats"
-                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-3 rounded-md"
+                      className="flex items-center hover:text-white gap-4 text-sm text-white font-light px-4 py-2 rounded-md"
                     >
                       <Icons.MdChat size={20} />
                       Chats
                     </Link>
                   </li>
-                  <li className="bg-gradient-to-tr from-light-blue-500 to-light-blue-700 px-4 rounded-md text-white mb-6">
+                  <li className="hover:bg-red-500 transition-colors ease-linear duration-500 px-4 rounded-md text-white mb-8">
                     <Link
-                      className="flex items-center gap-4 text-lg font-light py-3"
+                      className="flex items-center gap-4 text-sm font-light py-2"
                       href="#"
                       onClick={handleLogout}
                     >
@@ -538,14 +519,14 @@ const  AdminSidebar = ()=> {
                       Logout
                     </Link>
                   </li>
-                  <li className="bg-gradient-to-tr from-light-blue-500 to-light-blue-700 px-4 rounded-md text-white mb-6">
+                  <li className="hover:bg-red-500 transition-colors ease-linear duration-500 px-4 rounded-md text-white mb-10">
                     <Link
-                      className="flex items-center gap-4 text-lg font-light py-2"
+                      className="flex py-2 items-center gap-4 text-lg font-light "
                       href="#"
                       onClick={handleLogout}
                     >
                       {/* <Icon name="description" size="2xl" /> */}
-                      Logout
+                      
                     </Link>
                   </li>
                 </ul>

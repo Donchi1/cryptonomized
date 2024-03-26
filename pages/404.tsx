@@ -29,7 +29,7 @@ export default function Empty() {
                 </p>
                 <Link
                   href="/"
-                  className="mt-5 py-4 tracking-wide  font-semibold btn_two text-gray-100 w-2/4 mx-auto  rounded-lg transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                  className="mt-5 py-1 tracking-wide  font-semibold btn_two text-gray-100 w-2/4 mx-auto  rounded-lg transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                   data-animation="fadeInUp"
                   data-animation-delay="0.8s"
                 >

@@ -330,19 +330,19 @@ useEffect(() => {
         <div className="w-full flex justify-between px-4 items-center py-4 lg:pt-4 pt-8">
           <div className=" ">
             <span className="text-xl font-medium block uppercase tracking-wide text-white">
-               €{user?.mainBalance}
+               £{user?.mainBalance}
             </span>
             <span className="text-sm text-red-500 ">Main Balance</span>
           </div>
           <div className=" ">
             <span className="text-xl font-medium block uppercase tracking-wide text-white">
-               €{user?.initialDeposit}
+               £{user?.initialDeposit}
             </span>
             <span className="text-sm text-red-500 ">Initial Deposite</span>
           </div>
           <div className=" ">
             <span className="text-xl font-medium block uppercase tracking-wide text-white">
-               €{user?.interestBalance}
+               £{user?.interestBalance}
             </span>
             <span className="text-sm text-red-500 ">Interest Balance</span>
           </div>
@@ -373,7 +373,7 @@ useEffect(() => {
      
       <CardFooter>
         <div className="w-full flex justify-center -mt-8 gap-2">
-          <button onClick={updatePhoto} disabled={fileLoading} className="rounded-md mb-2 p-2.5 bg-gradient-to-tr from-light-blue-500 to-light-blue-700 transition-colors text-white ease-linear duration-500">
+          <button onClick={updatePhoto} disabled={fileLoading} className="rounded-md mb-2 p-2 bg-gradient-to-tr from-light-blue-500 to-light-blue-700 transition-colors text-white ease-linear duration-500">
             {fileLoading ? "Uploading..." :  "Update Photo"}
             </button>
             {action && 

@@ -92,7 +92,7 @@ export default function Dashboard() {
                     <div className="col-lg-4 col-sm-12">
                       <Plans
                         initiald={"900"}
-                        initialw={"$15,750"}
+                        initialw={"15,750"}
                         head={"Ultimate"}
                       />
                     </div>
@@ -108,9 +108,9 @@ export default function Dashboard() {
               </section>
             </section>
           </Layout>
-          <FooterUser />
         </div>
       </div>
+          <FooterUser />
     </>
   );
 }

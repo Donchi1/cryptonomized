@@ -1,7 +1,7 @@
 import { doc,  getDoc, updateDoc } from "firebase/firestore";
 import { useFormik } from "formik";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import * as Yup from "yup";
 import { db } from "@/db/firebaseDb";
 import Toast from "@/utils/Alert";
@@ -9,7 +9,7 @@ import AdminNavbar from "@/components/admin/AdminNavbar";
 import AdminSidebar from "@/components/admin/AdminSidebar";
 import Layout from "@/components/Layout";
 import AdminHero from "@/components/admin/AdminHero";
-import FooterAdmin from "@/components/admin/FooterAdmin";
+import FooterAdmin from "@/components/user/FooterUser";
 
 function Index() {
   const { id, uid } = useRouter().query;
@@ -35,7 +35,7 @@ function Index() {
       wallet: Yup.string().lowercase().trim().optional(),
       accountNumber: Yup.string().lowercase().trim().optional(),
       status: Yup.string()
-        .oneOf(["pending", "success", "failed"])
+        .oneOf(["pending","processing", "success", "failed"])
         .required("Field required"),
     }),
 
@@ -77,7 +77,7 @@ function Index() {
     <>
     <AdminNavbar />
 
-    <div className="flex">
+    <div className="flex gap-8">
       <AdminSidebar />
 
       <div className="w-full ">
@@ -192,6 +192,12 @@ function Index() {
                                       Pending
                                     </option>
                                     <option
+                                    value={"processing"}
+                                    className="bg-dark text-white"
+                                  >
+                                    Processing
+                                  </option>
+                                    <option
                                       value={"success"}
                                       className="bg-dark text-white"
                                     >
@@ -232,9 +238,9 @@ function Index() {
                 </section>
               </Layout>
             </div>
+          </div >
+          </div >
             <FooterAdmin />
-          </div >
-          </div >
       
     </>
   );

@@ -2,19 +2,18 @@ import AdminHero from "@/components/admin/AdminHero";
 import AdminNavbar from "@/components/admin/AdminNavbar";
 import AdminSidebar from "@/components/admin/AdminSidebar";
 import useCollectionGroup from "@/components/hooks/UseCollectionGroup";
-import Layout from "@/components/Layout";
 import { db } from "@/db/firebaseDb";
 import Toast from "@/utils/Alert";
 
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import { deleteDoc, doc, DocumentData, updateDoc } from "firebase/firestore";
+import { collection, deleteDoc, doc, DocumentData, getDocs, updateDoc } from "firebase/firestore";
 import moment from "moment";
 import { useRouter } from "next/router";
 import * as Icons from "react-icons/bs";
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
+import FooterAdmin from "@/components/user/FooterUser"
 import formatCurrency from "@/utils/converter";
-import FooterAdmin from "@/components/admin/FooterAdmin"
 
 function Index() {
   const router = useRouter();
@@ -33,6 +32,7 @@ function Index() {
     //api call for delete
     // setProductData((prev) => prev.filter((each) => each.id !== id));
   };
+
 
   const columns: GridColDef[] = [
     {
@@ -68,6 +68,7 @@ function Index() {
       field: "amount",
       headerName: "Amount",
       width: 100,
+      renderCell: (params) => (<span>{formatCurrency(params.row.amount?.replace("$", ""))}</span>)
     },
     {
       field: "type",
@@ -98,7 +99,7 @@ function Index() {
         );
       },
     },
-    
+
     {
       field: "date",
       headerName: "Date",
@@ -144,35 +145,31 @@ function Index() {
       <div className="flex">
         <AdminSidebar />
 
-        <div className="w-full ">
-        <div className=" min-h-screen mb-10 lg:mb-0">
+        <div className="list-container   h-screen  ">
+              <AdminHero title="transactions" />
+              <div className=" mt-10 " />
+              <div style={{ height: '500px' }}>
 
-          <Layout>
-            <AdminHero title="transactions" />
-            <div className=" mt-10 " />
-            <div  style={{ height:'500px' }}>
-
-            <DataGrid
-              columns={columns}
-              rows={transactions}
-              getRowId={(row) => row?.id}
-              disableRowSelectionOnClick           
-              autoPageSize
-              className="main-bg text-white overflow-x-scroll"
-            />
-            </div>
-          </Layout>
+                <DataGrid
+                  columns={columns}
+                  rows={transactions}
+                  getRowId={(row) => row?.id}
+                  disableRowSelectionOnClick
+                  autoPageSize
+                  className="main-bg text-white overflow-x-scroll"
+                />
+             
+          </div>
         </div>
+      </div>
       <FooterAdmin />
-      </div>
-      </div>
     </>
   );
 }
 
 export default Index;
 
-Index.defaultProps ={
+Index.defaultProps = {
   needsAuth: true,
   isAdmin: true
 

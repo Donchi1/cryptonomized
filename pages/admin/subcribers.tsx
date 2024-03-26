@@ -29,16 +29,16 @@ function Subcribers() {
     // setProductData((prev) => prev.filter((each) => each.id !== id));
   };
 
- 
+
   return (
     <>
-    <AdminNavbar/>
+      <AdminNavbar />
 
-   
-    <div className='flex'>
-    <AdminSidebar />
-    
-    <div className="w-full min-h-screen mb-10">
+
+      <div className='flex gap-8'>
+        <AdminSidebar />
+
+        <div className="w-full min-h-screen mb-10">
           <Layout>
             <AdminHero title="Subcribers" />
             <div className=" mt-10 " />
@@ -77,11 +77,11 @@ function Subcribers() {
                       </tr>
                     </thead>
                     <tbody>
-                      {newsletters.length  > 0 &&
+                      {newsletters.length > 0 &&
                         newsletters?.map((each) => (
                           <tr key={each.uid}>
                             <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                              {each.uid.slice(0, 5)}
+                              {each?.uid}
                             </th>
                             <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
                               {each.newsLetter}
@@ -91,9 +91,9 @@ function Subcribers() {
                             </th>
 
                             <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                             Subcriber
+                              Subcriber
                             </td>
-                           
+
                             <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
                               {moment(each.date.toDate()).fromNow()}
                             </td>
@@ -101,13 +101,13 @@ function Subcribers() {
                               {handleStatus(each.status)}
                             </td>
                             <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-           
-           <Icons.BsTrash
-             onClick={() => handleDelete(each)}
-             size={24}
-             className="cursor-pointer text-red-500 ml-4"
-           />
-         </td>
+
+                              <Icons.BsTrash
+                                onClick={() => handleDelete(each)}
+                                size={24}
+                                className="cursor-pointer text-red-500 ml-4"
+                              />
+                            </td>
                           </tr>
                         ))}
                       {!newsletters?.length && (
@@ -126,17 +126,17 @@ function Subcribers() {
                 </div>
               </CardBody>
             </Card>
-            </Layout>
-            </div>
-            </div>
-            <FooterAdmin />
-            </>
+          </Layout>
+        </div>
+      </div>
+      <FooterAdmin />
+    </>
   )
 }
 
 export default Subcribers
 
-Subcribers.defaultProps ={
+Subcribers.defaultProps = {
   needsAuth: true,
   isAdmin: true
 

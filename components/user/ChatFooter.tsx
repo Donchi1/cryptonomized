@@ -95,7 +95,7 @@ function ChatFooter({scrollRef}: {scrollRef: React.RefObject<HTMLDivElement>}) {
     <>
     <div className='modal fade' data-bs-keyboard="false" data-bs-backdrop="static" id="photoModal" >
       <div className="modal-dialog modal-dialog-centered">
-        <div className="modal-content c-bg rounded-lg shadow-lg">
+        <div className="modal-content main-bg rounded-lg shadow-lg">
           <div className="modal-header">
             <button onClick={closeModal} className="btn-close">
             
@@ -114,26 +114,28 @@ function ChatFooter({scrollRef}: {scrollRef: React.RefObject<HTMLDivElement>}) {
 
     </div>
     <div className="chat-footer w-full h-20 flex justify-center items-center">
-    <div className="shadow-lg  rounded-full flex justify-between mx-auto items-center chat-footer-container">
+    <div className="shadow-lg  rounded-xl flex justify-between mx-auto items-center chat-footer-container">
+     
+      <div className="w-full items-center">
+
+      <textarea
+        onChange={(e) => setMessage(e.target.value)}
+        value={message}
+        rows={1}
+        placeholder="Type your message here"
+        className="overflow-hidden block py-3 text-message resize-none  text-black w-full border-none  outline-none bg-transparent"
+      ></textarea>
+      </div>
       <label className="mx-2" >
-        <Icons.MdUpload size={35} className="text-black" />
+        <Icons.MdUpload size={35} className="text-gray-200" />
         <input hidden type="file" onChange={(e) => {
           setFile(e.target.files && e.target.files[0])
           openModal()
         }} />
       </label>
-      <div className="w-full flex  items-center">
 
-      <textarea
-        onChange={(e) => setMessage(e.target.value)}
-        value={message}
-        placeholder="Type your message here"
-        className="overflow-hidden block text-message border  resize-none  text-black w-full border-none  outline-none bg-transparent"
-      ></textarea>
-      </div>
-
-      <button className="mx-2 ml-4" onClick={handleSend}>
-        <Icons.MdSend size={35} className="text-black" />
+      <button className="mx-2 ml-2 " onClick={handleSend}>
+        <Icons.MdSend  size={35} className="text-red-500" />
       </button>
     </div>
   </div>

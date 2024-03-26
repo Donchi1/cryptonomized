@@ -2,8 +2,7 @@ import AdminHero from '@/components/admin/AdminHero'
 import AdminNavbar from '@/components/admin/AdminNavbar'
 import AdminSidebar from '@/components/admin/AdminSidebar'
 import useCollectionGroup from '@/components/hooks/UseCollectionGroup'
-import Layout from '@/components/Layout'
-import FooterAdmin from '@/components/admin/FooterAdmin'
+import FooterAdmin from '@/components/user/FooterUser'
 import { db } from '@/db/firebaseDb'
 import Toast from '@/utils/Alert'
 
@@ -131,8 +130,8 @@ function Index() {
    
     <AdminSidebar />
    
-    <div className='w-full min-h-screen'>
-    <Layout>
+    <div className="list-container   h-screen  ">
+    
         <AdminHero title='Investments' />
       <div className=" mt-10 " />
       <div  style={{ height:'500px' }}>
@@ -146,8 +145,6 @@ function Index() {
       className='main-bg  text-white overflow-x-scroll '
       />
       </div>
-
-      </Layout>
       </div>
       </div>
       <FooterAdmin />

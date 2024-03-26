@@ -448,13 +448,13 @@ useEffect(() => {
               </div>
               <div className="dropdown cursor-pointer relative">
                 {notifications.length > 0 && (
-                  <span className="w-4 h-4 flex text-xs justify-center items-center rounded-full absolute bg-green-500">
+                  <span className="w-4 h-4 flex text-xs justify-center text-white items-center rounded-full absolute bg-red-500">
                     {notifications?.length}
                   </span>
                 )}
                 <Icons.HiBell
                   size={30}
-                  className="dropdown-toggle "
+                  className="dropdown-toggle  "
                   id="notify-me"
                   aria-haspopup="false"
                   data-bs-toggle="dropdown"
@@ -494,6 +494,7 @@ useEffect(() => {
               </div>
               <div className="dropdown">
                 <Image
+                 style={{width: "40px", height: "40px"}}
                   width={40}
                   height={40}
                   src={userDocument?.photo || "/assets/img/avater.png"}
