@@ -1,6 +1,5 @@
 import "@/styles/globals.css";
 import { AppProps } from "next/app";
-import Header from "@/components/Header";
 import Head from "next/head";
 import Script from "next/script";
 import { useEffect, useState } from "react";
@@ -96,7 +95,6 @@ export default function App({ Component, pageProps }: AppProps) {
 <Script id="" src="https://bestwpware.com/html/tf/crptiam-demo/crptiam/assets/js/particles.min.js"></Script>
 <Script id="" src="https://bestwpware.com/html/tf/crptiam-demo/crptiam/assets/js/app.js"></Script>
 {/* WOW - Reveal Animations When You Scroll */}
-<Script id="wow" src="https://bestwpware.com/html/tf/crptiam-demo/crptiam/assets/js/wow.min.js"></Script>
 {/* scrolltopcontrol js */}
 <Script id="scroll" src="https://bestwpware.com/html/tf/crptiam-demo/crptiam/assets/js/scrolltopcontrol.js"></Script>
 {/* scripts js */}

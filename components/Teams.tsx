@@ -21,7 +21,7 @@ export default function Teams() {
               data-wow-delay="0.2s"
               data-wow-offset="0"
               style={{
-                visibility: 'hidden',
+                visibility: 'visible',
                 animationDuration: '1s',
                 animationDelay: '0.2s',
                 animationName: 'none',
@@ -59,7 +59,7 @@ export default function Teams() {
               data-wow-delay="0.3s"
               data-wow-offset="0"
               style={{
-                visibility: 'hidden',
+                visibility: 'visible',
                 animationDuration: '1s',
                 animationDelay: '0.3s',
                 animationName: 'none',
@@ -96,7 +96,7 @@ export default function Teams() {
               data-wow-delay="0.4s"
               data-wow-offset="0"
               style={{
-                visibility: 'hidden',
+                visibility: 'visible',
                 animationDuration: '1s',
                 animationDelay: '0.4s',
                 animationName: 'none',
@@ -133,7 +133,7 @@ export default function Teams() {
               data-wow-delay="0.5s"
               data-wow-offset="0"
               style={{
-                visibility: 'hidden',
+                visibility: 'visible',
                 animationDuration: '1s',
                 animationDelay: '0.5s',
                 animationName: 'none',
@@ -172,7 +172,7 @@ export default function Teams() {
               data-wow-delay="0.6s"
               data-wow-offset="0"
               style={{
-                visibility: 'hidden',
+                visibility: 'visible',
                 animationDuration: '1s',
                 animationDelay: '0.6s',
                 animationName: 'none',
@@ -210,7 +210,7 @@ export default function Teams() {
               data-wow-delay="0.7s"
               data-wow-offset="0"
               style={{
-                visibility: 'hidden',
+                visibility: 'visible',
                 animationDuration: '1s',
                 animationDelay: '0.7s',
                 animationName: 'none',
@@ -247,7 +247,7 @@ export default function Teams() {
               data-wow-delay="0.7s"
               data-wow-offset="0"
               style={{
-                visibility: 'hidden',
+                visibility: 'visible',
                 animationDuration: '1s',
                 animationDelay: '0.7s',
                 animationName: 'none',
@@ -284,7 +284,7 @@ export default function Teams() {
               data-wow-delay="0.7s"
               data-wow-offset="0"
               style={{
-                visibility: 'hidden',
+                visibility: 'visible',
                 animationDuration: '1s',
                 animationDelay: '0.7s',
                 animationName: 'none',
@@ -335,7 +335,7 @@ export default function Teams() {
               data-wow-delay="0.2s"
               data-wow-offset="0"
               style={{
-                visibility: 'hidden',
+                visibility: 'visible',
                 animationDuration: '1s',
                 animationDelay: '0.2s',
                 animationName: 'none',
@@ -373,7 +373,7 @@ export default function Teams() {
               data-wow-delay="0.3s"
               data-wow-offset="0"
               style={{
-                visibility: 'hidden',
+                visibility: 'visible',
                 animationDuration: '1s',
                 animationDelay: '0.3s',
                 animationName: 'none',
@@ -411,7 +411,7 @@ export default function Teams() {
               data-wow-delay="0.4s"
               data-wow-offset="0"
               style={{
-                visibility: 'hidden',
+                visibility: 'visible',
                 animationDuration: '1s',
                 animationDelay: '0.4s',
                 animationName: 'none',
@@ -449,7 +449,7 @@ export default function Teams() {
               data-wow-delay="0.5s"
               data-wow-offset="0"
               style={{
-                visibility: 'hidden',
+                visibility: 'visible',
                 animationDuration: '1s',
                 animationDelay: '0.5s',
                 animationName: 'none',

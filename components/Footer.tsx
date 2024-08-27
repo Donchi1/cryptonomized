@@ -114,15 +114,7 @@ const Footer = () => {
           <div className="row">
             <div
               className="col-lg-8 offset-lg-2 col-sm-12 col-xs-12 text-center wow fadeInDown"
-              data-wow-duration="1s"
-              data-wow-delay="0.2s"
-              data-wow-offset="0"
-              style={{
-                visibility: "hidden",
-                animationDuration: "1s",
-                animationDelay: "0.2s",
-                animationName: "none",
-              }}
+
             >
               <div className="newsletter_form">
                 <h4>
@@ -163,15 +155,6 @@ const Footer = () => {
           <div className="row">
             <div
               className="col-lg-8 col-sm-12 col-xs-12 wow fadeInUp"
-              data-wow-duration="1s"
-              data-wow-delay="0.2s"
-              data-wow-offset="0"
-              style={{
-                visibility: "hidden",
-                animationDuration: "1s",
-                animationDelay: "0.2s",
-                animationName: "none",
-              }}
             >
               <div className="contact">
                 <h4>Write Your Message </h4>
@@ -255,15 +238,6 @@ const Footer = () => {
             {/* END COL  */}
             <div
               className="col-lg-4 col-sm-12 col-xs-12 wow fadeInRight mt-8"
-              data-wow-duration="1s"
-              data-wow-delay="0.2s"
-              data-wow-offset="0"
-              style={{
-                visibility: "hidden",
-                animationDuration: "1s",
-                animationDelay: "0.2s",
-                animationName: "none",
-              }}
             >
               <div className="address_bg">
                 <div className="single_address">
