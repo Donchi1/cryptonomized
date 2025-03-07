@@ -7,10 +7,8 @@ import AdminNavbar from "@/components/user/UserNavbar";
 import FooterUser from "@/components/user/FooterUser";
 import { auth } from "@/db/firebaseDb";
 import handleStatus from "@/utils/handleStatus";
-import { Card, CardBody } from "@material-tailwind/react";
 import moment from "moment";
 import Image from "next/image";
-import formatCurrency from "@/utils/converter";
 
 function Transactions() {
   const [transactions] = useCollection(

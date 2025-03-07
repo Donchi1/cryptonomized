@@ -362,7 +362,7 @@ export default function Home() {
               className="col-lg-7 col-sm-12 col-xs-12 wow fadeInUp"
             >
               <div className="app-text">
-                <h2>Install Crptiam app today</h2>
+                <h2>Install nomized app today</h2>
                 <p>
                   We offers users a fully operational long-term rental platform.
                   It plans to leverages blockchain technology to ensure seamless
