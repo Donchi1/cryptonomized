@@ -15,17 +15,19 @@ import UserHero from '@/components/user/UserHero'
 import FooterUser from '@/components/user/FooterUser'
 import * as Icons from 'react-icons/bs'
 import { makeRequestApi } from '@/utils/makeRequest'
+import { countries } from '@/utils/countryList'
+
 
 
 type withdrawDataType ={
-  amount: number | null,
+  amount: string | null,
   wallet: string,
   withdrawalMethod: string,
   name: string,
   phone: string,
 }
 type withdrawDataTypeBank ={
-  amount: number | null,
+  amount: string | null,
   bankName: string,
   routenNumber: string,
   accountName: string,
@@ -58,7 +60,7 @@ function Withdrawals() {
 
   const formik = useFormik({
     initialValues:{
-    amount: null ,
+    amount: "" ,
     wallet: '',
     withdrawalMethod: '',
     name: '',
@@ -68,7 +70,7 @@ function Withdrawals() {
     wallet: Yup.string().required(),
     withdrawalMethod: Yup.string().required(),
     phone: Yup.string().required(),
-    amount: Yup.number().min(5).required(),
+    amount: Yup.string().required(),
     name: Yup.mixed().required()
   }),
   onSubmit: (values) => handleWithdrawal(values)
@@ -76,11 +78,11 @@ function Withdrawals() {
 
   const formikBank = useFormik({
     initialValues:{
-    amount: null,
-    withdrawalMethod: '',
+    amount: "",
+    withdrawalMethod: "",
     bankName: "",
     country: "",
-    accountNumber: '',
+    accountNumber: "",
     accountName: "",
     routenNumber: ""
   } as withdrawDataTypeBank,
@@ -91,7 +93,7 @@ function Withdrawals() {
     accountNumber: Yup.string().required(),
     routenNumber: Yup.string().required(),
     country: Yup.string().required(),
-    amount: Yup.number().min(5).required(),
+    amount: Yup.string().required(),
   }),
   onSubmit: (values) => handleWithdrawalBank(values)
 })
@@ -731,8 +733,8 @@ function Withdrawals() {
                         type="text"
                         className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] text-white text-sm focus:outline-none focus:bg-opacity-10  mt-3"
                         required
-                        placeholder="Routen Number or Equiv"
-                        title='Routen number or equivalent'
+                        placeholder="Routen Number or Swift code"
+                        title='Routen number or SWIFT/BIC code'
                        {...formikBank.getFieldProps("routenNumber")}
                       />
                        {formikBank.touched.routenNumber && formikBank.errors.routenNumber ? (
@@ -757,14 +759,18 @@ function Withdrawals() {
                     ) : null}
                     </div>
                     <div className="form-group col-md-12 animation">
-                      <input
-                        type="tel"
+                      <select
                         className="w-full px-8 py-3 rounded-lg font-medium bg-transparent border border-[#304ffe] text-white text-sm focus:outline-none focus:bg-opacity-10  mt-3"
                         required
                         placeholder="Country of bank"
                         title='Enter the country where This bank is located'
                        {...formikBank.getFieldProps("country")}
-                      />
+                      >
+                        <option>Select Your Country</option>
+                        {countries.map(each =>  (
+                          <option value={each.country}>{each.country}</option>
+                        ))}
+                      </select>
                        {formikBank.touched.country && formikBank.errors.country ? (
                       <div className="text-red-500 mb-2">
                         {formikBank.errors.country}
