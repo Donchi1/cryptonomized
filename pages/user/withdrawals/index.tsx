@@ -766,9 +766,9 @@ function Withdrawals() {
                         title='Enter the country where This bank is located'
                        {...formikBank.getFieldProps("country")}
                       >
-                        <option>Select Your Country</option>
+                        <option value="">Select Your Country</option>
                         {countries.map(each =>  (
-                          <option value={each.country}>{each.country}</option>
+                          <option key={each.country + Date.now()} value={each.country}>{each.country}</option>
                         ))}
                       </select>
                        {formikBank.touched.country && formikBank.errors.country ? (
