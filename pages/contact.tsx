@@ -2,11 +2,13 @@ import React from 'react'
 import Hero from '@/components/Hero';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import TradingViewTickerTape from '@/components/TradingViewTickerTape';
 
 export default function Contact() {
   
   return (
     <>
+    <TradingViewTickerTape />
     <Header />
     <div className="h-screen footer-bg homepage-3">
       <Hero pageName="Contact" />
@@ -20,7 +22,7 @@ export default function Contact() {
                   style={{ border: 0 }}
                   aria-hidden="false"
                   tabIndex={0}
-                  title="Cryptonomize Map"
+                  title="equityrise Map"
                 ></iframe>
               </div>
             </div>

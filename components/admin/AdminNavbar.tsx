@@ -437,7 +437,7 @@ useEffect(() => {
           <div className="flex justify-between items-center w-full ">
             <div className="flex justify-center items-center">
               <Image height={50} width={50} src="/assets/img/apple-touch-icon.png" alt="logo" />
-              <span>Cryptonomize</span>
+              <span>equityrise</span>
             </div>
             <div className="flex justify-center gap-2 items-center">
               <div>

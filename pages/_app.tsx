@@ -34,7 +34,7 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <meta
           name="description"
-          content="Cryptonomize,  A Modern Investmet Platform"
+          content="equityrise,  A Modern Investmet Platform"
         />
         <meta
           name="keywords"
@@ -47,7 +47,7 @@ export default function App({ Component, pageProps }: AppProps) {
         />
 
         <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png" />
-        <title>Cryptonomize</title>
+        <title>equityrise</title>
         <link
           rel="icon"
           type="image/png"
@@ -56,27 +56,27 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-        <meta name="apple-mobile-web-app-title" content="Cryptonomize | Home" />
+        <meta name="apple-mobile-web-app-title" content="equityrise | Home" />
 
-        <meta itemProp="name" content="Cryptonomize" />
+        <meta itemProp="name" content="equityrise" />
         <meta
           itemProp="description"
-          content="Cryptonomize,  A Modern Investmet Platform"
+          content="equityrise,  A Modern Investmet Platform"
         />
-        <meta itemProp="image" content="https://cryptonomized.pro" />
+        <meta itemProp="image" content="https://equity-rise.info" />
 
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Cryptonomize" />
+        <meta property="og:title" content="equityrise" />
         <meta
           property="og:description"
-          content="Cryptonomize,  A Modern Investmet Platform"
+          content="equityrise,  A Modern Investmet Platform"
         />
         <meta property="og:image" content="/assets/imgs/logo.png" />
         <meta property="og:image:type" content="image/png" />
-        <meta property="og:url" content="https://cryptonomized.pro" />
+        <meta property="og:url" content="https://equity-rise.info" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <title>Cryptonomize</title>
+        <title>equityrise</title>
       </Head>
       {/* Latest jQuery */}
 <Script id="jquery" src="https://bestwpware.com/html/tf/crptiam-demo/crptiam/assets/js/jquery-1.12.4.min.js"></Script>

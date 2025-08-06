@@ -152,7 +152,7 @@ function Index() {
            
             const noteData = {
               title: "Welcome",
-              text: "Welcome to cryptonomize"
+              text: "Welcome to equityrise"
             }
             await createNotification(noteData)
          

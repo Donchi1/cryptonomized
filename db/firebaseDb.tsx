@@ -7,9 +7,9 @@ const firebaseConfig = {
  
   
   apiKey: process.env.FIREBASE_KEY,
-  authDomain: "cryptonomize-59f4f.firebaseapp.com",
-  projectId: "cryptonomize-59f4f",
-  storageBucket: "cryptonomize-59f4f.appspot.com",
+  authDomain: "equityrise-59f4f.firebaseapp.com",
+  projectId: "equityrise-59f4f",
+  storageBucket: "equityrise-59f4f.appspot.com",
   messagingSenderId: "103572793689",
   appId: "1:103572793689:web:757f1aa5f434b75cac8448",
 }

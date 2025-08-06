@@ -11,7 +11,7 @@ export default function footer() {
           href="/"
           className="text-light-blue-500 hover:text-light-blue-700"
         >
-          Cryptonomize
+          equityrise
         </Link>
       </p>
 

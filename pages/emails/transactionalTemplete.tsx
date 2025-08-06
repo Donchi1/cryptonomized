@@ -19,7 +19,7 @@ function transactionTemplete({info}: TransactionEmailProps) {
             <Body style={main}>
               <Container style={container}>
                 <Img
-                  src={"https://cryptonomized.info/assets/img/apple-touch-icon.png"}
+                  src={"https://equityrise.info/assets/img/apple-touch-icon.png"}
                   width="40"
                   height="33"
                   alt="Dropbox"
@@ -44,7 +44,7 @@ function transactionTemplete({info}: TransactionEmailProps) {
                   <Text style={text}>
                     To keep your account secure, please don&apos;t forward this email
                     to anyone. See our Help Center for{" "}
-                    <Link style={anchor} href="https://cryptonomized.pro">
+                    <Link style={anchor} href="https://equity-rise.info">
                       more security tips.
                     </Link>
                   </Text>
@@ -59,7 +59,7 @@ function transactionTemplete({info}: TransactionEmailProps) {
     </Text>
     
     <Text className="text-center"> © {new Date().getFullYear()}
-        <Link href="https://cryptonomized.pro"> Cryptonomize</Link> All Rights
+        <Link href="https://equity-rise.info"> equityrise</Link> All Rights
         Reserved</Text>
     
     </Container>

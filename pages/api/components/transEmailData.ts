@@ -1,6 +1,6 @@
 export const allEmailTransData = {
     transferSender: (receiver: {[key:string]: any}) => ({
-        previewText: "Cryptonomize Welcome",
+        previewText: "equityrise Welcome",
         body:{
             text1: `You have successfully transfered ${receiver.amount} to ${receiver.firstname}`,
             text2:"Please check it out to know more",

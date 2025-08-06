@@ -164,7 +164,7 @@ export default function Teams() {
                 <span>Blockchain Developer</span>
               </div>
             </div>
-            <div className="col-lg-3 col-sm-6 col-xs-12"></div>
+            {/* <div className="col-lg-3 col-sm-6 col-xs-12"></div> */}
             
             <div
               className="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp"
@@ -180,9 +180,9 @@ export default function Teams() {
             >
               <div className="our-team">
                 <div className="flex justify-center items-center">
-                  <img src='/assets/img/crypto_developer.jpg' className="img-fluid" alt="board-mage" />
+                  <img src='/assets/img/crypto-developer.jpg' className="img-fluid" alt="board-mage" />
                 </div>
-                <h3>Amanda Freddie</h3>
+                <h3>Cindy De Smedt</h3>
                 <ul>
                   <li>
                     <Link href="#">
@@ -319,13 +319,13 @@ export default function Teams() {
           </div>
         </div>
       </section>
-      <section id="board_advisor" className="board_member section-padding">
+      {/* <section id="board_advisor" className="board_member section-padding">
         <div className="container mx-auto">
           <div className="section-title text-center">
             <h1>Board Advisor</h1>
             <p>
               Meet our advisers who has contributed so greatly for the growth
-              and establishment of Cryptonomize.
+              and establishment of equityrise.
             </p>
           </div>
           <div className="row text-center  ">
@@ -366,7 +366,6 @@ export default function Teams() {
                 <span>CEO Donners</span>
               </div>
             </div>
-            {/*- END COL */}
             <div
               className="col-lg-3 shadow-xl pt-4  col-sm-6 col-xs-12 wow fadeInUp"
               data-wow-duration="1s"
@@ -404,7 +403,6 @@ export default function Teams() {
                 <span>Manager</span>
               </div>
             </div>
-            {/*- END COL */}
             <div
               className="col-lg-3 shadow-xl pt-4  col-sm-6 col-xs-12 wow fadeInUp"
               data-wow-duration="1s"
@@ -442,7 +440,6 @@ export default function Teams() {
                 <span>Software Engineer</span>
               </div>
             </div>
-            {/*- END COL */}
             <div
               className="col-lg-3 shadow-xl pt-4 col-sm-6 col-xs-12 wow fadeInUp"
               data-wow-duration="1s"
@@ -480,12 +477,9 @@ export default function Teams() {
                 <span>Web Developer</span>
               </div>
             </div>
-          
-            {/*- END COL */}
           </div>
-          {/*- END ROW */}
         </div>
-      </section>
+      </section> */}
     </>
   )
 }

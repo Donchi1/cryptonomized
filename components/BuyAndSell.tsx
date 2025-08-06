@@ -6,12 +6,12 @@ function BuyAndSell() {
     <div className="container">
       <div className="section-title text-center">
         <h1>
-          How to Buy and Sell Cryptocurrency or cryptonomize transaction
+          How to Buy and Sell Cryptocurrency or equityrise transaction
           meduims
         </h1>
         <p>
           There are so many platforms to buy and sell crypo.Go for the one
-          that suits your demand. Cryptonomize provides this meduims for
+          that suits your demand. equityrise provides this meduims for
           financial or crypto transactions. You can check our FAQ for more
           information.
         </p>
@@ -29,7 +29,7 @@ function BuyAndSell() {
             <h4>Bank Transfers</h4>
             <p>
               You can buy cryptocurrency through bank transfer as well as
-              cryptonomize investment depending on your country
+              equityrise investment depending on your country
               requirements.
             </p>
           </div>
@@ -40,7 +40,7 @@ function BuyAndSell() {
             />
             <h4>Online Wallets</h4>
             <p>
-              You can buy crypto as well as Cryptonomize investment through
+              You can buy crypto as well as equityrise investment through
               your online wallet.This is our recomended means of investment.
             </p>
           </div>
@@ -68,7 +68,7 @@ function BuyAndSell() {
             />
             <h4>Cash Payment</h4>
             <p>
-              You can buy cryptocurrency as well as Cryptonomize investment
+              You can buy cryptocurrency as well as equityrise investment
               by cash. This is very hard but the safest for purchase and
               investment .
             </p>

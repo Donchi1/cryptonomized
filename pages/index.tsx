@@ -10,31 +10,34 @@ import Header from '@/components/Header'
 import TrustedPlatform from './TrustedPlatform'
 import BuyAndSell from '@/components/BuyAndSell'
 import GetStarted from '@/components/GetStarted'
-import Blog from '@/components/Blog'
+import LatestDeposits from '@/components/LatestDeposits'
+import LatestWithdrawals from '@/components/LatestWithdrawals'
+import TradingViewTickerTape from '@/components/TradingViewTickerTape'
+import TradingViewCryptoMarketScreener from '@/components/TradingViewCryptoMarketScreener'
+import ForexCrossRates from '@/components/ForexCrossRates'
+import MetalsWidget from '@/components/MetalsWidget'
+import CommoditiesWidget from '@/components/CommoditiesWidget'
+import Particle from '@/components/Particle'
 
 export default function Home() {
   const { currentUser } = useSelector((state: RootState) => state.auth)
 
   return (
     <>
+      <TradingViewTickerTape />
       <Header />
-      <div id="particles-js" className="hidden">
-        <canvas
-          className="particles-js-canvas-el"
-          width="720"
-          height="1440"
-          style={{ width: '100%', height: '100%' }}
-        ></canvas>
-      </div>
 
-      <section id="home" className="home_bg vh-100 " style={{ backgroundImage: "url(/assets/img/slider-3.jpg)", backgroundPosition: "right", backgroundSize: "cover" }}>
+      <section id="home" className="home_bg vh-100 relative" style={{ backgroundImage: "url(/assets/img/slider-3.jpg)", backgroundPosition: "right", backgroundSize: "cover" }}>
+      <div className="absolute inset-0">
+      <Particle />
+      </div>
         <div className="container mx-auto" >
           <div className="row">
             <div className="col-lg-7 col-sm-12 col-xs-12 lg:mb-0 mb-4">
               <div className=" hero-text">
                 <h2 className="text-6xl  font-bold ">
                   {' '}
-                  Welcome to <br /> cryptonomize the way to your future
+                  Welcome to <br /> equityrise the way to your future
                   investments.
                 </h2>
                 <p className="mt-2 text-lg">
@@ -52,7 +55,7 @@ export default function Home() {
                         Get Started
                       </Link>
 
-                      <Link href="/register" className="btn_two">
+                      <Link href="/register" className="btn_two bg-white text-black border-0">
                         Register
                       </Link>
                     </>
@@ -60,7 +63,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            {/*- END COL */}
+
             {/* <div className="col-lg-5 col-sm-12 col-xs-12 text-center mt-8 lg:mt-20">
               <img src='/assets/img/bitcoin1.png' alt="logo" />
             </div> */}
@@ -69,6 +72,7 @@ export default function Home() {
       </section>
 
       <TrustedPlatform />
+      <TradingViewCryptoMarketScreener />
       <BuyAndSell />
 
       <GetStarted />
@@ -89,7 +93,6 @@ export default function Home() {
                 />
               </div>
             </div>
-            {/*- END COL */}
             <div
               className="col-lg-6 col-sm-12 col-xs-12 wow fadeInRight"
             >
@@ -113,309 +116,16 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            {/*- END COL */}
-          </div>
-          {/*- END ROW */}
-        </div>
-        {/*- END CONTAINER */}
-      </section>
-      {/* END ABOUT US CONTENT */}
-
-      {/* START TOKEN SALE */}
-      <section id="token_sale" className="token_sale_area section-padding">
-        <div className="container mx-auto">
-          <div className="section-title text-center">
-            <h1>Sale & Values</h1>
-            <p>
-              We are ready for all our client. Reaching out to people who has
-              the vision of establishment is our priority.
-            </p>
-          </div>
-          <div className="row text-center">
-            <div
-              className="col-lg-3 col-sm-4 col-xs-12 wow fadeInUp"
-            >
-              <div className="single_token single_token_bg_one">
-                <h4>Start Time</h4>
-                <p>July 30,2021 (10:00 GMT)</p>
-              </div>
-            </div>
-            {/* END COL */}
-            <div
-              className="col-lg-3 col-sm-4 col-xs-12 wow fadeInUp"
-
-            >
-              <div className="single_token single_token_bg_two">
-                <h4>Tokens for sale</h4>
-                <p>900,000 ICC (9%)</p>
-              </div>
-            </div>
-            {/* END COL */}
-            <div
-              className="col-lg-3 col-sm-4 col-xs-12 wow fadeInUp"
-
-            >
-              <div className="single_token single_token_bg_three">
-                <h4>Acceptable Currency</h4>
-                <p>BTC, ETH, LTC</p>
-              </div>
-            </div>
-            {/* END COL */}
-            <div
-              className="col-lg-3 col-sm-4 col-xs-12 wow fadeInUp"
-
-            >
-              <div className="single_token single_token_bg_four">
-                <h4>End Time</h4>
-                <p>Oct 30,2024 (10:00 GMT)</p>
-              </div>
-            </div>
-            {/* END COL */}
-            <div
-              className="col-lg-3 col-sm-4 col-xs-12 wow fadeInUp"
-
-            >
-              <div className="single_token single_token_bg_five">
-                <h4>Soft Cops</h4>
-                <p>$90 M</p>
-              </div>
-            </div>
-            {/* END COL */}
-            <div
-              className="col-lg-3 col-sm-4 col-xs-12 wow fadeInUp"
-            >
-              <div className="single_token single_token_bg_six">
-                <h4>Exchange rate</h4>
-                <p>1 BTC = 1940 CNT </p>
-              </div>
-            </div>
-            {/* END COL */}
-            <div
-              className="col-lg-3 col-sm-4 col-xs-12 wow fadeInUp"
-            >
-              <div className="single_token single_token_bg_seven">
-                <h4>Hourly Payout</h4>
-                <p>$10000 </p>
-              </div>
-            </div>
-            {/* END COL */}
-            <div
-              className="col-lg-3 col-sm-4 col-xs-12 wow fadeInUp"
-            >
-              <div className="single_token single_token_bg_eight">
-                <h4>Minimal Transction</h4>
-                <p>1BTC/1ETH/1LTC</p>
-              </div>
-            </div>
-            {/* END COL */}
-          </div>
-          {/* END ROW */}
-        </div>
-        {/* END CONTAINER */}
-      </section>
-      {/* END TOKEN SALE  */}
-
-
-
-      <section className="token_img_area section-padding">
-        <div className="container mx-auto">
-          <div className="section-title text-center">
-            <h1>Trading and Financial Informations</h1>
-            <p>We are established and ready to make others wealthy.</p>
-          </div>
-          <div className="row text-center">
-            <div
-              className="col-lg-6 col-sm-12 col-xs-12 wow fadeInUp"
-            >
-              <div className="token-img">
-                <img
-                  src="/assets/img/02-Chat.webp"
-                  className="img-fluid"
-                  alt=""
-                />
-                <h4>Trading Distribution</h4>
-              </div>
-            </div>
-            <div
-              className="col-lg-6 col-sm-12 col-xs-12 text-center wow fadeInUp"
-            >
-              <div className="fund-img">
-                <img
-                  src="/assets/img/01-Chat.webp"
-                  className="img-fluid"
-                  alt=""
-                />
-                <h4>Fund Distribution</h4>
-              </div>
-            </div>
           </div>
         </div>
+
       </section>
 
-      <section id="roadmap" className="roadmap_area section-padding">
-        <div className="container mx-auto">
-          <div className="section-title text-center">
-            <h1>Roadmap</h1>
-            <p>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout.
-            </p>
-          </div>
-          <div className="row">
-            <div className="col-lg-12 col-sm-12 col-xs-12">
-              <div className="timeline">
-                <div
-                  className="time_contain time_left wow fadeInLeft"
-                >
-                  <div className="time_content">
-                    <h2>
-                      Cryptocurrency Teachings - <span>July, 2021</span>
-                    </h2>
-                    <p>
-                      We teach all our client that are really to make wealth
-                      about cryptocurrency and other related tecnologies.
-                    </p>
-                  </div>
-                </div>
-                <div
-                  className="time_contain time_right wow fadeInRight"
-                >
-                  <div className="time_content">
-                    <h2>
-                      Business Conception - <span>Aug, 2021</span>
-                    </h2>
-                    <p>
-                      We offers users a fully operational long-term rental
-                      platform. It plans to leverages blockchain technology to
-                      ensure embarrassing hidden seamless.
-                    </p>
-                  </div>
-                </div>
-                <div
-                  className="time_contain time_left wow fadeInLeft"
-                >
-                  <div className="time_content">
-                    <h2>
-                      Legal Review - <span>Sep, 2021</span>
-                    </h2>
-                    <p>
-                      We offers users a fully operational platform. It plans to
-                      leverages blockchain technology to ensure embarrassing
-                      hidden seamless.
-                    </p>
-                  </div>
-                </div>
-                <div
-                  className="time_contain time_right wow fadeInRight"
-                >
-                  <div className="time_content">
-                    <h2>
-                      Marketing - <span>Oct, 2021</span>
-                    </h2>
-                    <p>
-                      We are opened for marketting and other cryptocurrency
-                      related businesses .
-                    </p>
-                  </div>
-                </div>
-                <div
-                  className="time_contain time_left wow fadeInLeft"
-                >
-                  <div className="time_content">
-                    <h2>
-                      Investment and sales - <span>Nov, 2021</span>
-                    </h2>
-                    <p>
-                      We offer you a clean and easy platform for your crypto
-                      investment round the whole world.
-                    </p>
-                  </div>
-                </div>
-                <div
-                  className="time_contain time_right wow fadeInRight"
-                >
-                  <div className="time_content">
-                    <h2>
-                      Keep going - <span>Dec, 2021</span>
-                    </h2>
-                    <p>
-                      Invest the little you have now and keep on going till you
-                      become wealthy.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/*- END COL */}
-          </div>
-          {/*- END ROW */}
-        </div>
-        {/*- END CONTAINER */}
-      </section>
-      {/* END ROADMAP */}
+      <div className="container mx-auto flex flex-col items-center lg:flex-row gap-4">
+        <LatestDeposits />
+        <LatestWithdrawals />
+      </div>
 
-      {/* START DOWNLOAD APP */}
-      <section id="download" className="download_area section-padding">
-        <div className="container mx-auto">
-          <div className="row">
-            <div
-              className="col-lg-7 col-sm-12 col-xs-12 wow fadeInUp"
-            >
-              <div className="app-text">
-                <h2>Install nomized app today</h2>
-                <p>
-                  We offers users a fully operational long-term rental platform.
-                  It plans to leverages blockchain technology to ensure seamless
-                  rental experience and wants to help tenants unfreeze millions
-                  of dollars tied up in rental.
-                </p>
-                <ul>
-                  <li>
-                    <span className="ti-download"></span>Download It for Free
-                  </li>
-                  <li>
-                    <span className="ti-package"></span>Install App
-                  </li>
-                  <li>
-                    <span className="ti-user"></span>Create Profile
-                  </li>
-                  <li>
-                    <span className="ti-cup"></span>Enjoy this app
-                  </li>
-                </ul>
-              </div>
-              <div className="app_btn">
-                <Link
-                  href="#"
-                  className="btn_one wow bounceIn"
-                >
-                  <i className="fa fa-apple"></i>App Store
-                </Link>
-                <Link
-                  href="#"
-                >
-                  <i className="fa fa-play"></i>Google Play
-                </Link>
-              </div>
-            </div>
-            {/* END COL */}
-            <div
-              className="col-lg-5 col-sm-12 col-xs-12 wow fadeInUp"
-            >
-              <div className="app_img">
-                <img
-                  src="/assets/img/app-mockup.webp"
-                  className="img-fluid"
-                  alt=""
-                />
-              </div>
-            </div>
-            {/* END COL */}
-          </div>
-          {/* END ROW */}
-        </div>
-        {/* END CONTAINER */}
-      </section>
       <section id="team" className="team_member section-padding">
         <div className="container mx-auto">
           <div className="section-title text-center">
@@ -442,8 +152,18 @@ export default function Home() {
       </section>
 
       <Teams />
-      {/* START PARTNER */}
-      <div className="partner_area section-padding">
+      <div className="container mx-auto">
+        <div className="section-title text-center">
+          <h1>Trading Information</h1>
+          <p>
+           Multi fold trading opportunities for you. Trading is available for you to make profit.
+          </p>
+        </div>
+        <ForexCrossRates />
+        <MetalsWidget />
+        <CommoditiesWidget />
+      </div>
+      {/* <div className="partner_area section-padding">
         <div className="container mx-auto">
           <div className="section-title text-center">
             <h1>Partners & Supporters</h1>
@@ -510,12 +230,8 @@ export default function Home() {
               />
             </div>
           </div>
-          {/* END COL */}
         </div>
-
-        {/*- END CONTAINER */}
-      </div>
-      {/* END PARTNER */}
+      </div> */}
 
       {/* START FAQ */}
       <section id="faq" className="faq1-area section-padding">
@@ -622,7 +338,7 @@ export default function Home() {
                       aria-expanded="false"
                       aria-controls="collapseFour"
                     >
-                      How does cryptonomize work?
+                      How does equityrise work?
                     </button>
                   </h2>
                   <div
@@ -632,7 +348,7 @@ export default function Home() {
                     data-bs-parent="#accordionExample"
                   >
                     <div className="accordion-body">
-                      Cryptonomize work with the blockchain system, providing
+                      equityrise work with the blockchain system, providing
                       you a global means of crypto investment and securing your
                       information and fund through our secured encrypted system.
                     </div>
@@ -675,7 +391,7 @@ export default function Home() {
                       aria-expanded="false"
                       aria-controls="collapseFive"
                     >
-                      How do i invest in Cryptonomize?
+                      How do i invest in equityrise?
                     </button>
                   </h2>
 
@@ -729,7 +445,7 @@ export default function Home() {
                       aria-expanded="false"
                       aria-controls="collapseFour"
                     >
-                      How do i invest in Cryptonomize?
+                      How do i invest in equityrise?
                     </button>
                   </h2>
                   <div
@@ -759,16 +475,10 @@ export default function Home() {
                 />
               </div>
             </div>
-            {/* END COL  */}
           </div>
-          {/*END  ROW  */}
         </div>
-        {/* END CONTAINER  */}
       </section>
-      {/* END FAQ */}
-
-      {/* START BLOG */}
-      <Blog />
+      {/* <Blog /> */}
       <Footer />
     </>
   )

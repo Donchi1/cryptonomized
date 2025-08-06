@@ -7,10 +7,16 @@ import Header from '@/components/Header'
 import TrustedPlatform from './TrustedPlatform'
 import BuyAndSell from '@/components/BuyAndSell'
 import GetStarted from '@/components/GetStarted'
+import TradingViewTickerTape from '@/components/TradingViewTickerTape'
+import TradingViewCryptoMarketScreener from '@/components/TradingViewCryptoMarketScreener'
+import ForexCrossRates from '@/components/ForexCrossRates'
+import MetalsWidget from '@/components/MetalsWidget'
+import CommoditiesWidget from '@/components/CommoditiesWidget'
 
 export default function About() {
   return (
     <>
+    <TradingViewTickerTape />
       <Header />
 
       <div id="slider-section" className="footer-bg homepage-3">
@@ -61,8 +67,20 @@ export default function About() {
         <TrustedPlatform />
         <BuyAndSell />
         <GetStarted />
+        <TradingViewCryptoMarketScreener />
         <Teams />
         <Testimonial />
+        <div className="container mx-auto">
+        <div className="section-title text-center">
+          <h1>Trading Information</h1>
+          <p>
+           Multi fold trading opportunities for you. Trading is available for you to make profit.
+          </p>
+        </div>
+        <ForexCrossRates />
+        <MetalsWidget />
+        <CommoditiesWidget />
+      </div>
         <Footer />
       </div>
     </>

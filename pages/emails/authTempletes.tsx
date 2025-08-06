@@ -24,7 +24,7 @@ import {
         previewText: "password Update",
         body:{
             
-            text1: `You recently requested a password change for Cryptonomized account. Your password has been successfully changed`,
+            text1: `You recently requested a password change for equityrise account. Your password has been successfully changed`,
             text2:"if you did not do this or made this request, kindly contact our support team"
         }
     },
@@ -33,7 +33,7 @@ import {
         previewText: "Profile update",
         body:{
             
-            text1: `You recently requested a profile update for Cryptonomized account. Your ccount has been successfully updated`,
+            text1: `You recently requested a profile update for equityrise account. Your ccount has been successfully updated`,
             text2:"if you did not do this or made this request, kindly contact our support team",
         },
     }
@@ -57,7 +57,7 @@ import {
         <Body style={main}>
           <Container style={container}>
             <Img
-              src={"https://cryptonomized.info/assets/img/apple-touch-icon.png"}
+              src={"https://equityrise.info/assets/img/apple-touch-icon.png"}
               width="40"
               height="33"
               alt="Dropbox"
@@ -76,7 +76,7 @@ import {
               <Text style={text}>
                 To keep your account secure, please don&apos;t forward this email
                 to anyone. See our Help Center for{" "}
-                <Link style={anchor} href="https://cryptonomized.pro">
+                <Link style={anchor} href="https://equity-rise.info">
                   more security tips.
                 </Link>
               </Text>
@@ -91,7 +91,7 @@ import {
 </Text>
 
 <Text className="text-center"> © {new Date().getFullYear()}
-    <Link href="https://cryptonomized.pro"> Cryptonomize</Link> All Rights
+    <Link href="https://equity-rise.info"> equityrise</Link> All Rights
     Reserved</Text>
 
 </Container>

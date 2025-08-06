@@ -1,21 +1,24 @@
 import React from 'react'
 import Link  from 'next/link'
 import * as Icons from "react-icons/fa"
+import InvestmentPopup from './InvestmentPopUp'
 
 
 const Header = () => {
   return (
+    <>
     <nav
       id="navbar"
       className="navbar navbar-expand-lg top-0  fixed-top navbar-custom navbar-light sticky menu_dropdown nav-sticky"
     >
+      
       <div className="container">
         <Link className="navbar-brand" href="/">
           <span className="flex justify-center items-center space-x-4">
             <span className="w-10">
               <img src="/assets/img/apple-touch-icon.png" alt="logo" />
             </span>
-            Cryptonomize
+            equityrise
           </span>
         </Link>
         <button
@@ -74,6 +77,8 @@ const Header = () => {
         </div>
       </div>
     </nav>
+    <InvestmentPopup />
+    </>
   )
 }
 

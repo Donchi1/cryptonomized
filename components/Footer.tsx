@@ -8,6 +8,7 @@ import { auth, db } from "@/db/firebaseDb";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { makeRequestApi } from "@/utils/makeRequest";
+import { FaFacebook, FaInstagram, FaPinterest, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
   const {currentUser} = useSelector((state:RootState) => state.auth)
@@ -58,7 +59,7 @@ const Footer = () => {
       formik.setSubmitting(false);
       formik.resetForm();
       Toast.success.fire({
-        text: "Thanks for contacting cryptonomize. We will get back to you soon.",
+        text: "Thanks for contacting equityrise. We will get back to you soon.",
       });
 
     } catch (err: any) {
@@ -144,11 +145,8 @@ const Footer = () => {
                 </form>
               </div>
             </div>
-            {/* END COL */}
           </div>
-          {/* END ROW */}
         </div>
-        {/* END CONTAINER */}
       </section>
       <section id="contact" className="contact_us section-padding">
         <div className="container mx-auto">
@@ -235,7 +233,6 @@ const Footer = () => {
                 </form>
               </div>
             </div>
-            {/* END COL  */}
             <div
               className="col-lg-4 col-sm-12 col-xs-12 wow fadeInRight mt-8"
             >
@@ -274,7 +271,7 @@ const Footer = () => {
                     <span className="fa fa-envelope"></span>
                   </div>
                   <h5 className="font-bold text-[25px]">Email</h5>
-                  <p>support@cryptonomized.info</p>
+                  <p>support@equityrise.info</p>
                 </div>
                 <div className="single_address">
                   <div className="address_br">
@@ -285,11 +282,8 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            {/* END COL  */}
           </div>
-          {/* END ROW */}
         </div>
-        {/* END CONTAINER */}
       </section>
       <div className="footer">
         <div className="container mx-auto">
@@ -322,40 +316,37 @@ const Footer = () => {
               </div>
               <div className="footer_copyright">
                 <p>
-                  © {new Date().getFullYear()} Cryptonomize. All Rights
+                  © {new Date().getFullYear()} equityrise. All Rights
                   Reserved.
                 </p>
               </div>
               <div className="footer_profile">
                 <ul>
                   <li>
-                    <Link href="#">
-                      <i className="fa fa-facebook"></i>
+                    <Link href="#" className="d-flex items-center justify-center">
+                      <FaFacebook />
                     </Link>
                   </li>
                   <li>
-                    <Link href="#">
-                      <i className="fa fa-twitter"></i>
+                    <Link href="#" className="d-flex items-center justify-center">
+                      <FaTwitter />
                     </Link>
                   </li>
                   <li>
-                    <Link href="#">
-                      <i className="fa fa-instagram"></i>
+                    <Link href="#" className="d-flex items-center justify-center">
+                      <FaInstagram />
                     </Link>
                   </li>
                   <li>
-                    <Link href="#">
-                      <i className="fa fa-pinterest"></i>
+                    <Link href="#" className="d-flex items-center justify-center">
+                      <FaPinterest />
                     </Link>
                   </li>
                 </ul>
               </div>
             </div>
-            {/*- END COL */}
           </div>
-          {/*- END ROW */}
         </div>
-        {/*- END CONTAINER */}
       </div>
     </>
   );

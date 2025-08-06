@@ -24,8 +24,8 @@ import {
 
 const allEmailData = [
     {
-        title:"Hello Welcome to Cryptonomize",
-        previewText: "Cryptonomize Welcome",
+        title:"Hello Welcome to equityrise",
+        previewText: "equityrise Welcome",
         body:{
             text1: "Congratulations! You're joining the best platform for your crypto investment and fund maximization.",
             text2:"Here's how to get started:"
@@ -119,7 +119,7 @@ export const emailTemplete = ({
                 <Body className="bg-offwhite text-base font-sans">
                     <Container className="bg-white p-45">
                         <Img
-                            src={"https://cryptonomized.info/assets/img/apple-touch-icon.png"}
+                            src={"https://equityrise.info/assets/img/apple-touch-icon.png"}
                             width="100"
                             height="100"
                             alt="logo"
@@ -142,7 +142,7 @@ export const emailTemplete = ({
 
 
                         {allEmailData[index].actionBtn && <Section className="text-center my-4">
-                            <Link href="https://cryptonomized.pro/user" className="bg-brand cursor-pointer text-white rounded-lg py-3 px-[18px]">
+                            <Link href="https://equity-rise.info/user" className="bg-brand cursor-pointer text-white rounded-lg py-3 px-[18px]">
                                 Go to your dashboard
                             </Link>
                         </Section>}
@@ -159,7 +159,7 @@ export const emailTemplete = ({
                         </Text>
 
                         <Text className="text-center"> © {new Date().getFullYear()}
-                            <Link href="https://cryptonomized.pro"> Cryptonomize</Link> All Rights
+                            <Link href="https://equity-rise.info"> equityrise</Link> All Rights
                             Reserved</Text>
 
                     </Container>

@@ -42,7 +42,7 @@ function Plans({ head, initialw, initiald }: PlanType) {
         <div className=" mt-4">
           <Link
             href="/user/payments"
-            className="btn_two uppercase tracking-wide font-semibold   text-gray-100 w-full py-2 rounded-md  transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+            className="btn_one uppercase tracking-wide font-semibold   text-gray-100 w-full py-2 rounded-md  transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
           >
             Get Now
           </Link>

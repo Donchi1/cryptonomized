@@ -3,10 +3,15 @@ import Hero from '@/components/Hero'
 import Plans from '@/components/Plans' 
 import Footer from '@/components/Footer' 
 import Header from '@/components/Header'
+import TradingViewTickerTape from '@/components/TradingViewTickerTape'
+import ForexCrossRates from '@/components/ForexCrossRates'
+import MetalsWidget from '@/components/MetalsWidget'
+import CommoditiesWidget from '@/components/CommoditiesWidget'
 
 export default function Pricing() {
   return (
     <>
+    <TradingViewTickerTape />
     <Header/>
       <section className="footer-bg homepage-3 mb-14">
         <Hero pageName="Pricing" />
@@ -76,6 +81,17 @@ export default function Pricing() {
           </div>
         </section>
       </section>
+      <div className="container mx-auto">
+        <div className="section-title text-center">
+          <h1>Trading Information</h1>
+          <p>
+           Multi fold trading opportunities for you. Trading is available for you to make profit.
+          </p>
+        </div>
+        <ForexCrossRates />
+        <MetalsWidget />
+        <CommoditiesWidget />
+      </div>  
 
       <Footer />
     </>
