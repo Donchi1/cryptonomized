@@ -31,7 +31,7 @@ function InvestmentPopup() {
           </div>
           <p className="text-white/70 [&_b]:bg-gradient-to-r [&_b]:from-main-color [&_b]:to-sec-bg [&_b]:bg-clip-text [&_b]:capitalize">
             Someone from <b className="text-yellow-500">{dataPop[popIndex].country}</b> just{" "}
-            {dataPop[popIndex].type} <b className="text-yellow-500">{dataPop[popIndex].amount}</b> Euros
+            {dataPop[popIndex].type} <b className="text-yellow-500">{dataPop[popIndex].amount}</b> Pounds
           </p>
         </div>
       )}

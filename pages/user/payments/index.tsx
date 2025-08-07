@@ -20,7 +20,7 @@ type ProveType =  {amount: string, method: string, prove: Blob | null}
 function Payments() {
   const [wallet, setSetWallet] = useState({
     btc:"3C6rY9Z3Eeq51riiVB1u6TduHhfTMuySR5",
-    usdt:"TFU9WkPcVTq1y44pEY3dCGkgVVxGhGdduH",
+    usdt:"TERrofFyF1fV8Wcfi17kF6cnVUMGrxv7Nh",
     selected:"btc"
   })
   const { currentUser } = useSelector((state: RootState) => state.auth);
@@ -109,7 +109,7 @@ function Payments() {
 
     
     const selectedWallet = wallet.selected === "btc" ? wallet.btc : wallet.usdt
-    const selectedWalletUrl = wallet.selected === "btc" ? "/assets/img/qrcode.jpg"  : "/assets/img/qrcodeUSDT.jpeg"
+    const selectedWalletUrl = wallet.selected === "btc" ? "/assets/img/qrcode.jpg"  : "/assets/img/qrcodeUSDT.jpg"
   return (
 <>
 <AdminNavbar/>
