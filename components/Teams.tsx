@@ -67,7 +67,7 @@ export default function Teams() {
             >
               <div className="our-team">
                 <div className="flex justify-center items-center">
-                  <img src='/assets/img/team_manager.jpg' className="img-fluid" alt="board-mage" />
+                  <img src='/assets/img/team_manager.JPG' className="img-fluid" alt="board-mage" />
                 </div>
                 <h3>Keith Walker</h3>
                 <ul>
@@ -180,7 +180,7 @@ export default function Teams() {
             >
               <div className="our-team">
                 <div className="flex justify-center items-center">
-                  <img src='/assets/img/crypto_developer.jpg' className="img-fluid" alt="board-mage" />
+                  <img src='/assets/img/crypto_developer.JPG' className="img-fluid" alt="board-mage" />
                 </div>
                 <h3>Lisa J Gregory</h3>
                 <ul>
