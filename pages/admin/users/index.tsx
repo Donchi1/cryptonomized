@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import { DocumentData, collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
 import { db } from "@/db/firebaseDb";
 import Toast from "@/utils/Alert";
+import { deleteFromCloudinary } from "@/utils/deleteFromCloudinary";
 import Image from "next/image";
 import formatCurrency from "@/utils/converter";
 import Link from "next/link";
@@ -41,10 +42,13 @@ function Index() {
 
   const navigate = useRouter();
 
-  const handleDelete = async (id: string) => {
+  const handleDelete = async (row: any) => {
     //api call for delete
     try {
-      await deleteDoc(doc(db, "users", id));
+      if (row?.photo) {
+        await deleteFromCloudinary(row.photo);
+      }
+      await deleteDoc(doc(db, "users", row.uid));
 
       Toast.success.fire({
         icon: "success",
@@ -135,7 +139,7 @@ function Index() {
               Edit
             </button>
             <Icons.BsTrash
-              onClick={() => handleDelete(params.row.uid)}
+              onClick={() => handleDelete(params.row)}
               size={24}
               className="cursor-pointer text-red-500 ml-4"
             />

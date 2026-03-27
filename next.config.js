@@ -3,18 +3,22 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
- 
-  env:{
+
+  env: {
     FIREBASE_KEY: process.env.FIREBASE_KEY,
     API_REQUEST_URL: process.env.API_REQUEST_URL,
     RESEND_API_KEY: process.env.RESEND_API_KEY
   },
-  images:{
-    remotePatterns:[
+  images: {
+    remotePatterns: [
       {
         protocol: "https",
         hostname: "firebasestorage.googleapis.com",
-       
+
+      },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
       }
     ]
   }

@@ -2,13 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, db, storage } from "@/db/firebaseDb";
-import {
-  getDownloadURL,
-  ref,
-  uploadBytes,
-  uploadBytesResumable,
-} from "firebase/storage";
+import { auth, db } from "@/db/firebaseDb";
 import {
   addDoc,
   collection,
@@ -21,6 +15,7 @@ import Toast from "@/utils/Alert";
 import Link from "next/link";
 import Compressor from "compressorjs";
 import { makeRequestApi } from "@/utils/makeRequest";
+import { uploadToCloudinary } from "@/utils/uploadToCloudinary";
 
 type formDataType = {
   firstname: string;
@@ -103,12 +98,10 @@ const Register = () => {
       //register User
       const res = await createUserWithEmailAndPassword(auth, email, password);
 
-      //Create a unique image name
-      const date = new Date().getTime();
-      const storageRef = ref(storage, `users/${auth.currentUser?.uid}`);
-
-      await uploadBytes(storageRef, photo as Blob);
-      const url = await getDownloadURL(storageRef);
+      // Upload to Cloudinary
+      const uploadRes = await uploadToCloudinary(photo as Blob);
+      if (!uploadRes) throw new Error("Image upload failed");
+      const url = uploadRes.url;
 
       try {
         //create user on firestore

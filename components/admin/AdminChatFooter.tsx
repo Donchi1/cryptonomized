@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import Image from "next/image";
 import * as Icons from "react-icons/md";
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
-import { auth, db, storage } from '@/db/firebaseDb';
+import { auth, db } from '@/db/firebaseDb';
+import { uploadToCloudinary } from '@/utils/uploadToCloudinary';
 import { addDoc, collection, doc, serverTimestamp, setDoc } from 'firebase/firestore';
 import useGetDocWithClause from '../hooks/UseGetDocWithClause';
 import { useSelector } from 'react-redux';
@@ -42,12 +42,10 @@ function AdminChatFooter({scrollRef, userChatId}: {scrollRef: React.RefObject<HT
 
   const sendPhoto = async() => {
     if(!file) return
-    const uuid = Math.random() + Date.now()
     try{
-
-    const fileRef = ref(storage, `messages/${uuid.toString()}`)
-     await uploadBytes(fileRef, file as Blob)
-     const url = await getDownloadURL(fileRef)
+     const uploadRes = await uploadToCloudinary(file as Blob);
+     if (!uploadRes) throw new Error("Image upload failed");
+     const url = uploadRes.url;
      closeModal()
      await addDoc(collection(db, `chats/${combinedId}/messages`), {
       senderId: auth.currentUser?.uid,

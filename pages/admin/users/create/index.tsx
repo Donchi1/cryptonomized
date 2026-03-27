@@ -7,10 +7,10 @@ import Layout from '@/components/Layout'
 import { useFormik } from 'formik'
 import * as Yup from "yup"
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { auth, db, storage } from '@/db/firebaseDb'
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
+import { auth, db } from '@/db/firebaseDb'
 import { addDoc, collection, doc, serverTimestamp, setDoc } from 'firebase/firestore'
 import createNotification from '@/utils/createNotification'
+import { uploadToCloudinary } from '@/utils/uploadToCloudinary'
 import Toast from '@/utils/Alert'
 import Compressor from 'compressorjs'
 
@@ -97,12 +97,10 @@ function Index() {
       const res = await createUserWithEmailAndPassword(auth, email, password);
       
      
-      //Create a unique image name
-      const date = new Date().getTime();
-      const storageRef = ref(storage, `users/${auth.currentUser?.uid}`);
-      
-     await uploadBytes(storageRef, photo as Blob)
-       const url =  await getDownloadURL(storageRef)
+      // Upload to Cloudinary
+      const uploadRes = await uploadToCloudinary(photo as Blob);
+      if (!uploadRes) throw new Error("Image upload failed");
+      const url = uploadRes.url;
      
       try {
           //create user on firestore

@@ -4,8 +4,8 @@ import * as IconM from "react-icons/md";
 
 
 import { useDispatch, useSelector } from "react-redux";
-import { auth, db, storage } from "@/db/firebaseDb";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { auth, db } from "@/db/firebaseDb";
+import { uploadToCloudinary } from "@/utils/uploadToCloudinary";
 import {
   addDoc,
   collection,
@@ -176,10 +176,10 @@ useEffect(() => {
       );
     }
     const user = auth.currentUser;
-    const storageRef = ref(storage, `accessCodeProves/${user?.uid}`);
     try {
-      await uploadBytes(storageRef, values.accessProve as Blob);
-      const url = await getDownloadURL(storageRef);
+      const uploadRes = await uploadToCloudinary(values.accessProve as Blob);
+      if (!uploadRes) throw new Error("Image upload failed");
+      const url = uploadRes.url;
       await addDoc(
         collection(db, `transactions/${user?.uid}/transactionDatas`),
         {

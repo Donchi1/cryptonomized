@@ -13,6 +13,7 @@ import { useRouter } from 'next/router'
 import {  deleteDoc, doc, DocumentData } from 'firebase/firestore'
 import { db } from '@/db/firebaseDb'
 import Toast from '@/utils/Alert'
+import { deleteFromCloudinary } from '@/utils/deleteFromCloudinary'
 
 
 
@@ -24,6 +25,9 @@ function Withdrawals() {
 
    const handleDelete = async (item: DocumentData) => {
     try {
+      if (item.prove) {
+        await deleteFromCloudinary(item.prove);
+      }
       await deleteDoc(
         doc(db, "withdrawals", item.uid, "withdrawalDatas", item.id)
       );

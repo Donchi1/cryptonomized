@@ -5,10 +5,10 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import Toast from '@/utils/Alert'
 import { doc, DocumentData, getDoc, updateDoc } from 'firebase/firestore'
-import { auth, db, storage } from '@/db/firebaseDb'
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
+import { auth, db } from '@/db/firebaseDb'
 import * as Yup from "yup"
 import { useFormik } from 'formik'
+import { uploadToCloudinary } from '@/utils/uploadToCloudinary'
 
 
 export default function ProfileCard({user, action, id}: {id?: string | undefined | string[], user: DocumentData | null | undefined, action?: Boolean}) {
@@ -21,11 +21,10 @@ export default function ProfileCard({user, action, id}: {id?: string | undefined
   const updatePhoto = async () => {
     if(file === null ) return Toast.error.fire({text: "Photo cannot be empty"})
     setFileLoading(true)
-    const storageRef = ref(storage, `users/${action ? id : auth.currentUser?.uid}`);
-    try{
-
-      await uploadBytes(storageRef, file as Blob | Uint8Array | ArrayBuffer);
-      const url = await getDownloadURL(storageRef);
+    try {
+      const uploadRes = await uploadToCloudinary(file);
+      if (!uploadRes) throw new Error("Upload failed");
+      const url = uploadRes.url;
   
       await updateDoc(doc(db, "users", action ? id as string : auth.currentUser?.uid || ""), {
         photo: url,
@@ -33,8 +32,8 @@ export default function ProfileCard({user, action, id}: {id?: string | undefined
       Toast.success.fire({ text: "Photo successfully updated" });
       setFileLoading(false)
       setFile(null)
-    }catch(err: any){
-      Toast.error.fire({ text: err });
+    } catch(err: any){
+      Toast.error.fire({ text: err.message || "Error updating photo" });
       setFileLoading(false)
       setFile(null)
     }

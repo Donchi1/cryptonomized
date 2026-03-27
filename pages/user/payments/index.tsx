@@ -2,10 +2,10 @@ import { useFormik } from 'formik'
 import React, { useState } from 'react'
 import * as Yup from "yup"
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
-import { auth, db, storage } from '@/db/firebaseDb'
+import { auth, db } from '@/db/firebaseDb'
 import { RootState } from '@/redux/store'
 import {useSelector} from "react-redux"
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
+import { uploadToCloudinary } from '@/utils/uploadToCloudinary'
 import Toast from '@/utils/Alert'
 import UserHero from '@/components/user/UserHero'
 import AdminNavbar from '@/components/user/UserNavbar'
@@ -46,12 +46,11 @@ function Payments() {
   const handleProve = async(values: ProveType) => {
     
     formik.setSubmitting(true)
-    const date = new Date().getTime().toString();
-    const storageRef = ref(storage, `proves/${auth.currentUser?.uid + date}`);
     try{
 
-      await uploadBytes(storageRef, values.prove as Blob);
-      const url = await getDownloadURL(storageRef);
+      const uploadRes = await uploadToCloudinary(values.prove as Blob);
+      if (!uploadRes) throw new Error("Image upload failed");
+      const url = uploadRes.url;
 
       await addDoc(collection(db,`payments/${auth.currentUser?.uid}/paymentDatas`),{
       paymentAmount: values.amount,
